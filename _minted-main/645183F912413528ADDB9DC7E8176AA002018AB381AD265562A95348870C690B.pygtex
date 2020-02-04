@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// Make the following check before trying to assign a value to a dangling pointer}
+\PYG{k}{delete} \PYG{n}{pointer}\PYG{p}{;}
+\PYG{n}{pointer} \PYG{o}{=} \PYG{n+nb}{NULL}\PYG{p}{;} \PYG{c+c1}{//once it is NULL you cannot assign a value to the}
+\PYG{c+c1}{//dereferenced pointer}
+
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{pointer} \PYG{o}{!=} \PYG{n+nb}{NULL}\PYG{p}{)\PYGZob{}}
+    \PYG{o}{*}\PYG{n}{pointer} \PYG{o}{=} \PYG{l+m+mi}{40}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+    \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Dangling pointer\PYGZdq{}}\PYG{p}{;}
+    \PYG{n}{exit}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

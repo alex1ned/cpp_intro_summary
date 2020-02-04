@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{hours}\PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{];}
+	\PYG{k+kt}{int} \PYG{n}{count}\PYG{p}{;}
+	
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{count} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{p}{;} \PYG{n}{count} \PYG{o}{\PYGZlt{}=} \PYG{n}{NO\PYGZus{}OF\PYGZus{}EMPLOYEES} \PYG{p}{;} \PYG{n}{count}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Enter hours for employee number \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{count} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}: \PYGZdq{}}\PYG{p}{;}
+		\PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{hours}\PYG{p}{[}\PYG{n}{count} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{];}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

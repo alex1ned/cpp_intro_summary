@@ -1,0 +1,53 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Function declarations and other headers go here...}
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{list}\PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{14}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{11}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{\PYGZcb{};}
+
+    \PYG{c+c1}{//Call to quick\PYGZus{}sort ...}
+    \PYG{n}{quick\PYGZus{}sort}\PYG{p}{(}\PYG{n}{list}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{5} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{quick\PYGZus{}sort}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{list}\PYG{p}{[],} \PYG{k+kt}{int} \PYG{n}{left}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{right}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{pivot}\PYG{p}{,} \PYG{n}{left\PYGZus{}arrow}\PYG{p}{,} \PYG{n}{right\PYGZus{}arrow}\PYG{p}{;}
+    \PYG{n}{left\PYGZus{}arrow} \PYG{o}{=} \PYG{n}{left}\PYG{p}{;}
+    \PYG{n}{right\PYGZus{}arrow} \PYG{o}{=} \PYG{n}{right}\PYG{p}{;}
+    \PYG{n}{pivot} \PYG{o}{=} \PYG{n}{list}\PYG{p}{[(}\PYG{n}{left} \PYG{o}{+} \PYG{n}{right}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{];}
+
+    \PYG{k}{do}
+    \PYG{p}{\PYGZob{}}
+        \PYG{c+c1}{//Move the right arrow to left until the value is smaller than or equal to the pivot}
+        \PYG{k}{while} \PYG{p}{(}\PYG{n}{list}\PYG{p}{[}\PYG{n}{right\PYGZus{}arrow}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{pivot}\PYG{p}{)}
+        \PYG{p}{\PYGZob{}} \PYG{n}{right\PYGZus{}arrow}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+
+        \PYG{c+c1}{//Move the left arrow to right until the value is larger than or equal to the pivot}
+        \PYG{k}{while} \PYG{p}{(}\PYG{n}{list}\PYG{p}{[}\PYG{n}{left\PYGZus{}arrow}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{pivot}\PYG{p}{)}
+        \PYG{p}{\PYGZob{}} \PYG{n}{left\PYGZus{}arrow}\PYG{o}{++}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{left\PYGZus{}arrow} \PYG{o}{\PYGZlt{}=} \PYG{n}{right\PYGZus{}arrow}\PYG{p}{)}
+        \PYG{p}{\PYGZob{}}
+            \PYG{n}{swap}\PYG{p}{(}\PYG{n}{list}\PYG{p}{[}\PYG{n}{left\PYGZus{}arrow}\PYG{p}{],} \PYG{n}{list}\PYG{p}{[}\PYG{n}{right\PYGZus{}arrow}\PYG{p}{]);}
+            \PYG{n}{left\PYGZus{}arrow}\PYG{o}{++}\PYG{p}{;}
+            \PYG{n}{right\PYGZus{}arrow}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{right\PYGZus{}arrow} \PYG{o}{\PYGZgt{}=} \PYG{n}{left\PYGZus{}arrow}\PYG{p}{);}
+
+    \PYG{c+c1}{//Stopping condition ... for each call to the quick sort need to have two more}
+    \PYG{c+c1}{//calls to the quick sort (as the array is splitted in two)}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{left} \PYG{o}{\PYGZlt{}} \PYG{n}{right\PYGZus{}arrow}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+        \PYG{n}{quick\PYGZus{}sort}\PYG{p}{(}\PYG{n}{list}\PYG{p}{,} \PYG{n}{left}\PYG{p}{,} \PYG{n}{right\PYGZus{}arrow}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{left\PYGZus{}arrow} \PYG{o}{\PYGZlt{}} \PYG{n}{right}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+        \PYG{n}{quick\PYGZus{}sort}\PYG{p}{(}\PYG{n}{list}\PYG{p}{,} \PYG{n}{left\PYGZus{}arrow}\PYG{p}{,} \PYG{n}{right}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{swap}\PYG{p}{(}\PYG{k+kt}{int}\PYG{o}{\PYGZam{}} \PYG{n}{first}\PYG{p}{,} \PYG{k+kt}{int}\PYG{o}{\PYGZam{}} \PYG{n}{second}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//use a temp to swap the values}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

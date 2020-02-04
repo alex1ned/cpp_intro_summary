@@ -1,0 +1,61 @@
+\section{Vectors}
+
+Vectors have the same purpose as arrays but they can grow and shrink. Vectors are part
+of the Standard Template Library (STL). Requires use of the \emph{vector} library.
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+#include <vector>
+\end{minted}
+
+
+\subsection{Vector basics}
+
+\subsubsection*{Declaration and basic member functions}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//Syntax
+vector<base_type> v_name;
+//Example of a vector that stores ints
+vector<int> v_name;
+\end{minted}
+
+\begin{itemize}
+	\item The example above invokes a call to the default constructor for the class
+	vector\textless int\textgreater which creates a vector object that is empty.
+	\item Vector elements can be accessed with the square brackets (once they were
+	already assigned a value once).
+	\item You cannot initialise vector elements using the square brackets (only reassign).
+	\item You initialise elements using the member functino \emph{pushback}.
+\end{itemize}
+
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+vector<double> sample_v;
+sample_v.pushback(23.1);
+\end{minted}
+
+\begin{itemize}
+	\item Can initialise a vector with \ldots
+\end{itemize}
+
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+vector<double> sample_v = {12.1, 14.34, 15.2};
+\end{minted}
+
+\begin{itemize}
+	\item Access the length of a vector using the \emph{size} member function (which
+	returns an unsigned int as type).
+	\item Note that whenever a vector runs out of capacity, it is automatically increased.
+	\begin{itemize}
+		\item Note that increasing the capacity in small chunks is inefficient and thus
+		by default whenever the capacity needs to increase it doubles.
+		\item If you need to manage memory you may wish to change this.
+		\item In particular you may need to use the member functions \emph{reserve}
+		or \emph{resize}.
+	\end{itemize}
+\end{itemize}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+unsigned int integer = sample_v.size();
+\end{minted}

@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{double} \PYG{n+nf}{average}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{some\PYGZus{}array}\PYG{p}{[],} \PYG{k+kt}{int} \PYG{n}{length\PYGZus{}of\PYGZus{}the\PYGZus{}array}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{total} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{count} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{count} \PYG{o}{\PYGZlt{}} \PYG{n}{length\PYGZus{}of\PYGZus{}the\PYGZus{}array}\PYG{p}{;} \PYG{n}{count}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{total} \PYG{o}{+=} \PYG{n}{some\PYGZus{}array}\PYG{p}{[}\PYG{n}{count}\PYG{p}{];}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{p}{(}\PYG{n}{total}\PYG{o}{/}\PYG{n}{length}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

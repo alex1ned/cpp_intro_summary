@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iomanip\PYGZgt{} //need this header to make output left\PYGZhy{}justified}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{cout}\PYG{p}{.}\PYG{n}{setf}\PYG{p}{(}\PYG{n}{ios}\PYG{o}{::}\PYG{n}{left}\PYG{p}{)} \PYG{c+c1}{//need this because of the output is by default right justified}
+	\PYG{n}{cout}\PYG{p}{.}\PYG{n}{width}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{);}  \PYG{c+cm}{/*The output of the next \PYGZsq{}cout\PYGZsq{} statement will be at}
+\PYG{c+cm}{	least 20 characters*/}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

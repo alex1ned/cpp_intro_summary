@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}fstream\PYGZgt{}}
+
+\PYG{n}{ifstream} \PYG{n}{in\PYGZus{}stream}\PYG{p}{;}
+\PYG{n}{ofstream} \PYG{n}{out\PYGZus{}stream}\PYG{p}{;}
+\end{Verbatim}

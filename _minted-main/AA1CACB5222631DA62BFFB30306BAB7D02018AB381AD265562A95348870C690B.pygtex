@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//For example}
+\PYG{n}{strcpy}\PYG{p}{(}\PYG{n}{c\PYGZus{}string}\PYG{p}{,} \PYG{n}{string\PYGZus{}object}\PYG{p}{.}\PYG{n}{c\PYGZus{}str}\PYG{p}{());}
+\end{Verbatim}

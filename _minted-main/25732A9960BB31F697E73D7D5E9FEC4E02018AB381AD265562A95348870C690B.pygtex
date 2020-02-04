@@ -1,0 +1,41 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{char} \PYG{n}{character}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{number} \PYG{o}{=} \PYG{l+m+mi}{51}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{count} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{ofstream} \PYG{n}{out\PYGZus{}stream}\PYG{p}{;}
+    \PYG{n}{ifstream} \PYG{n}{in\PYGZus{}stream1}\PYG{p}{;}   \PYG{c+c1}{//Stream for counting integers}
+    \PYG{n}{ifstream} \PYG{n}{in\PYGZus{}stream2}\PYG{p}{;}   \PYG{c+c1}{//Stream for counting characters}
+
+    \PYG{c+c1}{//Create the file}
+    \PYG{n}{out\PYGZus{}stream}\PYG{p}{.}\PYG{n}{open}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Integers\PYGZdq{}}\PYG{p}{);}
+    \PYG{k}{for} \PYG{p}{(}\PYG{n}{count} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{p}{;} \PYG{n}{count} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{5} \PYG{p}{;} \PYG{n}{count}\PYG{o}{++}\PYG{p}{)}
+        \PYG{n}{out\PYGZus{}stream} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{number}\PYG{o}{++} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s+sc}{\PYGZsq{} \PYGZsq{}}\PYG{p}{;}
+    \PYG{n}{out\PYGZus{}stream}\PYG{p}{.}\PYG{n}{close}\PYG{p}{();}
+
+    \PYG{c+c1}{//Count the integers}
+    \PYG{n}{in\PYGZus{}stream1}\PYG{p}{.}\PYG{n}{open}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Integers\PYGZdq{}}\PYG{p}{);}
+    \PYG{n}{count} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{in\PYGZus{}stream1} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{number}\PYG{p}{;}
+    \PYG{k}{while} \PYG{p}{(}\PYG{o}{!}\PYG{n}{in\PYGZus{}stream1}\PYG{p}{.}\PYG{n}{fail}\PYG{p}{())}
+    \PYG{p}{\PYGZob{}}
+        \PYG{n}{count}\PYG{o}{++}\PYG{p}{;}
+        \PYG{n}{in\PYGZus{}stream1} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{number}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{in\PYGZus{}stream1}\PYG{p}{.}\PYG{n}{close}\PYG{p}{();}
+    \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}There are \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{count} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} integers in the file,}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{;}
+
+    \PYG{c+c1}{//Count the characters}
+    \PYG{n}{in\PYGZus{}stream2}\PYG{p}{.}\PYG{n}{open}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Integers\PYGZdq{}}\PYG{p}{);}
+    \PYG{n}{count} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{in\PYGZus{}stream2} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{character}\PYG{p}{;}
+    \PYG{k}{while} \PYG{p}{(}\PYG{o}{!}\PYG{n}{in\PYGZus{}stream2}\PYG{p}{.}\PYG{n}{fail}\PYG{p}{())}
+    \PYG{p}{\PYGZob{}}
+        \PYG{n}{count}\PYG{o}{++}\PYG{p}{;}
+        \PYG{n}{in\PYGZus{}stream2} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{character}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{in\PYGZus{}stream2}\PYG{p}{.}\PYG{n}{close}\PYG{p}{();}
+    \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}represented using \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{count} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} characters.}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

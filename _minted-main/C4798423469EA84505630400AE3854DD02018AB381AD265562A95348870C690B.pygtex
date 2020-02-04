@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// FUNCTION: get\PYGZus{}user\PYGZus{}input}
+\PYG{k+kt}{void} \PYG{n+nf}{get\PYGZus{}user\PYGZus{}input}\PYG{p}{(}\PYG{k+kt}{int}\PYG{o}{\PYGZam{}} \PYG{n}{input\PYGZus{}number}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{char} \PYG{n}{ans}\PYG{p}{;}
+    \PYG{k}{do}
+    \PYG{p}{\PYGZob{}}
+        \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Enter an integer and press RETURN: \PYGZdq{}}\PYG{p}{;}
+
+        \PYG{n}{read\PYGZus{}and\PYGZus{}clean}\PYG{p}{(}\PYG{n}{input\PYGZus{}number}\PYG{p}{);}
+
+        \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}You entered: \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{input\PYGZus{}number}\PYG{p}{;}
+        \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} ... fine? \PYGZdq{}}\PYG{p}{;}
+        \PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{ans}\PYG{p}{;}
+        \PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{ans}\PYG{p}{;}
+        \PYG{n}{new\PYGZus{}line}\PYG{p}{();}
+
+    \PYG{p}{\PYGZcb{}} \PYG{k}{while} \PYG{p}{(} \PYG{p}{(}\PYG{n}{ans} \PYG{o}{!=} \PYG{l+s+sc}{\PYGZsq{}y\PYGZsq{}}\PYG{p}{)} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{p}{(}\PYG{n}{ans} \PYG{o}{!=} \PYG{l+s+sc}{\PYGZsq{}Y\PYGZsq{}}\PYG{p}{)} \PYG{p}{);}
+
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

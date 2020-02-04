@@ -1,0 +1,270 @@
+\section{Recursion}
+
+%---------------------------------------------
+\subsection{The basic idea}
+A function is recursive, if the function definition includes a call to itself. A familiar mathematical example
+of a recursive function is the factorial function. The definition includes a base case (the definition of 0!) and a
+recursive part. The recursive call to the function always needs to be embedded in a branch statement
+with at least one non-recursive branch (i.e. the base case, to avoid infinite loop). 
+
+C++ arranges the memory
+spaces needed for each function call in a stack. The memory area for each new call is placed on the top of the stack,
+and then taken off again when the execution of the call is completed. Basically if you have 3 calls you start with the
+first call, then on top comes the 2nd and the 3d, then the second and then the first again (LIFO structure).
+
+Note that any function that can be defined recursively can also be defined iteratively. Because of extra stack
+manipulation, recursive versions of functions often run slower and use more memory than their iterative
+counterparts - function calls are expensive. But often recursive definitions are easier to read.
+
+Recursive functions are often useful when manipulating recursive data structures (e.g. a node in a linked list).
+
+\subsubsection*{A basic example}
+The following inputs a series of characters from the keyboard, terminated with a full-stop character, and then
+prints it backward on the screen.
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void print_backwards();
+
+int main()
+{
+	print_backwards();
+	cout << endl;
+	
+	return 0;
+}
+
+void print_backwards()
+{
+	char character;
+	
+	cout << "Enter a character ('.' to end program): ";
+	cin >> character;
+	if (character != '.')
+	{
+		print_backwards();
+		cout << character;
+	}
+	else
+	{
+		;
+	}
+}
+\end{minted}
+\caption{Basic example of a recursive function}
+\label{source_code}
+\end{listing}
+
+
+%---------------------------------------------
+\subsection{Three more examples}
+\subsubsection*{Factorial}
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+int factorial(int number)
+{
+	if (number < 0)
+	{
+		cout << "\nError - negative argument to factorial\n";
+		exit(1);
+	}
+	else if (number == 0)
+		return 1;
+	else
+		return (number * factorial(number - 1));
+}
+\end{minted}
+\caption{Factorial as a recursive function}
+\label{source_code}
+\end{listing}
+
+
+\subsubsection*{Power}
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+float raised_to_power(float number, int power)
+{
+	if (power < 0)
+	{
+		cout << "\nError - can't raise to a negative power\n";
+		exit(1);
+	}
+	else if (power == 0)
+		return (1.0);
+	else
+		return (number * raised_to_power(number, power - 1));
+}
+\end{minted}
+\caption{Recursive power function}
+\label{source_code}
+\end{listing}
+
+\subsubsection*{Sum of first n elements of an array}
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+const int NO_OF_ELEMENTS = 10;
+int sum_of(int a[], int n);
+
+int main()
+{
+	int list[NO_OF_ELEMENTS];
+	int count;
+	int no_of_elements_to_sum = 5;
+	
+	for (count = 0 ; count < NO_OF_ELEMENTS ; count++)
+	{
+		cout << "Enter value of element " << count << ": ";
+		cin >> list[count];
+	}
+	
+	cout << "\nHow many elements do you want to add up? ";
+	cin >> no_of_elements_to_sum;
+	
+	cout << "\n\n";
+		
+	cout << "The sum of the first " << no_of_elements_to_sum << " element";
+	if (no_of_elements_to_sum > 1) 
+		cout << "s";
+	cout << " is " << sum_of(list, no_of_elements_to_sum) << ".\n";
+	
+	return 0;
+}
+
+int sum_of(int a[], int n)
+{
+	if (n < 1 || n > NO_OF_ELEMENTS)
+	{
+		cout << "\nError - can only sum 1 to "; 
+		cout << NO_OF_ELEMENTS << " elements\n";
+		exit(1);
+	}
+	else if (n == 1)
+		return a[0];
+	else
+		return (a[n-1] + sum_of(a,n-1));
+}
+\end{minted}
+\caption{Recursive sum of first n elements of an array}
+\label{source_code}
+\end{listing}
+
+
+
+%---------------------------------------------
+\subsection{Quick sort - a recursive procedure for sorting}
+
+Can sort in ascending or descending way. Logic is as follows: you select a \emph{pivot} (which
+can be any number of the array) and put all numbers smaller than the pivot to the left and larger than the
+pivot to the right. After that you treat the numbers to the left and right of the pivot as two new independent
+arrays for which two pivots are selected - then sorted. Repeat this process until the numbers are all single
+independent arrays.
+
+Suppose you have the following 11 digit int array.
+
+\begin{center}
+$14, 3, 2, 11, 5, 8, 0, 2, 9, 4, 20$\\
+\end{center}
+
+\noindent
+Steps:
+\begin{itemize}
+	\item Select a pivot with the index \emph{(first index + last index) / 2} note that you
+	select the value here and not the index.
+	\item Identify a left arrow at index 0.
+	\item identify a right arrow at end index of the array.
+	\item Now starting from the right, the right arrow is moved to the left until
+	until a value less-than or equal to the pivot is encountered - (i.e. the `4' in the example).
+	\item Similarly the left arrow is moved to the right until a value greater than or equal to 
+	the pivot is encountered (i.e. already the 14 in the example).
+	\item Now swap the two values at the indices where the left and right arrows are and we
+	have \ldots
+\end{itemize}
+
+\begin{center}
+$4, 3, 2, 11, 5, 8, 0, 2, 9, 14, 20$\\
+\end{center}
+
+\begin{itemize}
+	\item Now move the right arrow left again and the left arrow right again (2 and 11).
+	\item Exchange the values and we have \ldots
+\end{itemize}
+
+\begin{center}
+$4, 3, 2, 2, 5, 8, 0, 11, 9, 14, 20$\\
+\end{center}
+
+\begin{itemize}
+	\item This part only stops when the condition left arrow \textgreater right arrow becomes true.
+	\item Note that it is acceptable to exchange the pivot because you swap the values and not
+	the index.
+\end{itemize}
+
+
+\noindent
+Below is the C++ procedure for a recursive quick sort algorithm.
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//Function declarations and other headers go here...
+int main()
+{
+    int list[5] = {14, 3, 2, 11, 5};
+        
+    //Call to quick_sort ...
+    quick_sort(list, 0, 5 -1);
+}
+
+void quick_sort(int list[], int left, int right)
+{
+    int pivot, left_arrow, right_arrow;
+    left_arrow = left;
+    right_arrow = right;
+    pivot = list[(left + right)/2];
+    
+    do
+    {
+        //Move the right arrow to left until the value is smaller than or equal to the pivot
+        while (list[right_arrow] > pivot)
+        { right_arrow--; }
+        
+        //Move the left arrow to right until the value is larger than or equal to the pivot
+        while (list[left_arrow] < pivot)
+        { left_arrow++; }
+        
+        if (left_arrow <= right_arrow)
+        {
+            swap(list[left_arrow], list[right_arrow]);
+            left_arrow++;
+            right_arrow--;
+        }
+    }
+    while (right_arrow >= left_arrow);
+      
+    //Stopping condition ... for each call to the quick sort need to have two more
+    //calls to the quick sort (as the array is splitted in two)
+    if (left < right_arrow)
+    {
+        quick_sort(list, left, right_arrow);
+    }
+    if (left_arrow < right)
+    {
+        quick_sort(list, left_arrow, right);
+    }
+}
+
+void swap(int& first, int& second)
+{
+	//use a temp to swap the values
+}
+\end{minted}
+\caption{Recursive quick sort algorithm}
+\label{source_code}
+\end{listing}
+
+

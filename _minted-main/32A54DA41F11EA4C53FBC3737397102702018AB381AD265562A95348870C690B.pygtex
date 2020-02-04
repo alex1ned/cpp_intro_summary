@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// FUNCTION new line}
+\PYG{k+kt}{void} \PYG{n+nf}{new\PYGZus{}line}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{char} \PYG{n}{symbol}\PYG{p}{;}
+    \PYG{k}{do}
+    \PYG{p}{\PYGZob{}}
+        \PYG{n}{cin}\PYG{p}{.}\PYG{n}{get}\PYG{p}{(}\PYG{n}{symbol}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}} \PYG{k}{while} \PYG{p}{(}\PYG{n}{symbol} \PYG{o}{!=} \PYG{l+s+sc}{\PYGZsq{}\PYGZbs{}n\PYGZsq{}}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

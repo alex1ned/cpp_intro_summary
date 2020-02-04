@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{double} \PYG{n}{two\PYGZus{}D\PYGZus{}array}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{][}\PYG{l+m+mi}{6}\PYG{p}{];}
+	\PYG{c+c1}{//Is an array with 3 rows and 6 columns}
+	\PYG{c+c1}{//Think of it as being a 1D array of size 3 whose base type is a one dimensional array}
+	\PYG{c+c1}{//of doubles of size 6}
+\end{Verbatim}

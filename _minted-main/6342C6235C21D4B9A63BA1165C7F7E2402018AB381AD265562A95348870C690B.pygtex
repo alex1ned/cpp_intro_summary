@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//A program that outputs a multiplication table.}
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{number}\PYG{p}{;}
+	
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{number} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{p}{;} \PYG{n}{number} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{10} \PYG{p}{;} \PYG{n}{number}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{multiplier}\PYG{p}{;}
+		\PYG{k}{for} \PYG{p}{(}\PYG{n}{multiplier} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{p}{;} \PYG{n}{multiplier} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{10} \PYG{p}{;} \PYG{n}{multiplier}\PYG{o}{++}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{number} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} x \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{multiplier} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} = \PYGZdq{}}\PYG{p}{;}
+			\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{number} \PYG{o}{*} \PYG{n}{multiplier} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}		
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

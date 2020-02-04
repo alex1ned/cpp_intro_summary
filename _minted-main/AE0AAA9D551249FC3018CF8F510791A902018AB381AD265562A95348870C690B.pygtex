@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{c\PYGZus{}pointer}\PYG{p}{;}
+    \PYG{n}{assign\PYGZus{}new\PYGZus{}int}\PYG{p}{(}\PYG{n}{c\PYGZus{}pointer}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// In function definition}
+\PYG{k+kt}{void} \PYG{n+nf}{assign\PYGZus{}new\PYGZus{}int}\PYG{p}{(}\PYG{k+kt}{char}\PYG{o}{*\PYGZam{}} \PYG{n}{some\PYGZus{}pointer}\PYG{p}{)}
+\PYG{p}{\PYGZob{}} \PYG{c+c1}{// function parameter is a pointer that is called by reference?!}
+    \PYG{n}{some\PYGZus{}pointer} \PYG{o}{=} \PYG{k}{new} \PYG{p}{(}\PYG{n}{nothrow}\PYG{p}{)} \PYG{k+kt}{char}\PYG{p}{;}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{some\PYGZus{}pointer} \PYG{o}{==} \PYG{n+nb}{NULL}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+        \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Bad allocation.\PYGZdq{}}
+        \PYG{n}{exit}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

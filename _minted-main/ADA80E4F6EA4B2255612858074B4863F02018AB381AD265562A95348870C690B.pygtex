@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{out\PYGZus{}stream} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{437} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s+sc}{\PYGZsq{} \PYGZsq{}}\PYG{p}{;}
+	\PYG{c+c1}{//Here the characters \PYGZsq{}4\PYGZsq{} \PYGZsq{}3\PYGZsq{} \PYGZsq{}7\PYGZsq{} are output to the file and end with an empty character}
+\end{Verbatim}

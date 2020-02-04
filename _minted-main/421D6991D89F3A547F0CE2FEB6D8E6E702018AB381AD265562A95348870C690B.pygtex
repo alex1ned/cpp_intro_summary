@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{CDAccount} \PYG{n+nf}{a\PYGZus{}function}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{theBalance}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{theRate}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{theTerm}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//Local variable of type CDAccount is used to build up a complete}
+	\PYG{c+c1}{//structure value}
+	\PYG{n}{CDAccount} \PYG{n}{temp}\PYG{p}{;}
+	
+	\PYG{n}{temp}\PYG{p}{.}\PYG{n}{balance} \PYG{o}{=} \PYG{n}{theBalance}\PYG{p}{;}
+	\PYG{n}{temp}\PYG{p}{.}\PYG{n}{interestRate} \PYG{o}{=} \PYG{n}{theRate}\PYG{p}{;}
+	\PYG{n}{temp}\PYG{p}{.}\PYG{n}{term} \PYG{o}{=} \PYG{n}{theTerm}\PYG{p}{;}
+	
+	\PYG{k}{return} \PYG{n}{temp}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

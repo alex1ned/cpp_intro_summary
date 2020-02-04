@@ -1,0 +1,108 @@
+\section{Introduction}
+
+\subsection{A basic C++ program}
+\begin{listing}[h]
+\begin{minted}
+[
+frame=lines,
+linenos,
+fontsize=\small,
+obeytabs=true,
+tabsize=3
+]
+{c++}
+#include <iostream>
+
+using namespace std;
+
+int main() 
+{  
+	cout << "Hello World!" << endl;
+	return 0;
+}
+\end{minted}
+\caption{`Hello World!' code}
+\label{source_code_1}
+\end{listing}
+
+\ldots where \ldots
+
+\begin{itemize}	
+	\item \emph{\#include \textless iostream\textgreater} is the include directive that tells the compiler and linker that the program
+	will need to be linked to a library of routines that handle input from the keyboard and output to the screen (i.e. the cin and cout
+	statements). The header file ``iostream'' constains the information about this library 
+	\item \emph{using namespace std;} is the using directive
+	\begin{itemize}
+		\item C++ divides (e.g. cin and cout) into subcollections of names called `namespaces'
+		\item Here it says, the program will be using names that have a meaning in the `std' namespace
+	\end{itemize}	
+	\item \emph{return 0;} returns 0 to the OS of the computer to signal that the program has completed successfully
+	(the statement is optional)
+		
+\end{itemize}
+
+\subsection{Some terminology and special characters}
+\begin{itemize}
+	\item \emph{Variable declaration}: signals the compiler to set aside enough space for a
+	particular type -- the variable has a random/unpredictable value.
+	\item \emph{Variable assignment}: assigns a value to a variable (also reassign).
+	\item \emph{Variable initialisation}: assigns a value to a variable at the point of declaration (note
+	that `cont' variables can only be initialised and not assigned and are thus \emph{not} reassignable).
+	\item \emph{Function declaration}: tells the compiler the existence of the function (before the
+	\emph{main} function).
+	\item \emph{Function definition}: defines the behaviour of the function (usually after the
+	\emph{main} function unless function is defined at point of declaration).
+	\item \emph{\textbackslash{}n} or \emph{endl} \ldots are new-line characters (but \emph{endl} also
+	flushes the output buffer.
+	\item \emph{\textbackslash{}t} \ldots is the tab character.
+	\item \emph{\textbackslash{}0} \ldots is the sentinel character (used as last character in a \emph{char array}
+	to mark it as a c-string variable.
+\end{itemize}
+
+
+\subsection{Some commonly used predefined functions}
+
+\begin{table}[h]
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{ m{3cm} m{8cm} m{3cm}} 
+\textbf{Name} & \textbf{Description} & \textbf{Library header}\\
+\hline
+sqrt(d) & Takes the square root of a \emph{real} number & cmath\\
+\hline
+pow(n, m) & Result of n to power of m & cmath\\
+\hline
+abs(i) & Absolute value of an integer & cstdlib\\
+\hline
+labs(i) & Absolute value of a long int & cstdlib\\
+\hline
+fabs(d) & Absolute value of a double & cmath\\
+\hline
+ceil(d) & Rounds UP a double & cmath\\
+\hline
+floor(d) & Rounds DOWN a double & cmath\\
+\hline
+srand() & Seed random number generator & cstdlib\\
+\hline
+rand() & Random number generator & cstdlib\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Commonly used predefined functions}
+\label{table_1}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

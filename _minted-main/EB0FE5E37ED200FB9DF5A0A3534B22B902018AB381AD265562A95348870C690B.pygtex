@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{bool} \PYG{n}{is\PYGZus{}true} \PYG{o}{=} \PYG{n+nb}{false}\PYG{p}{;}
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+	\PYG{n}{cout}\PYG{p}{.}\PYG{n}{setf}\PYG{p}{(}\PYG{n}{ios}\PYG{o}{::}\PYG{n}{scientific}\PYG{p}{);}
+	\PYG{n}{cout}\PYG{p}{.}\PYG{n}{precision}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}
+\end{Verbatim}

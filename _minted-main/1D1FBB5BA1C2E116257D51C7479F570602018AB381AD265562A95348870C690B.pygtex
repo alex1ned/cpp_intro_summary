@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int}\PYG{o}{*} \PYG{n}{d}\PYG{p}{;}
+
+\PYG{n}{d} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{int}\PYG{p}{[}\PYG{l+m+mi}{10}\PYG{p}{];}
+
+\PYG{c+c1}{// The two below are equivalent:}
+\PYG{n}{d}\PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{];}
+\PYG{o}{*}\PYG{p}{(}\PYG{n}{d}\PYG{o}{+}\PYG{l+m+mi}{5}\PYG{p}{);}
+\end{Verbatim}

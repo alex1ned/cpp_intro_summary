@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{NUMBER} \PYG{o}{=} \PYG{l+m+mi}{6}\PYG{p}{;}
+\PYG{k}{typedef} \PYG{k+kt}{int} \PYG{n}{Hours\PYGZus{}array}\PYG{p}{[}\PYG{n}{NUMBER}\PYG{p}{];} \PYG{c+c1}{//Hours\PYGZus{}array is then like a type}
+
+\PYG{n}{Hours\PYGZus{}array} \PYG{n}{hours}\PYG{p}{;} \PYG{c+c1}{//hours is now an array that holds 6 integers}
+\PYG{n}{Hours\PYGZus{}array} \PYG{n}{hours\PYGZus{}w2}\PYG{p}{;} \PYG{c+c1}{//hours\PYGZus{}w2 is now an array that holds 6 integers}
+\end{Verbatim}

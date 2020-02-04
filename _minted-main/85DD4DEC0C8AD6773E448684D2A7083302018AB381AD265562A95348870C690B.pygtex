@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}name\PYGZus{}of\PYGZus{}header\PYGZus{}file.hpp\PYGZdq{}}
+	\PYG{c+c1}{//Don\PYGZsq{}t forget to include the header file}
+
+\PYG{k+kt}{int} \PYG{n}{declaration\PYGZus{}of\PYGZus{}a\PYGZus{}function}\PYG{p}{\PYGZob{}}\PYG{k+kt}{double} \PYG{n}{number}\PYG{p}{,} \PYG{k+kt}{char} \PYG{n}{name}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{integer}\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//do something here}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,53 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Introduction}{7}% 
+\contentsline {subsection}{\numberline {1.1}A basic C++ program}{7}% 
+\contentsline {subsection}{\numberline {1.2}Some terminology and special characters}{7}% 
+\contentsline {subsection}{\numberline {1.3}Some commonly used predefined functions}{7}% 
+\contentsline {section}{\numberline {2}Variables, Types, and Expressions}{8}% 
+\contentsline {subsection}{\numberline {2.1}Data Types}{8}% 
+\contentsline {subsection}{\numberline {2.2}Formatting numbers}{9}% 
+\contentsline {subsection}{\numberline {2.3}Constants and enumerations}{10}% 
+\contentsline {subsection}{\numberline {2.4}Expressions}{11}% 
+\contentsline {section}{\numberline {3}Functions}{12}% 
+\contentsline {subsection}{\numberline {3.1}Declaration and definition}{12}% 
+\contentsline {subsection}{\numberline {3.2}Splitting programs into different files}{13}% 
+\contentsline {section}{\numberline {4}Branch and loop statements}{15}% 
+\contentsline {subsection}{\numberline {4.1}Loops}{15}% 
+\contentsline {subsection}{\numberline {4.2}If, else if, else, and switch statements}{16}% 
+\contentsline {subsection}{\numberline {4.3}Blocks and scoping}{17}% 
+\contentsline {subsection}{\numberline {4.4}Nested loops}{17}% 
+\contentsline {section}{\numberline {5}Files and streams}{20}% 
+\contentsline {subsection}{\numberline {5.1}Creating \& opening streams and checking for failure}{20}% 
+\contentsline {subsection}{\numberline {5.2}Character input and output and checking for end-of-file}{21}% 
+\contentsline {subsection}{\numberline {5.3}Streams as arguments to functions}{24}% 
+\contentsline {subsection}{\numberline {5.4}Formatting when using output streams}{25}% 
+\contentsline {section}{\numberline {6}Arrays and c-strings}{26}% 
+\contentsline {subsection}{\numberline {6.1}Basics of arrays}{26}% 
+\contentsline {subsection}{\numberline {6.2}Arrays as parameters of functions}{28}% 
+\contentsline {subsection}{\numberline {6.3}Function that returns an array}{29}% 
+\contentsline {subsection}{\numberline {6.4}Sorting arrays using the selection sort}{29}% 
+\contentsline {subsection}{\numberline {6.5}Sorting arrays using the bubble sort}{30}% 
+\contentsline {subsection}{\numberline {6.6}Multi dimensional arrays}{31}% 
+\contentsline {subsection}{\numberline {6.7}C-strings}{32}% 
+\contentsline {section}{\numberline {7}The standard \emph {string} class}{38}% 
+\contentsline {subsection}{\numberline {7.1}Introduction to the string class}{38}% 
+\contentsline {subsection}{\numberline {7.2}I/O with the string class}{38}% 
+\contentsline {subsection}{\numberline {7.3}Member functions of the class string}{39}% 
+\contentsline {subsection}{\numberline {7.4}Converting from string objects}{41}% 
+\contentsline {section}{\numberline {8}Vectors}{42}% 
+\contentsline {subsection}{\numberline {8.1}Vector basics}{42}% 
+\contentsline {section}{\numberline {9}Pointers and references}{43}% 
+\contentsline {subsection}{\numberline {9.1}Overview of pointers and references}{43}% 
+\contentsline {subsection}{\numberline {9.2}Pointers}{44}% 
+\contentsline {subsection}{\numberline {9.3}Dynamic arrays}{45}% 
+\contentsline {section}{\numberline {10}Recursion}{48}% 
+\contentsline {subsection}{\numberline {10.1}The basic idea}{48}% 
+\contentsline {subsection}{\numberline {10.2}Three more examples}{49}% 
+\contentsline {subsection}{\numberline {10.3}Quick sort - a recursive procedure for sorting}{50}% 
+\contentsline {section}{\numberline {11}Structs and enums}{53}% 
+\contentsline {subsection}{\numberline {11.1}Structs basics}{53}% 
+\contentsline {subsection}{\numberline {11.2}Structures and functions}{53}% 
+\contentsline {subsection}{\numberline {11.3}Structures whose members are struct instances}{54}% 
+\contentsline {subsection}{\numberline {11.4}Basic initialisation of a struct}{54}% 
+\contentsline {subsection}{\numberline {11.5}Enums}{54}% 
+\contentsline {section}{\numberline {12}Linked lists and binary trees}{55}% 

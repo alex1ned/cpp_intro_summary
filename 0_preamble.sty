@@ -1,0 +1,50 @@
+\ProvidesPackage{preamble}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[latin1]{inputenc}
+\usepackage[spanish, english]{babel}
+\usepackage{graphicx}
+\usepackage{blindtext}
+\usepackage{textcomp}
+\usepackage{pgfplots}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tipa}
+
+%Code highlighting with minted
+\usepackage{minted}
+\usemintedstyle{manni}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+
+%Set margin
+\usepackage[margin=1in]{geometry}
+
+\usepackage[english]{babel}
+%--- NOT IN USE --- \usepackage[utf8]{inputenc}
+
+%Set header and footer
+\usepackage{fancyhdr} 
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Alexander Nederegger}
+\lhead{\leftmark}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{1.2pt}
+\renewcommand{\footrulewidth}{0.3pt}
+\renewcommand\listoflistingscaption{List of Source Codes}
+
+%Renew command
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+%Set title, author, and date
+\title{Intro to \LaTeX - Summary Chapter 2 - Part IV}
+\author{Alexander Nederegger}
+\date{\today}
+

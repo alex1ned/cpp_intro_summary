@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{char}\PYG{o}{*} \PYG{n+nf}{function\PYGZus{}that\PYGZus{}returns\PYGZus{}a\PYGZus{}pointer\PYGZus{}to\PYGZus{}a\PYGZus{}char}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{some\PYGZus{}int}\PYG{p}{,} \PYG{k+kt}{double}\PYG{o}{\PYGZam{}} \PYG{n}{ref\PYGZus{}parameter}\PYG{p}{);}
+	\PYG{c+c1}{//This is the function \PYGZsq{}declaration\PYGZsq{}}
+	\PYG{c+c1}{//char* could also be an array of characters}
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{function\PYGZus{}that\PYGZus{}returns\PYGZus{}a\PYGZus{}pointer\PYGZus{}to\PYGZus{}a\PYGZus{}char}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{);}
+        		\PYG{c+c1}{//This is the function call}
+		\PYG{c+c1}{//prints out the address the first element of the array}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{char}\PYG{o}{*} \PYG{n+nf}{function\PYGZus{}that\PYGZus{}returns\PYGZus{}a\PYGZus{}pointer\PYGZus{}to\PYGZus{}a\PYGZus{}char}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{some\PYGZus{}int}\PYG{p}{,} \PYG{k+kt}{double}\PYG{o}{\PYGZam{}} \PYG{n}{ref\PYGZus{}parameter}\PYG{p}{);}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//This is the function definition and here goes the function body}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

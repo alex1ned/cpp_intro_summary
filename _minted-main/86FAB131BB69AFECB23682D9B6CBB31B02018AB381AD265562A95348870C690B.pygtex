@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{char} \PYG{n}{my\PYGZus{}name} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Alex\PYGZdq{}}\PYG{p}{;}
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{p}{(}\PYG{n}{i} \PYG{o}{!=} \PYG{l+s+sc}{\PYGZsq{}\PYGZbs{}0\PYGZsq{}} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{SIZE}\PYG{p}{);} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//do something}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

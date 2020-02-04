@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n}{some\PYGZus{}function}\PYG{p}{\PYGZob{}}\PYG{k+kt}{int} \PYG{n}{bitmap}\PYG{p}{[][}\PYG{n}{nr\PYGZus{}of\PYGZus{}columns}\PYG{p}{],} \PYG{k+kt}{int} \PYG{n}{nr\PYGZus{}of\PYGZus{}rows}\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

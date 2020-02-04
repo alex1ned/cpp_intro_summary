@@ -1,0 +1,165 @@
+\section{Functions}
+
+\subsection{Declaration and definition}
+
+\begin{itemize}
+	\item A function needs to be \emph{declared} at the top of the program (or included
+	as in a respective header file (pre-supplied or personally created) -- otherwise the function
+	cannot be called in any other function bodies (such as in \emph{main}).
+	\item A function has one \emph{return type} (such as int, double, int*, int\&, char, char**, \ldots)
+	but can also have a return nothing using \emph{void}.
+	\begin{itemize}
+		\item A void function must not have a return statement - often used when getting user input.
+		\item A non-void needs to have at least one return statement.
+	\end{itemize}
+	\item A function can have multiple return statements, however, the function will stop its
+	execution as soon as the first return statement is reached.
+	\begin{itemize}
+		\item It is good practice to only have ONE return statements and not using either \emph{continue}
+		or \emph{break} statements.
+	\end{itemize}
+	\item Can use 0 or more parameters - which can be either \emph{value} or \emph{reference} parameters
+	\item If you want to return more than one value by a function you need to use a reference parameters.
+\end{itemize}
+
+\begin{listing}[h]
+\begin{minted}
+[
+frame=lines,
+linenos,
+fontsize=\small,
+obeytabs=true,
+tabsize=3
+]
+{c++}
+char* function_that_returns_a_pointer_to_a_char(int some_int, double& ref_parameter);
+	//This is the function 'declaration'
+	//char* could also be an array of characters
+int main() 
+{  
+	cout << function_that_returns_a_pointer_to_a_char(3);
+        		//This is the function call
+		//prints out the address the first element of the array
+}
+
+char* function_that_returns_a_pointer_to_a_char(int some_int, double& ref_parameter);
+{
+	//This is the function definition and here goes the function body
+}
+\end{minted}
+\caption{An illustration of how to declare, define, and call a function}
+\label{source_code_2}
+\end{listing}
+
+
+\subsubsection*{Value vs reference parameters}
+A value parameter makes a copy of the value of the variable (it is thus the same but not
+not the self-same). Hence the variables are unique to the scope which calls the function and
+the scope of the calling function. The two variables have two different memory addresses and
+changing the value of the one, does not change the value of the other.
+
+If a variable is passed by reference, it is the self-same variable that is used in the new
+scope. Hence, it is only one variable with one memory location -- changing the value of in the
+new function body, also changes its value in the scope of the calling scope. You pass a parameter
+by reference by appending the \emph{\&} to its type in both the function declaration, and definition
+(shown in above example).
+
+\subsubsection*{Function overloading}
+Can use the same function name if the functions are distinguishable by the return type and the number of parameters.
+
+
+
+\subsection{Splitting programs into different files}
+Usually use \ldots
+\begin{itemize}
+	\item \ldots a header file for the function \emph{declaration}
+	\item \ldots and an implementation file for the function \emph{definition}
+\end{itemize}
+ 
+ \noindent
+Do \ldots
+\begin{itemize}
+	\item Make a header file that just includes the function \emph{declarations} which should
+	also include all comments about how the function is used.
+	\item Make an implementation file that includes the function \emph{definition}.
+	\item Include the header file in both the implementation file \textbf{and} the file where the function
+	is called
+	\begin{itemize}
+		\item It is convention to delimit user defined file-names with double quotations (see example).
+	\end{itemize}
+\end{itemize}
+
+ \noindent
+
+\subsubsection*{Example (1/3) - Header file}
+\begin{listing}[h]
+\begin{minted}
+[
+frame=lines,
+linenos,
+fontsize=\small,
+obeytabs=true,
+tabsize=3
+]
+{c++}
+#ifndef NAME_OF_HEADER_FILE_H
+#define NAME_OF_HEADER_FILE_H
+
+	//Add commentary here
+int declaration_of_a_function{double number, char name, int integer};
+
+#endif
+\end{minted}
+\caption{Example of splitting a function across files 1/3}
+\label{source_code}
+\end{listing}
+
+\subsubsection*{Example (2/3) - Implementation file}
+\begin{listing}[h]
+\begin{minted}
+[
+frame=lines,
+linenos,
+fontsize=\small,
+obeytabs=true,
+tabsize=3
+]
+{c++}
+#include "name_of_header_file.hpp"
+	//Don't forget to include the header file
+
+int declaration_of_a_function{double number, char name, int integer}
+{
+	//do something here
+}
+\end{minted}
+\caption{Example of splitting a function across files 2/3}
+\label{source_code}
+\end{listing}
+
+
+\subsubsection*{Example (3/3) - File in which function is called}
+\begin{listing}[H]
+\begin{minted}
+[
+frame=lines,
+linenos,
+fontsize=\small,
+obeytabs=true,
+tabsize=3
+]
+{c++}
+#include "name_of_header_file.hpp"
+	//Don't forget to include the header file
+
+int main()
+{
+	int number = declaration_of_a_function(2.0, 'A', 5);
+	return 0;
+}
+\end{minted}
+\caption{Example of splitting a function across files 3/3}
+\label{source_code}
+\end{listing}
+
+

@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{ptr\PYGZus{}a} \PYG{o}{=} \PYG{k}{new} \PYG{p}{(}\PYG{n}{nothrow}\PYG{p}{)} \PYG{k+kt}{int}\PYG{p}{;}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{ptr\PYGZus{}a} \PYG{o}{==} \PYG{n+nb}{NULL}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Sorry ran out of memory.\PYGZdq{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

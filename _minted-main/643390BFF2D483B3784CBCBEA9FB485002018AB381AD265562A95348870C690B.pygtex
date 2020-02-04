@@ -1,0 +1,28 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n+nf}{print\PYGZus{}backwards}\PYG{p}{();}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{print\PYGZus{}backwards}\PYG{p}{();}
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+	
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{print\PYGZus{}backwards}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{char} \PYG{n}{character}\PYG{p}{;}
+	
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Enter a character (\PYGZsq{}.\PYGZsq{} to end program): \PYGZdq{}}\PYG{p}{;}
+	\PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{character}\PYG{p}{;}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{character} \PYG{o}{!=} \PYG{l+s+sc}{\PYGZsq{}.\PYGZsq{}}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{print\PYGZus{}backwards}\PYG{p}{();}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{character}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{else}
+	\PYG{p}{\PYGZob{}}
+		\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

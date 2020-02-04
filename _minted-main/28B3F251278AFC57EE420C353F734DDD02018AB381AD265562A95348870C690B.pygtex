@@ -1,0 +1,32 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Same example but wrapping each loop into a function}
+\PYG{k+kt}{void} \PYG{n+nf}{print\PYGZus{}tables}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{smallest}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{largest}\PYG{p}{);}
+
+\PYG{k+kt}{void} \PYG{n+nf}{print\PYGZus{}times\PYGZus{}table}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{value}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{lower}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{upper}\PYG{p}{);}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{print\PYGZus{}tables}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{);}			
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{print\PYGZus{}tables}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{smallest}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{largest}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{number}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{number} \PYG{o}{=} \PYG{n}{smallest} \PYG{p}{;} \PYG{n}{number} \PYG{o}{\PYGZlt{}=} \PYG{n}{largest} \PYG{p}{;} \PYG{n}{number}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{print\PYGZus{}times\PYGZus{}table}\PYG{p}{(}\PYG{n}{number}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{);}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{print\PYGZus{}times\PYGZus{}table}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{value}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{lower}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{upper}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{multiplier}\PYG{p}{;}		
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{multiplier} \PYG{o}{=} \PYG{n}{lower} \PYG{p}{;} \PYG{n}{multiplier} \PYG{o}{\PYGZlt{}=} \PYG{n}{upper} \PYG{p}{;} \PYG{n}{multiplier}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{value} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} x \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{multiplier} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} = \PYGZdq{}}\PYG{p}{;}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{value} \PYG{o}{*} \PYG{n}{multiplier} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

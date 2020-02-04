@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{ifstream} \PYG{n}{in\PYGZus{}stream}\PYG{p}{;}
+\PYG{n}{in\PYGZus{}stream}\PYG{p}{.}\PYG{n}{getline}\PYG{p}{(}\PYG{n}{a\PYGZus{}string}\PYG{p}{,} \PYG{l+m+mi}{80}\PYG{p}{);}
+\end{Verbatim}

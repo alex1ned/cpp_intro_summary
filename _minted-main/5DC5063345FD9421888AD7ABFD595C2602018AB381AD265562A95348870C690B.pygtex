@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Declaration:}
+\PYG{o}{\PYGZlt{}}\PYG{n}{type} \PYG{n}{of} \PYG{n}{elements}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZlt{}}\PYG{n}{variable} \PYG{n}{name}\PYG{o}{\PYGZgt{}}\PYG{p}{[}\PYG{n}{integer} \PYG{n}{value}\PYG{p}{];}
+
+\PYG{c+c1}{//Initialisation \PYGZhy{} v01:}
+\PYG{k+kt}{int} \PYG{n}{numbers}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{15}\PYG{p}{\PYGZcb{};}
+\PYG{c+c1}{//Initialisation \PYGZhy{} v02:}
+\PYG{k+kt}{int} \PYG{n}{numbers}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{15}\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{//Some examples}
+\PYG{k+kt}{int} \PYG{n}{numbers}\PYG{p}{[}\PYG{l+m+mi}{10}\PYG{p}{];}
+	\PYG{c+c1}{//an array that holds 10 integers}
+
+\PYG{k+kt}{char} \PYG{n}{characters}\PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{];}
+	\PYG{c+c1}{//an array that holds 5 characters}
+
+\PYG{k+kt}{double}\PYG{o}{*} \PYG{n}{real\PYGZus{}numbers}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{];}
+	\PYG{c+c1}{//an array that holds 3 pointers to variables of type double}
+	\PYG{c+c1}{//... since an array is like a pointer variable, it could also be}
+	\PYG{c+c1}{//... an array of 3 arrays that hold doubles}
+
+\PYG{k+kt}{int}\PYG{o}{**} \PYG{n}{some\PYGZus{}array}\PYG{p}{[}\PYG{l+m+mi}{8}\PYG{p}{];}
+	\PYG{c+c1}{//an array that holds 8 pointers to pointers to variables of type int}
+	\PYG{c+c1}{//is like an array of arrays of arrays}
+	\PYG{c+c1}{// ... similar to a two\PYGZhy{}dimensional array}
+\end{Verbatim}

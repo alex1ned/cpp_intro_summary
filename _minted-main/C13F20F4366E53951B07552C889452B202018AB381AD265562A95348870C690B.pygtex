@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}ifndef NAME\PYGZus{}OF\PYGZus{}HEADER\PYGZus{}FILE\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}define NAME\PYGZus{}OF\PYGZus{}HEADER\PYGZus{}FILE\PYGZus{}H}
+
+	\PYG{c+c1}{//Add commentary here}
+\PYG{k+kt}{int} \PYG{n}{declaration\PYGZus{}of\PYGZus{}a\PYGZus{}function}\PYG{p}{\PYGZob{}}\PYG{k+kt}{double} \PYG{n}{number}\PYG{p}{,} \PYG{k+kt}{char} \PYG{n}{name}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{integer}\PYG{p}{\PYGZcb{};}
+
+\PYG{c+cp}{\PYGZsh{}endif}
+\end{Verbatim}

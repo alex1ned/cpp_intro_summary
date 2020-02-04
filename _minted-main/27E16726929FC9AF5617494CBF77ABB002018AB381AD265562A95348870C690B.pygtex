@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{try}
+\PYG{p}{\PYGZob{}}
+    \PYG{n}{ptr\PYGZus{}a} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{int}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k}{catch}
+\PYG{p}{\PYGZob{}}
+    \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Sorry, ran out of memory.\PYGZdq{}}\PYG{p}{;}
+    \PYG{n}{ptr\PYGZus{}a} \PYG{o}{=} \PYG{n+nb}{NULL}\PYG{p}{;}
+    \PYG{n}{exit}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

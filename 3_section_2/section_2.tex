@@ -1,0 +1,227 @@
+\section{Variables, Types, and Expressions}
+
+\subsection{Data Types}
+
+\subsubsection*{Integer}
+\begin{itemize}
+	\item Can use \emph{int}, \emph{short int}, or \emph{long int}.
+	\item Adding the prefix \emph{unsigned} to any of the types means only positive integers are stored.
+	\item Special prefixes to control the base of the number system
+	\begin{itemize}
+		\item \emph{Octal} has a leading \emph{0}
+		\item \emph{Hexadecimal} has a leading \emph{0x}
+		\item \emph{Binary} has a leading \emph{0b}
+	\end{itemize}
+\end{itemize}
+
+
+\subsubsection*{Real numbers}
+Can use \emph{float}, \emph{double}, as well as the respective \emph{short, long} and
+\emph{unsigned} prefixes.
+
+
+\subsubsection*{Characters}
+\begin{itemize}
+	\item Use \emph{char}
+	\item Must be in single quotes \ldots such as char `someChar'
+	\item Characters are interpreted as integers inside the computer - can even use arithmetic
+	statements on characters such as \ldots
+	\begin{itemize}
+		\item \ldots `Z' -- `A' \ldots would evaluate to the number of letters in the alphabet.
+	\end{itemize}
+	\item The most commonly used collection of characters is the ASCII set (where each character
+	has a number).
+	\item The code below prints out the whole ASCII table.
+\end{itemize}
+
+\begin{listing}[h]
+\begin{minted}
+[
+frame=lines,
+linenos,
+fontsize=\small,
+obeytabs=true,
+tabsize=3
+]
+{c++}
+int main() 
+{  
+ 	int number;
+	char character;
+        
+  	for (number = 32 ; number <= 126 ; number = number + 1) 
+	{
+		character = number;
+		cout << "The character '" << character;
+		cout << "' is represented as the number ";
+		cout << dec << number << " decimal or " << hex << number<< " hex.\n";
+  	}
+  return 0;
+}
+\end{minted}
+\caption{Print out the ASCII table}
+\label{source_code_2}
+\end{listing}
+
+
+\subsubsection*{Strings}
+Strings are discussed later - but we will use two key ways to handle strings.
+\begin{itemize}
+	\item \emph{c-string variables} which are arrays of characters that end with a sentinel character.
+	\item Using the \emph{string class}.
+\end{itemize}
+
+\subsubsection*{Booleans}
+C++ implicitly includes the named enumeration \emph{enum bool \{false, true\}}, hence
+you can define a variable such as \ldots
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+bool is_true = false;
+\end{minted}
+
+\subsubsection*{Type casting integers to real numbers and vv.}
+\begin{itemize}
+	\item New version which should be used is a static cast.
+	\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+	static_cast<int>(14.53)  //changes 14.53 to be 14
+	\end{minted}
+	\item Older version is simply \emph{int($14.53$)}, however, this is not recommended to use.
+\end{itemize}
+
+% ---- end subsection
+
+\subsection{Formatting numbers}
+
+\subsubsection*{Precision}
+\begin{itemize}
+	\item Use the below two lines to output only 2 digits of the next number.
+	\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+	cout.setf(ios::fixed);
+	cout.precision(2);
+	\end{minted}
+	\item While the two lines below output the a number in \emph{scientific} form.
+	\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+	cout.setf(ios::scientific); 
+	cout.precision(2);
+	\end{minted}
+\end{itemize}
+
+
+\subsubsection*{Fake an output table}
+Use tabbing of the output with the statement \ldots
+\begin{listing}[h]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+#include <iomanip> //need this header to make output left-justified
+
+int main()
+{
+	cout.setf(ios::left) //need this because of the output is by default right justified
+	cout.width(20);  /*The output of the next 'cout' statement will be at
+	least 20 characters*/
+}
+\end{minted}
+\caption{Fake an output table using setf(ios::left)}
+\label{source_code_3}
+\end{listing}
+
+% ---- end subsection
+
+\subsection{Constants and enumerations}
+Enumerations are essentially of type const int. Constants are usually declared as global variables to
+make them accessible to all functions.
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+enum color {RED, GREEN, BLUE, YELLOW}; //or
+enum color {RED=2, GREEN, BLUE=5, YELLOW};
+\end{minted}
+\noindent
+In the above, the first line is shorthand for \ldots
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+const int RED = 0, GREEN = 1, BLUE = 2, YELLOW = 3;
+\end{minted}
+\noindent
+\ldots and the second line is shorthand for \ldots
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+const int RED = 2, GREEN = 3, BLUE = 5, YELLOW = 6;
+\end{minted}
+
+\noindent
+\underline{A quick example}
+\begin{listing}[h]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+enum Seasons {spring, summer, autumn, winter}
+int main()
+{
+	Seasons season_1 = winter;
+		//'Seasons' is the type name
+		//'season_1' is the variable name
+		//'winter' is the value (which would be the const int 3
+}
+\end{minted}
+\caption{Basic enum example}
+\label{source_code_4}
+\end{listing}
+
+% ---- end subsection
+
+\subsection{Expressions}
+\subsubsection*{Arithmetic}
+
+\begin{table}[h]
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{ m{4cm} m{11cm}} 
+\hline
+ +, -, *, / & are basic arithmetic operators \\ 
+\hline
+\% & Modulo operator (note if numerator is negative the result is negative) \\  
+ \hline
+ number += 1 & Adds one to number (this also works with the other operators above\\
+\hline
+a *= c1 + c2 & Is same as a = a * (c1 + c2)\\
+\hline
+$n++$ OR $n--$ & Is same as n += 1 (n is in/de-cremented by 1, AFTER the line of code has executed\\
+\hline
+$++n$ OR $--n$ & Is same as n-= 1 (n is in/de-cremented BEFORE the line of code has executed\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Summary of arithmetic operators}
+\label{table_1}
+\end{table}
+
+
+\subsubsection*{Boolean operators}
+\begin{itemize}
+	\item \textgreater, \textless, \textgreater=, \textless= \ldots used for greater, smaller, etc.
+	\item == \ldots \emph{equals}
+	\item != \ldots \emph{does not equal}
+	\item \&\& \ldots \emph{and}
+	\item \textpipe \textpipe \ldots \emph{or}	 
+\end{itemize}
+
+
+\subsubsection*{Precedence of operations}
+When in doubt - or to make program more readable - just use brackets.
+\begin{itemize}
+	\item The unary operators \ldots +, -, !, ++, and $--$
+	\item The binary arithmetic operations \ldots *, /, \%
+	\item The binary arithmetic operations \ldots +, -
+	\item The boolean operations \ldots \textgreater, \textless, \textgreater=, \textless=
+	\item The boolean operations \ldots ==, !=
+	\item The boolean operation \ldots \&\&		
+	\item The boolean operation \ldots \textpipe \textpipe
+\end{itemize}
+
+
+% ------------- END SECTION
+
+
+
+
+
+
+
+
+
+
+
+

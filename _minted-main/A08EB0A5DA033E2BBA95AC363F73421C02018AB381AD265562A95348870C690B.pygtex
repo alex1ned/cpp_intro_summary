@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Syntax}
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{base\PYGZus{}type}\PYG{o}{\PYGZgt{}} \PYG{n}{v\PYGZus{}name}\PYG{p}{;}
+\PYG{c+c1}{//Example of a vector that stores ints}
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{v\PYGZus{}name}\PYG{p}{;}
+\end{Verbatim}

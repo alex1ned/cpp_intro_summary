@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{double}\PYG{o}{*} \PYG{n}{pointer}\PYG{p}{;}
+\PYG{n}{pointer} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{double}\PYG{p}{[}\PYG{l+m+mi}{10}\PYG{p}{];}
+
+\PYG{c+c1}{// When deleting a dynamic array do NOT forget the \PYGZsq{}[]\PYGZsq{}}
+\PYG{k}{delete} \PYG{p}{[]} \PYG{n}{pointer}\PYG{p}{;}
+\end{Verbatim}
