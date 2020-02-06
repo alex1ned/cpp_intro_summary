@@ -1,0 +1,32 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Use same node definition as in previous example}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}cstdef\PYGZgt{}}
+
+\PYG{n}{Node}\PYG{o}{*} \PYG{n+nf}{search}\PYG{p}{(}\PYG{n}{Node}\PYG{o}{*} \PYG{n}{head}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{target}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{Node}\PYG{o}{*} \PYG{n}{here} \PYG{o}{=} \PYG{n}{head}\PYG{p}{;} \PYG{c+c1}{//here now points to start}
+
+	\PYG{c+c1}{//If the list is empty}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{here} \PYG{o}{==} \PYG{k}{nullptr}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{return} \PYG{k}{nullptr}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+
+	\PYG{c+c1}{//If list includes at least one node}
+	\PYG{k}{else}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{while} \PYG{p}{(}\PYG{n}{here}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data} \PYG{o}{!=} \PYG{n}{target} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{here}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{link} \PYG{o}{!=} \PYG{k}{nullptr}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{here} \PYG{o}{=} \PYG{n}{here}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{link}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{here}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{data} \PYG{o}{==} \PYG{n}{target}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{return} \PYG{n}{here}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{else}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{return} \PYG{k}{nullptr}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

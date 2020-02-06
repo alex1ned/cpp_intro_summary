@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Node}\PYG{o}{*} \PYG{n}{iter}\PYG{p}{;} \PYG{c+c1}{//a pointer to variables of type \PYGZsq{}Node\PYGZsq{}}
+
+\PYG{k}{for} \PYG{p}{(}\PYG{n}{iter} \PYG{o}{=} \PYG{n}{head}\PYG{p}{;} \PYG{n}{iter} \PYG{o}{!=} \PYG{n+nb}{NULL}\PYG{p}{;} \PYG{n}{iter} \PYG{o}{=} \PYG{n}{iter}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{link}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//For every node (i.e. for every pointer that points}
+	\PYG{c+c1}{//to a node) ...}
+	\PYG{c+c1}{//... until the pointer is a NULL (i.e. at end of linked list) ...}
+	
+	\PYG{c+c1}{//Do something}
+	
+	\PYG{c+c1}{//And then reset the pointer to the address in that node}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -10,6 +10,7 @@
 \PYG{p}{\PYGZob{}}
 	\PYG{k+kt}{double} \PYG{n}{height}\PYG{p}{;}
 	\PYG{k+kt}{double} \PYG{n}{weight}\PYG{p}{;}
+	\PYG{k+kt}{int}\PYG{o}{*} \PYG{n}{int\PYGZus{}pointer}\PYG{p}{;}
 	\PYG{n}{Date} \PYG{n}{birthday}\PYG{p}{;} \PYG{c+c1}{//this is the instance birthday which is of type \PYGZsq{}Date\PYGZsq{}}
 \PYG{p}{\PYGZcb{};}
 \end{Verbatim}

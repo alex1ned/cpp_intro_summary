@@ -1,3 +1,247 @@
 \section{Linked lists and binary trees}
+You implement linked lists and binary trees usually using struct or also class objects. These
+objects have various data members -- one of these members is a pointer to the next node.
 
-Some text \ldots
+
+%----------------------------------------------------------------
+\subsection{Basics of linked lists}
+The linked list is then a list of nodes where you have one pointer pointing to the first
+node, and each node has a member pointer that points to the next node. Finally the 
+member pointer of the last node points to NULL.
+
+Particular care needs to be taken not to lose nodes so not to have memory leaks.
+
+
+%----------------------------------------------------------------
+\subsection{Basics steps to build linked lists}
+
+\subsubsection*{Set up struct and first node}
+\begin{enumerate}
+	\item Create struct object.
+	\item Declare a head pointer that points to the first node.
+	\item Assign this variable to a \emph{dynamic node} using the new operator.
+	\item Give this first node values - also setting the pointer to the next node to NULL.
+\end{enumerate}
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//The structure of a node
+struct Node
+{
+	int data;
+	Node* link; //pointer to next node
+};
+
+//Headpointer
+Node* head;
+head = new Node;
+
+//Assign values to the data members
+head->data = 3;
+head->link = nullptr;
+\end{minted}
+\caption{Set up a linked list}
+\label{source_code}
+\end{listing}
+
+\subsubsection*{Insert a node at the beginning}
+\noindent
+The steps such a function should perform are as follows \ldots
+\begin{enumerate}
+	\item Create a new dynamic node (this is referred to using the dereferencing operator).
+	\item Assign the values to the data members of the node.
+	\item Make the pointer of this new node point to the (current) \emph{head} node.
+	\begin{itemize}
+		\item Set the variable equal to the value of the \emph{head pointer}.
+	\end{itemize}
+	\item Make head pointer point to the new node.
+\end{enumerate}
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void headInsert(Node*& head, int theNumber)
+{	//head is a pointer that is used as a call by reference parameter ...
+	
+	//Declare the new node
+	Node* temporary_pointer;
+	temporary_pointer = new Node;
+	
+	//Assign member variables
+	temporary_pointer->data = theNumber;
+	temporary_pointer->link = head; //now the pointer in the new node
+		//points to the node that was previously at start
+	
+	//Make the head pointer point to the new node
+	head = temporary_pointer;
+}
+\end{minted}
+\caption{Add a node at the beginning of a linked list (as function)}
+\label{source_code}
+\end{listing}
+
+\subsubsection*{Empty list}
+To indicate that linked list is empty, set the head pointer to NULL. When creating
+functions that manipulate linked lists, also check if they work when the list is empty.
+
+
+
+%----------------------------------------------------------------
+\subsection{Using the pointer in the nodes as iterators}
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+Node* iter; //a pointer to variables of type 'Node'
+
+for (iter = head; iter != NULL; iter = iter->link)
+{
+	//For every node (i.e. for every pointer that points
+	//to a node) ...
+	//... until the pointer is a NULL (i.e. at end of linked list) ...
+	
+	//Do something
+	
+	//And then reset the pointer to the address in that node
+}
+\end{minted}
+\caption{Using pointer as the iterator in a linked list}
+\label{source_code}
+\end{listing}
+
+
+
+%----------------------------------------------------------------
+\subsection{Searching a linked list}
+Use the following function definition that returns the pointer to the node that contains
+the target value we are looking for.
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//Use same node definition as in previous example
+#include <cstdef>
+
+Node* search(Node* head, int target)
+{
+	Node* here = head; //here now points to start
+
+	//If the list is empty
+	if (here == nullptr) 
+	{
+		return nullptr;
+	}
+
+	//If list includes at least one node
+	else
+	{
+		while (here->data != target && here->link != nullptr)
+		{
+			here = here->link;
+		}
+		if (here->data == target)
+		{
+			return here;
+		}
+		else
+		{
+			return nullptr;
+		}
+	}
+}
+\end{minted}
+\caption{Searching a linked list}
+\label{source_code}
+\end{listing}
+
+
+
+%----------------------------------------------------------------
+\subsection{Inserting and removing nodes within a list}
+
+
+\subsubsection*{Insert after a specific node}
+The code below works for inserting at end and middle but not at the beginning of the linked list.
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void insert(Node* after_me, int the_number)
+{
+	Node* temporary_ptr;
+	temporary_ptr = new Node;
+	
+	temporary_ptr->data = the_number;
+	temporary_ptr->link = after_me->link;
+	
+	after_me->link = temporary_ptr;
+}
+\end{minted}
+\caption{Insert a node after a specific node within a linked list}
+\label{source_code}
+\end{listing}
+
+
+\subsubsection*{Removing a node}
+!!! To be checked from Will's notes !!!
+
+
+
+
+%----------------------------------------------------------------
+\subsection{Double linked list}
+In such lists, nodes have two links -- one points to the next node and the other points to
+the previous node. Also we not only have a \emph{head} pointer that points to the first
+node, but we also have a \emph{rear} pointer that points to the last node.
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+struct Node
+{
+	int data;
+	Node* forward_link;
+	Node* backward_link;
+};
+Node* head;
+Node* rear;
+\end{minted}
+\caption{Structure of a double linked list}
+\label{source_code}
+\end{listing}
+
+
+
+%----------------------------------------------------------------
+\subsection{Intro to binary trees}
+Binary trees are not linked lists per se but they use the same basic concept of being
+nodes that consist pointers that point to other nodes. For trees, you have a root pointer
+that points to the first (the root) node of the tree. Each node then has one pointer pointing to
+the left and one pointing to the right (i.e. at each level the tree is doubling).
+
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+struct TreeNode;
+{
+	int data;
+	TreeNode* leftLink;
+	TreeNode* rightLink;
+};
+\end{minted}
+\caption{Basic structure of a binary tree}
+\label{source_code}
+\end{listing}
+
+
+
+
+
+
+
+
+
+
+

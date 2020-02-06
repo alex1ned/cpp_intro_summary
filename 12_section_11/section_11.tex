@@ -1,7 +1,7 @@
-\section{Structs and enums}
+\section{Structs}
 
 %------------------------------------------------------------
-\subsection{Structs basics}
+\subsection{Struct basics}
 Structs are like classes, used to create own datatypes. Structs and classes have
 member variables and member functions. The difference is that all member variables for
 structs are public whereas for classes they are private by default.
@@ -101,6 +101,7 @@ struct PersonInfo
 {
 	double height;
 	double weight;
+	int* int_pointer;
 	Date birthday; //this is the instance birthday which is of type 'Date'
 };
 \end{minted}
@@ -121,6 +122,12 @@ person1.height
 
 //Access the birth month
 person1.birthday.month
+
+//Access the the address stored in a pointer
+person1.int_pointer
+
+//Access the the value stored behind the pointer
+// !!! --> NEED TO CHECK THIS
 \end{minted}
 
 
@@ -137,15 +144,19 @@ Date today = {12, 31, 2004};
 
 
 
-
-
-
-
-
-
-
-
-
-
 %------------------------------------------------------------
-\subsection{Enums}
+\subsection{A pointer variable to an object as instance}
+You can also declare a pointer to an object as for other more general types. You can
+declare and access the data members as per below \ldots
+
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//Declare
+Date* pointer_to_a_date;
+
+//Access (the two are equivalent
+(*pointer_to_date).month = 2; //need the brackets because the '.' has precedence over the '*'
+pointer_to_date->month = 2; //this is the preferred syntax
+
+\end{minted}
+

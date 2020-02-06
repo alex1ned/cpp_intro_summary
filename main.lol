@@ -49,3 +49,10 @@
 \contentsline {listing}{\numberline {49}{\ignorespaces Struct definition}}{53}% 
 \contentsline {listing}{\numberline {50}{\ignorespaces Function that returns a struct (a temporary instance)}}{53}% 
 \contentsline {listing}{\numberline {51}{\ignorespaces Struct that contains a struct instance}}{54}% 
+\contentsline {listing}{\numberline {52}{\ignorespaces Set up a linked list}}{56}% 
+\contentsline {listing}{\numberline {53}{\ignorespaces Add a node at the beginning of a linked list (as function)}}{57}% 
+\contentsline {listing}{\numberline {54}{\ignorespaces Using pointer as the iterator in a linked list}}{57}% 
+\contentsline {listing}{\numberline {55}{\ignorespaces Searching a linked list}}{58}% 
+\contentsline {listing}{\numberline {56}{\ignorespaces Insert a node after a specific node within a linked list}}{58}% 
+\contentsline {listing}{\numberline {57}{\ignorespaces Structure of a double linked list}}{59}% 
+\contentsline {listing}{\numberline {58}{\ignorespaces Basic structure of a binary tree}}{59}% 

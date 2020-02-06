@@ -7,4 +7,10 @@
 
 \PYG{c+c1}{//Access the birth month}
 \PYG{n}{person1}\PYG{p}{.}\PYG{n}{birthday}\PYG{p}{.}\PYG{n}{month}
+
+\PYG{c+c1}{//Access the the address stored in a pointer}
+\PYG{n}{person1}\PYG{p}{.}\PYG{n}{int\PYGZus{}pointer}
+
+\PYG{c+c1}{//Access the the value stored behind the pointer}
+\PYG{c+c1}{// !!! \PYGZhy{}\PYGZhy{}\PYGZgt{} NEED TO CHECK THIS}
 \end{Verbatim}

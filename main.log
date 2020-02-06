@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.10)  4 FEB 2020 00:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.10)  6 FEB 2020 10:15
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1170,6 +1170,27 @@ LaTeX Warning: Label `source_code' multiply defined.
 
 LaTeX Warning: Label `source_code' multiply defined.
 
+
+LaTeX Warning: Label `source_code' multiply defined.
+
+
+LaTeX Warning: Label `source_code' multiply defined.
+
+
+LaTeX Warning: Label `source_code' multiply defined.
+
+
+LaTeX Warning: Label `source_code' multiply defined.
+
+
+LaTeX Warning: Label `source_code' multiply defined.
+
+
+LaTeX Warning: Label `source_code' multiply defined.
+
+
+LaTeX Warning: Label `source_code' multiply defined.
+
 )
 \openout1 = `main.aux'.
 
@@ -1823,18 +1844,58 @@ B.pygtex [53])
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/3B61AEC04C4DDEF25CBEBBCF634BB68E02018AB381AD265562A95348870C690
+(./_minted-main/36F3FA6B094AADA6E2DF2198A914306702018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/A2D122DA142AA5ED6CA0C3B82BF645D802018AB381AD265562A95348870C690
+(./_minted-main/D447BA5B63A1B71F490BE7EA9274239A02018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
 (./_minted-main/42F5C6F931CAE6B75C1FF33DEA8F092602018AB381AD265562A95348870C690
-B.pygtex)) [54] (./13_section_12/section_12.tex) [55] (./main.aux)
+B.pygtex)
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/1DDD5A15192A78A31BDAAD8C90427F0202018AB381AD265562A95348870C690
+B.pygtex [54])) [55] (./13_section_12/section_12.tex
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/0FC602476E1B7F7AF5968D1122C8119B02018AB381AD265562A95348870C690
+B.pygtex)
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/0435782CB247218F8C5178FBBAEC7A4B02018AB381AD265562A95348870C690
+B.pygtex) [56]
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/9DC986FF0A1C1F992B71A8DB46A5A8C202018AB381AD265562A95348870C690
+B.pygtex)
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/1C3593F3A6DC8B1216F564A3C64D734402018AB381AD265562A95348870C690
+B.pygtex) [57]
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/EED8369BEADC06EB6121D5C4C3F756A502018AB381AD265562A95348870C690
+B.pygtex) [58]
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/4AD25618A995F3969CB4FEB5C1504FE602018AB381AD265562A95348870C690
+B.pygtex)
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/F72E56ABADC49D08FFAC667C5134BCE902018AB381AD265562A95348870C690
+B.pygtex)) [59] (./main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1842,10 +1903,10 @@ runsystem(rm main.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 29430 strings out of 492616
- 722544 string characters out of 6129481
- 912728 words of memory out of 5000000
- 32442 multiletter control sequences out of 15000+600000
+ 29462 strings out of 492616
+ 725096 string characters out of 6129481
+ 916785 words of memory out of 5000000
+ 32450 multiletter control sequences out of 15000+600000
  15470 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  69i,12n,98p,862b,654s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1868,10 +1929,10 @@ texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfit1000.pfb></usr/local/te
 xlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texl
 ive/2019/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texliv
 e/2019/texmf-dist/fonts/type1/public/tipa/tipa10.pfb>
-Output written on main.pdf (56 pages, 518469 bytes).
+Output written on main.pdf (60 pages, 526805 bytes).
 PDF statistics:
- 266 PDF objects out of 1000 (max. 8388607)
- 185 compressed objects within 2 object streams
+ 278 PDF objects out of 1000 (max. 8388607)
+ 193 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  23 words of extra memory for PDF output out of 10000 (max. 10000000)
 
