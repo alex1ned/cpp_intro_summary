@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n+nf}{print\PYGZus{}list\PYGZus{}backwards}\PYG{p}{(}\PYG{n}{Node}\PYG{o}{*} \PYG{n}{front}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{count} \PYG{o}{=} \PYG{n}{count\PYGZus{}items}\PYG{p}{(}\PYG{n}{front}\PYG{p}{);}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{target} \PYG{o}{=} \PYG{n}{count} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{target} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{target}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{print\PYGZus{}element}\PYG{p}{(}\PYG{n}{front}\PYG{p}{,} \PYG{n}{target}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

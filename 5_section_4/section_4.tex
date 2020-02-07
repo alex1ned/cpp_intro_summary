@@ -173,6 +173,37 @@ switch (score)
 \end{listing}
 
 
+\subsection{One-liner if statement using the ternary operator}
+The two statements below are equivalent \ldots
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//Syntax
+x = (condition) ? (value if true) : (value if false);
+
+//Example
+z = (x > y) ? z : y;
+
+//The above is the same as writing ...
+if (x > y)
+{
+	z = z;
+}
+
+else 
+{
+	z = y;
+}
+\end{minted}
+\caption{One liner if using the ternary operator}
+\label{source_code}
+\end{listing}
+
+
+
+
+
+
 \subsection{Blocks and scoping}
 \begin{itemize}
 	\item Variables declared within a block have this block as their scope.

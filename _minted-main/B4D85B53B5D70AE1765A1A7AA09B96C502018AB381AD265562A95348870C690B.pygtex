@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n+nf}{print\PYGZus{}list\PYGZus{}backwards}\PYG{p}{(}\PYG{n}{Node}\PYG{o}{*} \PYG{n}{front}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//Base case}
+	\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{front}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{return}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{c+c1}{//Recursive step}
+	\PYG{n}{print\PYGZus{}list\PYGZus{}backwards}\PYG{p}{(}\PYG{n}{front}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{next}\PYG{p}{);}
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}The word is \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{front}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{word} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

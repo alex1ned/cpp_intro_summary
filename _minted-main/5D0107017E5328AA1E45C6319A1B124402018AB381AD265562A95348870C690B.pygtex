@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{struct} \PYG{n}{Node}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{number}\PYG{p}{;}
+	\PYG{n}{Node}\PYG{o}{*} \PYG{n}{left}\PYG{p}{;}
+	\PYG{n}{Node}\PYG{o}{*} \PYG{n}{right}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

@@ -237,6 +237,358 @@ struct TreeNode;
 
 
 
+%----------------------------------------------------------------
+\subsection{Routines from lecture slides}
+\subsubsection*{Set up node}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+struct Node
+{
+	char word[80];
+	Node* next;
+};
+\end{minted}
+
+\subsubsection*{Initialise linked list}
+Sets up an empty list.
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void initialise_list(Node*& front, Node*& rear)
+{
+	front = rear = nullptr;
+}
+\end{minted}
+
+
+\subsubsection*{Create new node}
+Returns a pointer to a new node and the pointer within the node is set to NULL.
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+Node* create_new_node(const char* constents)
+{
+	Node* new_node = new (nothrow) Node;
+	assert(new_node != NULL);
+	
+	strcpy(new_node->word, contents);
+	new_node->next = NULL;
+	return new_node;
+}
+\end{minted}
+
+\subsubsection*{Count items in list}
+Returns an integer that is the number of items in list.
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+int count_items(Node* front)
+{
+	int length = 0;
+	for (Node* current = front; current; current = current->next)
+	{
+		length++;
+	}
+	return length;
+}
+\end{minted}
+
+
+\subsubsection*{Add a node at front of the list}
+!!! why is !front the empty list case???
+
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void add_to_front(Node*& front, Node*& rear, const char* word)
+{
+	Node* item = create_new_node(word);
+	
+	//Case if list is empty
+	if (!front)
+	{
+		front = rear = item;
+		return;
+	}
+	
+	//Default case (if there are items in the list)
+	item->next = front;
+	front = item;
+}
+\end{minted}
+
+
+\subsubsection*{Add a node at rear of the list}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void add_to_rear(Node* front, Node*& rear, const char* word)
+{
+	Node* item = create_new_node(word);
+	
+	//Empty list
+	if (!front)
+	{
+		front = rear = item;
+		return;
+	}
+	
+	//Default case
+	rear->next = item;
+	rear = item;
+}
+\end{minted}
+
+
+\subsubsection*{Add a node in a sorted list}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void add_sorted(Node*& front, Node*& rear, const char* new_word)
+{
+	Node* p = front;
+	Node* q = rear;
+	
+	//Find the node after which you wish to insert
+		//For every pointer starting at the beginning...
+		//... until is NULL & the word in the node is alphabetically smaller
+		//than the word we want to insert as node.		
+	for (p = front; p && (strcmp(p->word, new_word) < 0); p = p->next)
+	{
+		q = p;
+	}
+	//q now points to the node we wish to insert AFTER
+	//p now points to the node we wish to insert BEFORE
+	
+	//In case we need to add it to the front (i.e. the new node comes alphabetically first)
+	if (q == nullptr)
+	{
+		add_to_front(front, rear, new_word);
+		return;
+	}
+	
+	//In case we need to add it to the rear (i.e. the new node comes alphabetically last)
+	if (p == nullptr)
+	{
+		add_to_rear(front, rear, now_word);
+		return;
+	}
+	
+	//Otherwise create the new node and insert it after q and before p
+	new_node->next = p;
+	q->next = new_node;	
+}
+\end{minted}
+
+
+\subsubsection*{Print the list to the screen}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void print_list(Node* front)
+{
+	for (Node* current = front; current; current = current->next)
+	{
+		cout << "[" << current->word << "]" << endl;
+	}
+	cout << endl;
+}
+\end{minted}
+
+
+\subsubsection*{Print one element of the list}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void print_element(Node* front, int item_number)
+{
+	int count = 0;
+	Node* current;
+	
+	for (current = front; current && count < item_number; current = current->next)
+	{
+		count++;
+	}
+	
+	if (current)
+	{
+		cout << "The current word is: " << current->word << endl;
+	}
+}
+\end{minted}
+
+
+\subsubsection*{Print list backwards (recursively)}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void print_list_backwards(Node* front)
+{
+	//Base case
+	if (!front)
+	{
+		return;
+	}
+	
+	//Recursive step
+	print_list_backwards(front->next);
+	cout << "The word is " << front->word << endl;
+}
+\end{minted}
+
+
+\subsubsection*{Print list backwards (iteratively)}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void print_list_backwards(Node* front)
+{
+	int count = count_items(front);
+	for (int target = count - 1; target >= 0; target--)
+	{
+		print_element(front, target);
+	}
+	cout << endl;
+}
+\end{minted}
+
+
+\subsubsection*{Delete a node containing the target string}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void delete_node(Node*& front, Node*& rear, const char* target)
+{
+	Node* p = front;
+	Node* q = rear;
+	
+	for (p = front; p && strcmp(p->word, target); p = p->next)
+	{
+		q = p;
+	}
+	//q now points to the node BEFORE the one we want to delete
+	//p points to the node we wish to delete
+	
+	if (p == nullptr)
+	{
+		cout << "Could not find the word " << target << endl;
+		return;
+	}
+	
+	// !!! Store the target's 'next' pointer
+	Node* link = p->next;
+	delete p;
+	
+	//Case if target is the front (i.e. q is NULL)
+	if (p == front)
+	{
+		front = link;
+		if (front == nullptr)
+		{
+			rear = nullptr;
+		}
+		return;
+	}
+	
+	//Update the next pointer of the node before the one being deleted
+	q->next = link;
+	
+	//Handle case that the target is the rear
+	if (p == rear)
+	{
+		rear = q;
+	}	
+}
+\end{minted}
+
+
+\subsubsection*{Delete all nodes in the list}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void delete_list(Node*& front, Node*& rear)
+{
+	while (front != nullptr)
+	{
+		Node* link = front->next;
+		delete front;
+		front = link;
+	}
+	rear = nullptr;
+
+}
+\end{minted}
+
+
+
+%----------------------------------------------------------------
+\subsection{Binary trees -- lecture routines}
+Note for the below you need to declare a root node in the main function (clearly after
+the struct for the nodes has been declared).
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+Node* root = nullptr;
+\end{minted}
+
+
+\subsubsection*{Set up the struct}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+struct Node
+{
+	int number;
+	Node* left;
+	Node* right;
+};
+\end{minted}
+
+
+\subsubsection*{Create a new node}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+Node* create_new_node(Node* l, Node* r, int value)
+{
+	Node* item = new Node;
+	assert(item);
+	item->number = value;
+	item->left = l;
+	item->right = r;
+	
+	return item;
+}
+\end{minted}
+
+
+\subsubsection*{Insert -- uses pass by value for root (recursive)}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+Node* insert(Node* root, int value)
+{
+	if (!root)
+	{
+		root = create_new_node(value, nullptr, nullptr)
+	}
+	
+	if (root->number == value)
+	{
+		return root;
+	}
+	
+	if (value < root->number)
+	{
+		root->left = insert(root->left, value);	
+	}
+	
+	else
+	{
+		root->right = insert(root->right, value);
+	}
+	return root;
+}
+\end{minted}
+
+
+\subsubsection*{Output the tree (recursive)}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void output(Node* current)
+{
+	if (current)
+	{
+		output(current-> left);
+		cout << current->number << " ";
+		output(current->right);	
+	}
+}
+\end{minted}
 
 
 

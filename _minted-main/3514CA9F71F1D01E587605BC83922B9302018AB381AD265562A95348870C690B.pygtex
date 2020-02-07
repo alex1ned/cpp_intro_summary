@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n+nf}{print\PYGZus{}element}\PYG{p}{(}\PYG{n}{Node}\PYG{o}{*} \PYG{n}{front}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{item\PYGZus{}number}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{count} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{n}{Node}\PYG{o}{*} \PYG{n}{current}\PYG{p}{;}
+	
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{current} \PYG{o}{=} \PYG{n}{front}\PYG{p}{;} \PYG{n}{current} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{count} \PYG{o}{\PYGZlt{}} \PYG{n}{item\PYGZus{}number}\PYG{p}{;} \PYG{n}{current} \PYG{o}{=} \PYG{n}{current}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{next}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{count}\PYG{o}{++}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{current}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}The current word is: \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{current}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{word} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

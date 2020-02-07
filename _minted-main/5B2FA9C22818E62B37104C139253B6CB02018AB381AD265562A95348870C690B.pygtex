@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n+nf}{delete\PYGZus{}list}\PYG{p}{(}\PYG{n}{Node}\PYG{o}{*\PYGZam{}} \PYG{n}{front}\PYG{p}{,} \PYG{n}{Node}\PYG{o}{*\PYGZam{}} \PYG{n}{rear}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{while} \PYG{p}{(}\PYG{n}{front} \PYG{o}{!=} \PYG{k}{nullptr}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{Node}\PYG{o}{*} \PYG{n}{link} \PYG{o}{=} \PYG{n}{front}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{next}\PYG{p}{;}
+		\PYG{k}{delete} \PYG{n}{front}\PYG{p}{;}
+		\PYG{n}{front} \PYG{o}{=} \PYG{n}{link}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{n}{rear} \PYG{o}{=} \PYG{k}{nullptr}\PYG{p}{;}
+
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
