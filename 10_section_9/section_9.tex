@@ -70,10 +70,50 @@ Reference & no & no & no\\
 \label{table_1}
 \end{table}
 
-Note (ithink) that if you call a function with an \& next to the argument, then the declaration
+Note (( think) that if you call a function with an \& next to the argument, then the declaration
 of this function requires the corresponding parameter to have a \* (i.e. to be a pointer) \ldots{}
 but check this again.
 
+%---------------------------------------------
+\subsection{Illustration of when to use a reference, const ref, pointer, or pass by value}
+
+%Define block styles
+\tikzstyle{bitwise} = [diamond, draw, fill=blue!20, 
+text width=6em, text centered, node distance=3cm, inner sep=0pt]
+
+\tikzstyle{decision_1} = [rectangle, draw, fill=blue!10, 
+text width=9em, text centered, minimum height=4em]
+
+\tikzstyle{decision_2} = [rectangle, draw, fill=yellow!20, 
+text width=9em, text centered, minimum height=4em]
+
+\tikzstyle{result} = [rectangle, draw, fill=green!20, 
+text width=9em, text centered, minimum height=4em]
+
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+minimum height=4em]
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[node distance = 2cm, auto]
+	%decsision_2/.style={sibling distance=40mm},
+	%edge from parent/.style={->,draw}, >=latex]
+  	
+	%Nodes
+	\node [decision_1] (init) {Parameter is \emph{not} optional};
+		
+		%child {node [decision_2] (3) {Type is \emph{expensive} to copy}}
+		
+		%child {node [decision_2] (4) {Type is cheap to copy \emph{and} parameter is not modified}};
+
+	\node [decision_1, right of = init, node distance = 7cm] (2) {Parameter is optional};
+	
+  	%Lines
+	%\path [line] (assess) -- (nutrition);
+  
+  \end{tikzpicture}
+\end{figure}
 
 
 %---------------------------------------------

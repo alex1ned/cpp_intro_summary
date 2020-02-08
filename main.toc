@@ -26,38 +26,39 @@
 \contentsline {subsection}{\numberline {6.1}Basics of arrays}{27}% 
 \contentsline {subsection}{\numberline {6.2}Arrays as parameters of functions}{29}% 
 \contentsline {subsection}{\numberline {6.3}Function that returns an array}{30}% 
-\contentsline {subsection}{\numberline {6.4}Sorting arrays using the selection sort}{30}% 
-\contentsline {subsection}{\numberline {6.5}Sorting arrays using the bubble sort}{31}% 
-\contentsline {subsection}{\numberline {6.6}Multi dimensional arrays}{32}% 
-\contentsline {subsection}{\numberline {6.7}C-strings}{33}% 
-\contentsline {section}{\numberline {7}The standard \emph {string} class}{39}% 
-\contentsline {subsection}{\numberline {7.1}Introduction to the string class}{39}% 
-\contentsline {subsection}{\numberline {7.2}I/O with the string class}{39}% 
-\contentsline {subsection}{\numberline {7.3}Member functions of the class string}{40}% 
-\contentsline {subsection}{\numberline {7.4}Converting from string objects}{42}% 
-\contentsline {section}{\numberline {8}Vectors}{43}% 
-\contentsline {subsection}{\numberline {8.1}Vector basics}{43}% 
-\contentsline {section}{\numberline {9}Pointers and references}{44}% 
-\contentsline {subsection}{\numberline {9.1}Overview of pointers and references}{44}% 
-\contentsline {subsection}{\numberline {9.2}Pointers}{45}% 
-\contentsline {subsection}{\numberline {9.3}Dynamic arrays}{46}% 
-\contentsline {section}{\numberline {10}Recursion}{49}% 
-\contentsline {subsection}{\numberline {10.1}The basic idea}{49}% 
-\contentsline {subsection}{\numberline {10.2}Three more examples}{50}% 
-\contentsline {subsection}{\numberline {10.3}Quick sort - a recursive procedure for sorting}{51}% 
-\contentsline {section}{\numberline {11}Structs}{54}% 
-\contentsline {subsection}{\numberline {11.1}Struct basics}{54}% 
-\contentsline {subsection}{\numberline {11.2}Structures and functions}{54}% 
-\contentsline {subsection}{\numberline {11.3}Structures whose members are struct instances}{55}% 
-\contentsline {subsection}{\numberline {11.4}Basic initialisation of a struct}{55}% 
-\contentsline {subsection}{\numberline {11.5}A pointer variable to an object as instance}{56}% 
-\contentsline {section}{\numberline {12}Linked lists and binary trees}{57}% 
-\contentsline {subsection}{\numberline {12.1}Basics of linked lists}{57}% 
-\contentsline {subsection}{\numberline {12.2}Basics steps to build linked lists}{57}% 
-\contentsline {subsection}{\numberline {12.3}Using the pointer in the nodes as iterators}{58}% 
-\contentsline {subsection}{\numberline {12.4}Searching a linked list}{58}% 
-\contentsline {subsection}{\numberline {12.5}Inserting and removing nodes within a list}{59}% 
-\contentsline {subsection}{\numberline {12.6}Double linked list}{60}% 
-\contentsline {subsection}{\numberline {12.7}Intro to binary trees}{60}% 
-\contentsline {subsection}{\numberline {12.8}Routines from lecture slides}{60}% 
-\contentsline {subsection}{\numberline {12.9}Binary trees -- lecture routines}{65}% 
+\contentsline {subsection}{\numberline {6.4}Sorting arrays using the selection sort}{31}% 
+\contentsline {subsection}{\numberline {6.5}Sorting arrays using the bubble sort}{33}% 
+\contentsline {subsection}{\numberline {6.6}Multi dimensional arrays}{33}% 
+\contentsline {subsection}{\numberline {6.7}C-strings}{34}% 
+\contentsline {section}{\numberline {7}The standard \emph {string} class}{40}% 
+\contentsline {subsection}{\numberline {7.1}Introduction to the string class}{40}% 
+\contentsline {subsection}{\numberline {7.2}I/O with the string class}{40}% 
+\contentsline {subsection}{\numberline {7.3}Member functions of the class string}{41}% 
+\contentsline {subsection}{\numberline {7.4}Converting from string objects}{43}% 
+\contentsline {section}{\numberline {8}Vectors}{44}% 
+\contentsline {subsection}{\numberline {8.1}Vector basics}{44}% 
+\contentsline {section}{\numberline {9}Pointers and references}{45}% 
+\contentsline {subsection}{\numberline {9.1}Overview of pointers and references}{45}% 
+\contentsline {subsection}{\numberline {9.2}Illustration of when to use a reference, const ref, pointer, or pass by value}{46}% 
+\contentsline {subsection}{\numberline {9.3}Pointers}{46}% 
+\contentsline {subsection}{\numberline {9.4}Dynamic arrays}{48}% 
+\contentsline {section}{\numberline {10}Recursion}{50}% 
+\contentsline {subsection}{\numberline {10.1}The basic idea}{50}% 
+\contentsline {subsection}{\numberline {10.2}Three more examples}{51}% 
+\contentsline {subsection}{\numberline {10.3}Quick sort - a recursive procedure for sorting}{52}% 
+\contentsline {section}{\numberline {11}Structs}{55}% 
+\contentsline {subsection}{\numberline {11.1}Struct basics}{55}% 
+\contentsline {subsection}{\numberline {11.2}Structures and functions}{55}% 
+\contentsline {subsection}{\numberline {11.3}Structures whose members are struct instances}{56}% 
+\contentsline {subsection}{\numberline {11.4}Basic initialisation of a struct}{56}% 
+\contentsline {subsection}{\numberline {11.5}A pointer variable to an object as instance}{57}% 
+\contentsline {section}{\numberline {12}Linked lists and binary trees}{58}% 
+\contentsline {subsection}{\numberline {12.1}Basics of linked lists}{58}% 
+\contentsline {subsection}{\numberline {12.2}Basics steps to build linked lists}{58}% 
+\contentsline {subsection}{\numberline {12.3}Using the pointer in the nodes as iterators}{59}% 
+\contentsline {subsection}{\numberline {12.4}Searching a linked list}{59}% 
+\contentsline {subsection}{\numberline {12.5}Inserting and removing nodes within a list}{60}% 
+\contentsline {subsection}{\numberline {12.6}Double linked list}{61}% 
+\contentsline {subsection}{\numberline {12.7}Intro to binary trees}{61}% 
+\contentsline {subsection}{\numberline {12.8}Routines from lecture slides}{61}% 
+\contentsline {subsection}{\numberline {12.9}Binary trees -- lecture routines}{66}% 

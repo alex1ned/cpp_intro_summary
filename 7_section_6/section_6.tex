@@ -214,15 +214,84 @@ void add_lists(const int first[], const int second[], int total[], int length)
 
 %-----------------------------------------------------
 \subsection{Function that returns an array}
-!!! NEED TO WIRTE THIS NEATLY !!! but \ldots
 
-\begin{itemize}
-	\item Since arrays as parameters to functions are effectively reference parameters (w/o explicitly writing the \&,
-	you could just make a void function and change the array within it.
+\begin{enumerate}
+	\item Since arrays as parameters to functions are effectively reference parameters
+	(w/o explicitly writing the \&, you could just make a void function and change the array within it.
 	\item Make a function that returns a dynamic pointer (an address on the heap).
-	\item Declare a local pointer variable in the frame where the function will be called and then \ldots
-\end{itemize}
+	\item Declare a local pointer variable in the frame where the function will be called and then
+	make a call to a function that returns the pointer (where you use the pointer variable
+	also as the argument).
+\end{enumerate}
 
+\subsubsection*{Version 1 - using a call by reference parameter}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//1) Returning and array of integers (using a call by reference param.)
+//   - PARAMETER is a pointer called by reference
+void return_int_array(int*& array)
+{
+	for (int i = 0; i < 3; i++)
+	{
+		array[i] = 1;
+	}
+}
+
+int main()
+{
+   	int* a;
+   	return_int_array(a);
+}
+\end{minted}
+
+
+\subsubsection*{Version 2 - returning a dynamic pointer}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//2) Returning and a dynamic pointer
+int* return_dynamic_pointer()
+{
+	int* int_array = new int[10];
+
+	for (int i = 0; i < 10; i++)
+	{
+		int_array[i] = 1 + i;
+	}
+	return int_array;
+}
+
+int main()
+{
+	int* a;
+	a = return_dynamic_pointer();
+}
+\end{minted}
+
+
+
+\subsubsection*{Version 3 - return a local pointer that was declared before in other scope}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//3) Returning and array of integers (by returning a pointer, using also argument)
+int* return_int_array(int* array)
+{
+	for (int i = 0; i < 3; i++)
+	{
+		array[i] = 1;
+	}
+	return array;
+}
+
+int main()
+{
+	int* a;
+	a = return_int_array(a);
+	for (int i = 0; i < 3; i++)
+	{
+		cout << a[i] << " ";
+	}
+}
+\end{minted}
 
 
 

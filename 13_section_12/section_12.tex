@@ -292,7 +292,9 @@ int count_items(Node* front)
 
 
 \subsubsection*{Add a node at front of the list}
-!!! why is !front the empty list case???
+Note that if \emph{front} is NULL the boolean expression \emph{if (front)} would evaluate
+to false (given false is 0). Hence the boolean expression \emph{if (!front)} tests if the list is
+empty (i.e. when front equals the NULL).
 
 \begin{minted}
 [frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
