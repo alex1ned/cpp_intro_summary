@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Define struct}
+\PYG{k}{struct} \PYG{n}{Data}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{distance}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{time}\PYG{p}{[}\PYG{l+m+mi}{10}\PYG{p}{];}
+	\PYG{c+c1}{//an array that is a member of a struct which records times for one given distance}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{//In main}
+\PYG{n}{Data} \PYG{n}{myBest}\PYG{p}{;}
+
+\PYG{n}{myBest}\PYG{p}{.}\PYG{n}{distance} \PYG{o}{=} \PYG{l+m+mi}{20}\PYG{p}{;}
+\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Enter then times (in seconds): \PYGZdq{}}\PYG{p}{;}
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{10}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{myBest}\PYG{p}{.}\PYG{n}{time}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{Passenger}\PYG{p}{;}
+\PYG{k}{class} \PYG{n+nc}{Bus}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{Passenger}\PYG{o}{*} \PYG{n}{occupants}\PYG{p}{[}\PYG{n}{capacity} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{]\PYGZob{}\PYGZcb{};}
+	\PYG{o}{\PYGZti{}}\PYG{n}{Bus}\PYG{p}{()}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{occupants}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{!=} \PYG{k}{nullptr}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{delete} \PYG{n}{occupants}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{//Now if you call delete an instance of Bus (e.g. b1) then the lifetime of}
+\PYG{c+c1}{//the object ends and thus the constructor is called whereby the (as per code}
+\PYG{c+c1}{//above) all instances of Passenger are that are in the occupants array are deleted.}
+\end{Verbatim}

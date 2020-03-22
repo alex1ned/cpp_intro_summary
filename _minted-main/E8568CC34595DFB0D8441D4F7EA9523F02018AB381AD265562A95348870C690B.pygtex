@@ -1,0 +1,36 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+\PYG{c+c1}{//some other libraries}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}dtime.h\PYGZdq{}}
+
+\PYG{c+c1}{//Grouping for unnamed namespace}
+\PYG{k}{namespace}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//The function declarations}
+	\PYG{k+kt}{int} \PYG{n}{digitToInt}\PYG{p}{(}\PYG{k+kt}{char} \PYG{n}{c}\PYG{p}{);}
+	\PYG{k+kt}{void} \PYG{n+nf}{readMinute}\PYG{p}{();}
+	\PYG{k+kt}{void} \PYG{n+nf}{readHour}\PYG{p}{();}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{//Namespace of the class}
+\PYG{k}{namespace} \PYG{n}{dtimealexander}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{bool} \PYG{k}{operator} \PYG{o}{==}\PYG{p}{()} \PYG{p}{\PYGZob{}\PYGZcb{}}
+	\PYG{n}{DigitalTime}\PYG{o}{::}\PYG{n}{DigitalTime}\PYG{p}{()\PYGZob{}\PYGZcb{}}
+	\PYG{c+c1}{//more member function definitions}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{//Another grouping for the unnamed namespace}
+\PYG{c+c1}{//to define the functions we have declared before also in unnamed namespace}
+\PYG{k}{namespace}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{digitToInt}\PYG{p}{(}\PYG{k+kt}{char} \PYG{n}{c}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}} \PYG{c+c1}{//Definition goes in brackets}
+	\PYG{k+kt}{void} \PYG{n}{readMinute}\PYG{p}{()} \PYG{p}{\PYGZob{}\PYGZcb{}} \PYG{c+c1}{//Definition goes in brackets}
+	\PYG{k+kt}{void} \PYG{n}{readHour}\PYG{p}{()} \PYG{p}{\PYGZob{}\PYGZcb{}} \PYG{c+c1}{//Definition goes in brackets}
+	
+	\PYG{c+c1}{//The functions defined in the unnamed namespace are local}
+	\PYG{c+c1}{//to this compilation unit (this file and all included files)}
+	\PYG{c+c1}{//They can be used anywhere in this file but have}
+	\PYG{c+c1}{//no meaning outside this compilation unit}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

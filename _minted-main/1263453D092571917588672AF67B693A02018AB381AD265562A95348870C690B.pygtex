@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n+nf}{getCapacityFromRegistry}\PYG{p}{(}\PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{serialNumber}\PYG{p}{);} \PYG{c+c1}{// imagine you have a database somewhere}
+\PYG{k}{class} \PYG{n+nc}{Bus}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{capacity}\PYG{p}{;}
+	\PYG{k+kt}{float} \PYG{n}{occupancy}\PYG{p}{;}
+	\PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{serialNumber}\PYG{p}{;}
+\PYG{k}{public}\PYG{o}{:}
+        \PYG{c+c1}{//Here in construct. declaration we set def. param of occupancy to 0}
+        \PYG{n}{Bus}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{capacity}\PYG{p}{,} \PYG{k+kt}{float} \PYG{n}{occupancy} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{o}{:} \PYG{n}{capacity}\PYG{p}{(}\PYG{n}{capacity}\PYG{p}{),} \PYG{n}{occupancy}\PYG{p}{(}\PYG{n}{occupancy}\PYG{p}{)\PYGZob{}\PYGZcb{};}
+		\PYG{c+c1}{//If you call Bus(4); then capacity is 4 and occupancy is 0}
+		\PYG{c+c1}{//If you call Bus(4, 2); then capacity is 4 and occupancy is 2}
+
+        \PYG{c+c1}{//In this constructor definition we set capacity to what we got rom the registry}
+        \PYG{n}{Bus}\PYG{p}{(}\PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{serialNumber}\PYG{p}{)} \PYG{o}{:} \PYG{n}{serialNumber}\PYG{p}{(}\PYG{n}{serialNumber}\PYG{p}{)}
+        \PYG{p}{\PYGZob{}}
+		\PYG{n}{capacity} \PYG{o}{=} \PYG{n}{getCapacityFromRegistry}\PYG{p}{(}\PYG{n}{serialNumber}\PYG{p}{);}
+        \PYG{p}{\PYGZcb{};}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

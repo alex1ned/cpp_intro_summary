@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Friend function declaration inside public scope of class definition}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{c+c1}{//requires \PYGZsq{}friend\PYGZsq{} keyword}
+	\PYG{k}{friend} \PYG{k+kt}{bool} \PYG{n}{equal}\PYG{p}{(}\PYG{n}{Day\PYGZus{}of\PYGZus{}year} \PYG{n}{today}\PYG{p}{,} \PYG{n}{Day\PYGZus{}of\PYGZus{}year} \PYG{n}{tomorrow}\PYG{p}{);}
+
+\PYG{c+c1}{//Friend function definition outside class definition (as notmal function usual)}
+\PYG{c+c1}{// ! Does not need the qualifier \PYGZsq{}Day\PYGZus{}of\PYGZus{}year::\PYGZsq{} in function heading.}
+\PYG{k+kt}{bool} \PYG{n+nf}{equal}\PYG{p}{(}\PYG{n}{Day\PYGZus{}of\PYGZus{}year} \PYG{n}{today}\PYG{p}{,} \PYG{n}{Day\PYGZus{}of\PYGZus{}year} \PYG{n}{tomorrow}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//Function definition goes here}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

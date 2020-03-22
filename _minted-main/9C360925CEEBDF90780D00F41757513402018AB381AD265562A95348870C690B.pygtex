@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// CLASS definition}
+\PYG{k}{class} \PYG{n+nc}{Sample}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{k+kt}{void} \PYG{n}{input}\PYG{p}{();}
+        \PYG{k+kt}{void} \PYG{n+nf}{output}\PYG{p}{()} \PYG{k}{const}\PYG{p}{;}
+        \PYG{c+c1}{//place the const here as you do not wish that output}
+	\PYG{c+c1}{//changes the value of its calling object}
+\PYG{k}{private}\PYG{o}{:}
+        \PYG{k+kt}{int} \PYG{n}{stuff}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{//FUNCTION definition then also requires \PYGZsq{}const\PYGZsq{}}
+\PYG{k+kt}{void} \PYG{n}{Sample}\PYG{o}{::}\PYG{n}{output}\PYG{p}{()} \PYG{k}{const}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//some definition here}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

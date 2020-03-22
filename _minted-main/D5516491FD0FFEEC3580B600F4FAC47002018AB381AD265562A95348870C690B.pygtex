@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Class} \PYG{n}{Day\PYGZus{}of\PYGZus{}year} \PYG{c+c1}{// where Day\PYGZus{}of\PYGZus{}year is called the type qualifier}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}    \PYG{c+c1}{//\PYGZlt{}\PYGZlt{} indictates that methods and objects have no restriction on them}
+	\PYG{k+kt}{void} \PYG{n}{output}\PYG{p}{();} \PYG{c+c1}{//\PYGZlt{}\PYGZhy{}\PYGZhy{} This is a member function (called methods)}
+	\PYG{k+kt}{int} \PYG{n}{month}\PYG{p}{;}    \PYG{c+c1}{//\PYGZlt{}\PYGZhy{}\PYGZhy{} These are member variabes}
+	\PYG{k+kt}{int} \PYG{n}{day}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};} \PYG{c+c1}{// don\PYGZsq{}t forget the semicolon}
+\end{Verbatim}

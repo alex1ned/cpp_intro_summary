@@ -1,0 +1,49 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{capacity} \PYG{o}{=} \PYG{l+m+mi}{99}\PYG{p}{;}
+
+\PYG{k}{struct} \PYG{n}{Passenger}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{char} \PYG{k}{const}\PYG{o}{*} \PYG{n}{name}\PYG{p}{;}
+	\PYG{c+c1}{//Constructor definition}
+	\PYG{n}{Passenger}\PYG{p}{(}\PYG{k+kt}{char} \PYG{k}{const}\PYG{o}{*} \PYG{n}{name}\PYG{p}{)} \PYG{o}{:} \PYG{n}{name}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)\PYGZob{}\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{k}{struct} \PYG{n}{Bus}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{Passenger}\PYG{o}{*} \PYG{n}{occupants}\PYG{p}{[}\PYG{n}{capacity} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{]\PYGZob{}\PYGZcb{};}
+	\PYG{c+c1}{//Is an array of pointers to passenger instances called occupants}
+	\PYG{c+c1}{//+1 because last is NULL (marks end of array)}
+	
+	\PYG{k+kt}{int} \PYG{n+nf}{findPassengerOrNullTerminator}\PYG{p}{(}\PYG{n}{Passenger}\PYG{o}{*} \PYG{n}{p}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+		\PYG{k}{while} \PYG{p}{(}\PYG{n}{occupants}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{!=} \PYG{k}{nullptr} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{occupants}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{!=} \PYG{n}{p}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{i}\PYG{o}{++}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{k}{return} \PYG{n}{i}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{k+kt}{void} \PYG{n+nf}{havePassengerEnter}\PYG{p}{(}\PYG{n}{Passenger}\PYG{o}{*} \PYG{n}{p}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{findPassengerOrNullTerminator}\PYG{p}{(}\PYG{n}{p}\PYG{p}{);}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{capacity}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{occupants}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{p}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	
+	
+	\PYG{k+kt}{void} \PYG{n+nf}{havePassengerLeave}\PYG{p}{(}\PYG{n}{Passenger}\PYG{o}{*} \PYG{n}{p}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{findPassengerOrNullTerminator}\PYG{p}{(}\PYG{n}{p}\PYG{p}{);}
+		
+		\PYG{c+c1}{//Shift everyone from found passenger left by one}
+		\PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{99}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{n}{occupants}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{occupants}\PYG{p}{[}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{];}
+			\PYG{n}{i}\PYG{o}{++}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

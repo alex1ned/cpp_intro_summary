@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Struct definition}
+\PYG{k}{struct} \PYG{n}{WindInfo}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{double} \PYG{n}{velocity}\PYG{p}{;}
+	\PYG{k+kt}{char} \PYG{n}{direction}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{//Declare the array and fill it}
+\PYG{n}{WindInfo} \PYG{n}{dataPoint}\PYG{p}{[}\PYG{l+m+mi}{10}\PYG{p}{];}
+
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{10}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Enter velocity: \PYGZdq{}}\PYG{p}{;}
+	\PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{dataPoint}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{velocity}\PYG{p}{;}
+	
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Enter direction: \PYGZdq{}}\PYG{p}{;}
+	\PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{dataPoint}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{direction}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

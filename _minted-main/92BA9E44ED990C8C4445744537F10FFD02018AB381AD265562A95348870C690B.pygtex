@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{StringVar} \PYG{n}{string1}\PYG{p}{,} \PYG{n}{string2}\PYG{p}{;}
+\PYG{n}{string1} \PYG{o}{=} \PYG{n}{stirng2}\PYG{p}{;} \PYG{c+c1}{//This copies the object, however ...}
+
+\PYG{n}{StringVar}\PYG{o}{*} \PYG{n}{string1}\PYG{p}{,} \PYG{o}{*}\PYG{n}{string2}\PYG{p}{;}
+\PYG{n}{string1} \PYG{o}{=} \PYG{n}{string2}\PYG{p}{;} \PYG{c+c1}{//... this copies the pointer/address}
+\end{Verbatim}

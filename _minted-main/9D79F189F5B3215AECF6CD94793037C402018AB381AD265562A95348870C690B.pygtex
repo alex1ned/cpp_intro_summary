@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Class definition}
+\PYG{k}{class} \PYG{n+nc}{Name}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{k}{friend} \PYG{n}{ifstream}\PYG{o}{\PYGZam{}} \PYG{k}{operator} \PYG{o}{\PYGZgt{}\PYGZgt{}}\PYG{p}{(}\PYG{n}{ifstream}\PYG{o}{\PYGZam{}} \PYG{n}{in}\PYG{p}{,} \PYG{n}{Name}\PYG{o}{\PYGZam{}} \PYG{n}{parameter2}\PYG{p}{);}
+	\PYG{k}{friend} \PYG{n}{ofstream}\PYG{o}{\PYGZam{}} \PYG{k}{operator} \PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{p}{(}\PYG{n}{ofstream}\PYG{o}{\PYGZam{}} \PYG{n}{out}\PYG{p}{,} \PYG{k}{const} \PYG{n}{Name}\PYG{o}{\PYGZam{}} \PYG{n}{parameter4}\PYG{p}{);}
+	\PYG{c+c1}{//use const here because outstream does not change the object values}
+
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{//Overloaded operator definition}
+\PYG{n}{ifstream}\PYG{o}{\PYGZam{}} \PYG{k}{operator} \PYG{o}{\PYGZgt{}\PYGZgt{}}\PYG{p}{(}\PYG{n}{ifstream}\PYG{o}{\PYGZam{}} \PYG{n}{in}\PYG{p}{,} \PYG{n}{Name}\PYG{o}{\PYGZam{}} \PYG{n}{parameter2}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//do something}
+	\PYG{k}{return} \PYG{n}{in}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{ofstream}\PYG{o}{\PYGZam{}} \PYG{k}{operator} \PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{p}{(}\PYG{n}{ofstream}\PYG{o}{\PYGZam{}} \PYG{n}{out}\PYG{p}{,} \PYG{k}{const} \PYG{n}{Name}\PYG{o}{\PYGZam{}} \PYG{n}{parameter4}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//do something}
+	\PYG{k}{return} \PYG{n}{out}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

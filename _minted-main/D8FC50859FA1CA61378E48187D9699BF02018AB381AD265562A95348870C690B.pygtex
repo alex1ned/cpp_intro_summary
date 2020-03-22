@@ -1,7 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{string} \PYG{n+nf}{greeting}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Hello\PYGZdq{}}\PYG{p}{),} \PYG{n}{response}\PYG{p}{,} \PYG{n}{next\PYGZus{}word}\PYG{p}{;}
-\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{greeting} \PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{n}{endl}\PYG{p}{;}
-
-\PYG{n}{getline}\PYG{p}{(}\PYG{n}{cin}\PYG{p}{,} \PYG{n}{response}\PYG{p}{);} \PYG{c+c1}{// gets entire line}
-\PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{next\PYGZus{}word}\PYG{p}{;} \PYG{c+c1}{// only gets text up to next white\PYGZhy{}space}
-\end{Verbatim}

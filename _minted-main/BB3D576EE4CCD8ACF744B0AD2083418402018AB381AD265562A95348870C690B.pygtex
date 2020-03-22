@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n+nf}{simulateBusses}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//Two static buss variables}
+	\PYG{n}{Bus} \PYG{n}{b1}\PYG{p}{;}
+	\PYG{n}{Bus} \PYG{n}{b2}\PYG{p}{;}
+	
+	\PYG{c+c1}{//Three dynamic Passengers}
+	\PYG{n}{Passenger}\PYG{o}{*} \PYG{n}{holger} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Passenger}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}holger\PYGZdq{}}\PYG{p}{);}
+	\PYG{n}{Passenger}\PYG{o}{*} \PYG{n}{will} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Passenger}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}will\PYGZdq{}}\PYG{p}{);}
+	\PYG{n}{Passenger}\PYG{o}{*} \PYG{n}{fidelis} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Passenger}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}fidelis\PYGZdq{}}\PYG{p}{);}
+	
+	\PYG{c+c1}{//Let people enter the busses}
+	\PYG{n}{b1}\PYG{p}{.}\PYG{n}{havePassengerEnter}\PYG{p}{(}\PYG{n}{holger}\PYG{p}{);}
+	\PYG{n}{b2}\PYG{p}{.}\PYG{n}{havePassengerEnter}\PYG{p}{(}\PYG{n}{will}\PYG{p}{);}
+	\PYG{n}{b2}\PYG{p}{.}\PYG{n}{havePassengerEnter}\PYG{p}{(}\PYG{n}{fidelis}\PYG{p}{);}
+	
+	\PYG{c+c1}{//\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZgt{} Dangerous: after line below fidelis is in two busses}
+	\PYG{n}{b1}\PYG{p}{.}\PYG{n}{havePassengerEnter}\PYG{p}{(}\PYG{n}{fidelis}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

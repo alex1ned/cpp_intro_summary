@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}dtime.h\PYGZdq{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{read\PYGZus{}hour}\PYG{p}{(}\PYG{k+kt}{int}\PYG{o}{\PYGZam{}} \PYG{n}{the\PYGZus{}hour}\PYG{p}{);}
+\PYG{c+c1}{//New function declaration that has same name as one in the class}
+\PYG{c+c1}{//implementation file but it is a different function}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{using} \PYG{k}{namespace} \PYG{n}{std}\PYG{p}{;}
+	\PYG{k}{using} \PYG{k}{namespace} \PYG{n}{dtimealexander}\PYG{p}{;}
+	\PYG{n}{read\PYGZus{}hour}\PYG{p}{(}\PYG{l+m+mi}{23}\PYG{p}{);} \PYG{c+c1}{// call to new function declared in MAIN}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{//Also need to define the new function here.}
+\end{Verbatim}

@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{c+c1}{//Example}
-\PYG{k+kt}{int} \PYG{n}{x} \PYG{o}{=} \PYG{n}{atoi}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}676\PYGZdq{}}\PYG{p}{);}
-\PYG{k+kt}{double} \PYG{n}{y} \PYG{o}{=} \PYG{n}{atof}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZsh{}546.3\PYGZdq{}}\PYG{p}{);}
-\end{Verbatim}

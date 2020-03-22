@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{SavingsAccount} \PYG{o}{:} \PYG{k}{public} \PYG{n}{BankAccount}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{c+c1}{//Constructor}
+	\PYG{n}{savingsAccount}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{dollars}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{cents}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{rate}\PYG{p}{);}
+	
+	\PYG{k+kt}{void} \PYG{n+nf}{deposit}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{dollars}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{cents}\PYG{p}{);}
+	\PYG{k+kt}{void} \PYG{n+nf}{withdraw}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{dollars}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{cents}\PYG{p}{);}
+\PYG{k}{private}\PYG{o}{:}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{//The definition of the SavingsAccount constructor calls the BankAccount constructor}
+\PYG{n}{SavingsAccount}\PYG{o}{::}\PYG{n}{SavingsAccount}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{dollars}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{cents}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{rate}\PYG{p}{)} \PYG{o}{:}
+	\PYG{n}{BankAccount}\PYG{p}{(}\PYG{n}{dollars}\PYG{p}{,} \PYG{n}{cents}\PYG{p}{,} \PYG{n}{rate}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
+\end{Verbatim}

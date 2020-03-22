@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{TemperatureList}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{c+c1}{//Initialises size at 0}
+	\PYG{n}{TemperatureList}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{temperature}\PYG{p}{);}
+	
+	\PYG{c+cm}{/*}
+\PYG{c+cm}{	Adds a temperature to the list if the array is not full and increments size}
+\PYG{c+cm}{	to know when the array is full.}
+\PYG{c+cm}{	*/}
+	\PYG{k+kt}{void} \PYG{n+nf}{addTemperature}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{temperature}\PYG{p}{);}
+	
+	\PYG{c+cm}{/*}
+\PYG{c+cm}{	Returns true if size is 50 (i.e. if array is full)}
+\PYG{c+cm}{	*/}
+	\PYG{k+kt}{bool} \PYG{n+nf}{full}\PYG{p}{()} \PYG{k}{const}\PYG{p}{;}
+	
+	\PYG{k}{friend} \PYG{n}{ofstream}\PYG{o}{\PYGZam{}} \PYG{k}{operator} \PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{p}{(}\PYG{n}{ofstream}\PYG{o}{\PYGZam{}} \PYG{n}{out} \PYG{k}{const} \PYG{n}{TemperatureList}\PYG{o}{\PYGZam{}} \PYG{n}{theObject}\PYG{p}{);}
+	
+\PYG{k}{private}\PYG{o}{:}
+	\PYG{k+kt}{double} \PYG{n}{list}\PYG{p}{[}\PYG{l+m+mi}{50}\PYG{p}{];} \PYG{c+c1}{//array of temperatures in celsius}
+	\PYG{k+kt}{int} \PYG{n}{size}\PYG{p}{;} \PYG{c+c1}{//number of array positions filled \PYGZhy{}\PYGZhy{}\PYGZgt{} initialised at 0}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{BankAccount}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{c+c1}{//Sets the member variables to the values used as arguments}
+	\PYG{k+kt}{void} \PYG{n}{set}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{dollars}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{cents}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{rate}\PYG{p}{);}
+	
+	\PYG{c+c1}{//Updates the account balance according to the initial balance and the rate}
+	\PYG{k+kt}{void} \PYG{n+nf}{update}\PYG{p}{();}
+	
+	\PYG{c+c1}{//Returns the account balance}
+	\PYG{k+kt}{double} \PYG{n+nf}{getBalance}\PYG{p}{();}
+	
+	\PYG{c+c1}{//Returns the rate}
+	\PYG{k+kt}{double} \PYG{n+nf}{getRate}\PYG{p}{();}
+	
+	
+	\PYG{k+kt}{void} \PYG{n+nf}{output}\PYG{p}{(}\PYG{n}{ostream}\PYG{o}{\PYGZam{}} \PYG{n}{out}\PYG{p}{);}
+	
+\PYG{k}{private}\PYG{o}{:}
+	\PYG{k+kt}{double} \PYG{n}{balance}\PYG{p}{;}
+	\PYG{k+kt}{double} \PYG{n}{iRate}\PYG{p}{;}
+	\PYG{k+kt}{double} \PYG{n+nf}{fraction}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{percent}\PYG{p}{);}
+		\PYG{c+c1}{//converts pct to fraction (e.g. fraction(50.3) returns 0.503)}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

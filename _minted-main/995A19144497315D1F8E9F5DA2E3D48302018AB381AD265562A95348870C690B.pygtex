@@ -1,0 +1,41 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n}{BankAccount}\PYG{o}{::}\PYG{n}{set}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{dollars}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{cents}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{rate}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{dollars} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0} \PYG{o}{||} \PYG{n}{cents} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0} \PYG{o}{||} \PYG{n}{rate} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Illegal\PYGZdq{}}\PYG{p}{;}
+		\PYG{k}{return}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{n}{balance} \PYG{o}{=} \PYG{n}{dollars} \PYG{o}{+} \PYG{l+m+mf}{0.01} \PYG{o}{*} \PYG{n}{cents}\PYG{p}{;}
+	\PYG{n}{iRate} \PYG{o}{=} \PYG{n}{rate}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n}{BankAccount}\PYG{o}{::}\PYG{n}{update}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{balance} \PYG{o}{+=} \PYG{n}{balance} \PYG{o}{*} \PYG{n}{fraction}\PYG{p}{(}\PYG{n}{iRate}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{double} \PYG{n}{BankAccount}\PYG{o}{::}\PYG{n}{fraction}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{percent}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{return} \PYG{p}{(}\PYG{n}{percent} \PYG{o}{/} \PYG{l+m+mi}{100}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{double} \PYG{n}{BankAccount}\PYG{o}{::}\PYG{n}{getBalance}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{return} \PYG{n}{balance}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{double} \PYG{n}{BankAccount}\PYG{o}{::}\PYG{n}{getRate}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{return} \PYG{n}{iRate}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n}{BankAccount}\PYG{o}{::}\PYG{n}{output}\PYG{p}{(}\PYG{n}{ostream}\PYG{o}{\PYGZam{}} \PYG{n}{out}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{out}\PYG{p}{.}\PYG{n}{setf}\PYG{p}{(}\PYG{n}{ios}\PYG{o}{::}\PYG{n}{fixed}\PYG{p}{);}
+	\PYG{n}{out}\PYG{p}{.}\PYG{n}{setf}\PYG{p}{(}\PYG{n}{ios}\PYG{o}{::}\PYG{n}{showpoint}\PYG{p}{);}
+	\PYG{n}{out}\PYG{p}{.}\PYG{n}{precision}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{);}
+	\PYG{n}{out} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Account balance \PYGZdl{}\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{balance}\PYG{p}{;}
+	\PYG{n}{out} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Interest rate \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{i\PYGZus{}rate} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}\PYGZpc{}\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{n}{endl}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

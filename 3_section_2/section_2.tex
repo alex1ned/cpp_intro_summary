@@ -1,224 +1,432 @@
-\section{Variables, Types, and Expressions}
+\section{Friend functions and operator overloading}
 
-\subsection{Data Types}
+%-----------------------------------------------------------------------------------------------
+\subsection{Friend functions}
+A friend function of a class is not a member function but still has access to the private member
+variables of the class -- and can also change these values. The concept may be useful at times
+but should be avoided (and is never required) -- it is bad programming style.
 
-\subsubsection*{Integer}
-\begin{itemize}
-	\item Can use \emph{int}, \emph{short int}, or \emph{long int}.
-	\item Adding the prefix \emph{unsigned} to any of the types means only positive integers are stored.
-	\item Special prefixes to control the base of the number system
-	\begin{itemize}
-		\item \emph{Octal} has a leading \emph{0}
-		\item \emph{Hexadecimal} has a leading \emph{0x}
-		\item \emph{Binary} has a leading \emph{0b}
-	\end{itemize}
-\end{itemize}
+To make a function a friend, list the function declaration in the definition of the class (in public section)
+and placing the keyword \emph{friend} in front of the function declaration. The friend function
+\emph{definition} does not require the keyword. This function can be used normally outside of the class.
 
-
-\subsubsection*{Real numbers}
-Can use \emph{float}, \emph{double}, as well as the respective \emph{short, long} and
-\emph{unsigned} prefixes.
-
-
-\subsubsection*{Characters}
-\begin{itemize}
-	\item Use \emph{char}
-	\item Must be in single quotes \ldots such as char `someChar'
-	\item Characters are interpreted as integers inside the computer - can even use arithmetic
-	statements on characters such as \ldots
-	\begin{itemize}
-		\item \ldots `Z' -- `A' \ldots would evaluate to the number of letters in the alphabet.
-	\end{itemize}
-	\item The most commonly used collection of characters is the ASCII set (where each character
-	has a number).
-	\item The code below prints out the whole ASCII table.
-\end{itemize}
-
-\begin{listing}[h]
+\begin{listing}[H]
 \begin{minted}
-[
-frame=lines,
-linenos,
-fontsize=\small,
-obeytabs=true,
-tabsize=3
-]
-{c++}
-int main() 
-{  
- 	int number;
-	char character;
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//Friend function declaration inside public scope of class definition
+public:
+	//requires 'friend' keyword
+	friend bool equal(Day_of_year today, Day_of_year tomorrow);
+    
+//Friend function definition outside class definition (as notmal function usual)
+// ! Does not need the qualifier 'Day_of_year::' in function heading.
+bool equal(Day_of_year today, Day_of_year tomorrow)
+{
+	//Function definition goes here
+}
+\end{minted}
+\caption{Syntax for using a friend function}
+\label{source_code_1}
+\end{listing}
+
+
+\subsubsection*{Programming example: Money class, B.p. 662 - 668}
+The code below is not too hard but very useful exercise for using I/O streams as
+parameters in functions. See book for details but should be self evident.
+
+
+\subsubsection*{Brief note on leading zeros in number constants}
+\begin{itemize}
+	\item Sometimes in C++ `09' and `9' are not interpreted in the same way.
+	\item For some C++ compilers the use of leading zeros means that the number is
+	written in base 8 rather than base 10.
+	\item Since base 8 numerals do not use the digit 9 the constant 09 does not make
+	sense in C++.
+	\item However, for the GNU compiler it is ok.
+\end{itemize}
+
+
+
+
+%-----------------------------------------------------------------------------------------------
+\subsection{The const parameter modifier}
+Const is a great safety measure to use if you don't want a function to change the value of a variable.
+If used in functions, then both the function declaration and function definition require the
+\emph{const} modifier. \emph{const} tells the compiler that this parameter should not be
+changed (if changed by a function you get an error).
+
+In classes you should place the const modifier after the function definition and declaration
+if the functions do not change the member variables (e.g. for output member functions).
+
+Parameters of a class type that are NOT changes by the function ordinarily should be constant
+call by reference parameters, rather than call-by-value parameters. If a method of a class does not change
+the value of its calling object, then mark the function by adding the const modifier to the
+function declaration and function definition. The const is placed at the end of the function declaration
+just before the final ;. Note that const is an all-or-nothing proposition. I.e. if you use const for one parameter
+of a certain type, then you should use it for every other parameter that has the same
+type and that is not changed by the function call. Use const whenever it is appropriate for a class parameter
+and method of the class. If you do NOT use const every time it is appropriate for a
+class you should not use it at all.
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+// CLASS definition
+class Sample
+{
+public:
+	void input();
+        void output() const;
+        //place the const here as you do not wish that output
+	//changes the value of its calling object
+private:
+        int stuff;
+};
+
+//FUNCTION definition then also requires 'const'
+void Sample::output() const
+{
+	//some definition here
+}
+\end{minted}
+\caption{Using the const parameter modifier in class member functions}
+\label{source_code_1}
+\end{listing}
+
+The below explanation is a bid more intricate:
+
+If the parameter type you are using is a class, then you should use const for every method of the
+class that does not change the value of its calling object. An example for a redefinition of the
+class Money is given in book p. 675 - 676.
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void guarantee(const Money& price) //where Money is a class and price is an object of type Money
+{
+	cout << price.get_value(); // where 'get_value' is a method of the class Money
+	//Then in class 'get_value' should be 'const'
+	//Even though 'get_value' does NOT change 'price' but the compiler thinks that
+	//'get_value' might change price because the comiler will only know the declaration
+	//of 'get_value' (not the definition) when calling 'guarantee()'
+}
+\end{minted}
+\caption{Using the const parameter modifier in function parameter where the type is a class}
+\label{source_code_1}
+\end{listing}
+
+
+
+
+
+%-----------------------------------------------------------------------------------------------
+\subsection{Overloading operators}
+An operator such as $+$, $-$, $\%$ etc. are just functions with a different syntax. These operators
+can be overloaded.
+
+\subsubsection{Overloading binary operators}
+You can overload most but not all operators. The operator does not need to be a \emph{friend}
+of a class, but often you want them to be a friend.
+
+The definition is the same as for member functions but instead you use the operator (e.g. +,
+-, = etc.) as the function name and precede it with the keyword \emph{operator}.
+
+\noindent
+Example of overloading `+' and `=='. Note that the friend keyword is not required and you could
+also overload the operators outside the class (but this is less common). A not of warning: if you
+want to compare two pointers (using the equality operator `=') you can only do so if the
+pointers are initialised otherwise you will have a segmentation fault.
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//CLASS DEFINITION
+class Money
+{
+public:
+        //Function that returns type 'Money'
+        friend Money operator +(const Money& amount1, const Money& amount2);
         
-  	for (number = 32 ; number <= 126 ; number = number + 1) 
+        //Function that returns type 'bool'
+        friend bool operator ==(const Money& amount1, const Money& amount2);
+        		//Note that friend keyword is NOT required for overloading the operator
+		//Also you could overload the operator outside the class (but less common)
+	
+        //Constructors and other stuff go here
+private:
+        int all_cents;
+};
+
+//FUNCTION DEFINITION
+Money operator +(const Money& amount1, const Money& amount2)
+{
+	Money temp;
+	temp.all_cents = amount1.all_cents + amount2.all_cents;
+	return temp; 
+}
+
+bool operator ==(const Money& amount1, const Money& amount2)
+{
+	return (amount1.all_cents == amount2.all_cents);
+}
+
+//In MAIN we could write ...
+int main()
+{
+	Money cost(1, 50), tax(0, 15), total;
+	total = cost + tax; 
+	//we could now use '+' instead of having to call an 'add' method
+}
+\end{minted}
+\caption{Overloading the + and == operators}
+\label{source_code_1}
+\end{listing}
+
+\noindent
+Rules for overloading binary operators:
+\begin{itemize}
+	\item When overloading an operator, at least one argument of the resulting overloaded
+	operator must be of a class type.
+	\item An overloaded operator can be, but does not have to be, a friend of the class.
+	\item You cannot create a new operator. All you can do is overload existing operators, such
+	as +. -, *, /, \%, and so forth.
+	\item You cannot change the number of arguments that an operator takes. For example you
+	cannot change \% from a binary yo a unary operator when you overload \% you cannot change
+	++ from a unary to a binary operator when you overload it.
+	\item You cannot change the precedence of an operator.
+	\item The following operators cannot be overloaded: the dot (.), the scope resolution (::), the 
+	(*), and (?) operator.
+	\item Although the assignment operator = can be overloaded so that the default meaning
+	of = is replaced by a new meaning, this must be done in a different way from what is described
+	above. Overloading = is discussed a different section.
+	\item Other operators such as [], -> must also be overloaded in a different way.
+\end{itemize}
+
+
+
+\subsubsection{Constructors for automatic type conversion}
+!!! Not sure what this is .. check again in Book!!!
+
+If we add an integer to an amount that is of another type (e.g. of the class
+Money) then we need a constructor in the class that initialises the integer we add to the
+appropriate type. The system first checks to see if the operator + has been overloaded for
+the combination of a value of the class type and value of an int type, if this is not the case,
+then the system next looks to see if there is a constructor that takes a single argument that
+is an int. It then uses this constructor to convert the integer to a value of the class type.
+
+
+\subsubsection{Overloading unary operators}
+Unary operators follow the same syntax as discussed above. Unary operators are \ldots
+\begin{itemize}
+	\item - can be a unary operator when used for negation (e.g. x = -y).
+	\item Increment and decrement operators such as ++ or -- (however note that you
+	can only overload ++ and -- with the aforementioned syntax if they are used in a 
+	\emph{prefix} position but not for a postfix position.
+\end{itemize}
+
+
+\subsubsection{Overloading \textgreater\textgreater{} and \textless\textless{} operators}
+These are binary operators and their value returned must be a stream. The type for the value
+returned must have the \& symbol at the end of the type name. The operator \textless\textless
+should return its first agrument, which is a stream of type ofstream.
+
+\noindent
+Motivation is that instead of writing code like first alternative below, write it like the second
+alternative.
+
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//Instead of writing this alternative 1
+Money amount(100);
+cout << "I have " << amount.output(cout);
+
+//... you want to write
+cout << "I have " << amount; //i.e. w/o having to call '.output(cout)'
+\end{minted}
+
+\noindent
+Syntax \ldots
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//Class definition
+class Name
+{
+public:
+	friend ifstream& operator >>(ifstream& in, Name& parameter2);
+	friend ofstream& operator <<(ofstream& out, const Name& parameter4);
+	//use const here because outstream does not change the object values
+
+};
+
+//Overloaded operator definition
+ifstream& operator >>(ifstream& in, Name& parameter2)
+{
+	//do something
+	return in;
+}
+
+ofstream& operator <<(ofstream& out, const Name& parameter4)
+{
+	//do something
+	return out;
+}
+\end{minted}
+\caption{Overloading the \textgreater\textgreater{} and \textless\textless{} operators}
+\label{source_code_1}
+\end{listing}
+
+Explanation of meaning of \& in the return type ofstream\& \ldots
+\begin{itemize}
+	\item Whenever an operator of a function returns a stream you must add an \&
+	to the end of the name of the return type.
+	\item When you add an \& to the name of a returned type -- you return a reference.
+	\item This means that you are returning the object itself as opposed to the value of the
+	object.
+	\item Since you cannot return the value of a stream (i.e. the entire file) you want to
+	return the stream itself rather than the value of the stream.
+\end{itemize}
+
+An example of overloading \textgreater\textgreater{} and \textless\textless{} in the
+context of the Money class is given in book pages 689 to 692.
+
+
+
+\subsubsection{Overloading the assignment operator `='}
+Suppose we have the class StringVar (as in the next section) and we declare the two
+objects string1 and string both of type String\_var. Then setting string1 = string2 may not
+result in the output we desire. More specifically it will set all member values of string1
+to the same value as those of string2 - this may lead to problems if e.g. both have
+member variables that are pointers.
+
+Any class that uses pointers and the \emph{new} operator should overload the assignment
+operator for use with the class.
+
+\begin{itemize}
+	\item Cannot overload = like we overloaded + or ==.
+	\item When you overload the assignment operator it must be a member of the class
+	(i.e. it CANNOT be simply a friend of a class).
+\end{itemize}
+
+The example below would set one string equal to another through operator overloading.
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//In class definition
+class StringVar
+{
+public:
+	void operator =(const StringVar& rightSide);
+};
+
+//Function definition
+void StringVar::operator = (StringVar& rightSide)
+{
+	int newLength = strlen(rightSide.value);
+	if (newLength > maxLength)
 	{
-		character = number;
-		cout << "The character '" << character;
-		cout << "' is represented as the number ";
-		cout << dec << number << " decimal or " << hex << number<< " hex.\n";
-  	}
-  return 0;
+		delete [] value;
+		maxLength = newLength;
+		value = new char[maxLength + 1];
+	}
+	
+	for (int i = 0; i < newLength; i++)
+	{
+		value[i] = rightSide.value[i];
+	}
+	value[newLength] = '\0';
 }
 \end{minted}
-\caption{Print out the ASCII table}
-\label{source_code_2}
+\caption{Overloading the assignment operator `='}
+\label{source_code_1}
 \end{listing}
 
+A note of warning \ldots
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+StringVar string1, string2;
+string1 = stirng2; //This copies the object, however ...
 
-\subsubsection*{Strings}
-Strings are discussed later - but we will use two key ways to handle strings.
-\begin{itemize}
-	\item \emph{c-string variables} which are arrays of characters that end with a sentinel character.
-	\item Using the \emph{string class}.
-\end{itemize}
-
-\subsubsection*{Booleans}
-C++ implicitly includes the named enumeration \emph{enum bool \{false, true\}}, hence
-you can define a variable such as \ldots
-\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-bool is_true = false;
+StringVar* string1, *string2;
+string1 = string2; //... this copies the pointer/address
 \end{minted}
 
-\subsubsection*{Type casting integers to real numbers and vv.}
+
+
+
+
+\subsubsection{Overloading conversions (i.e. casts)}
 \begin{itemize}
-	\item New version which should be used is a static cast.
-	\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-	static_cast<int>(14.53)  //changes 14.53 to be 14
-	\end{minted}
-	\item Older version is simply \emph{int($14.53$)}, however, this is not recommended to use.
+	\item Conversions of base types are often called casts.
+	\item Conversions of complex datatypes are often design flaws (sometimes
+	we need them).
 \end{itemize}
 
-% ---- end subsection
+\noindent
+Motivation
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+struct Company
+{
+	char* name;
+};
+int get_phone_number(Company c);
 
-\subsection{Formatting numbers}
+struct Make
+{
+	char* manufacturer;
+	char* model;
+};
 
-\subsubsection*{Precision}
-\begin{itemize}
-	\item Use the below two lines to output only 2 digits of the next number.
-	\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-	cout.setf(ios::fixed);
-	cout.precision(2);
-	\end{minted}
-	\item While the two lines below output the a number in \emph{scientific} form.
-	\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-	cout.setf(ios::scientific); 
-	cout.precision(2);
-	\end{minted}
-\end{itemize}
+struct Bus
+{
+	int capacity;
+	Make make;
+};
 
-
-\subsubsection*{Fake an output table}
-Use tabbing of the output with the statement \ldots
-\begin{listing}[h]
-\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-#include <iomanip> //need this header to make output left-justified
+//==============================
 
 int main()
 {
-	cout.setf(ios::left) //need this because of the output is by default right justified
-	cout.width(20);  /*The output of the next 'cout' statement will be at
-	least 20 characters*/
+    Bus bus1; //get it from some database
+    Company comp1;
+    comp1.name = bus1.manufacturer.name;
+    get_phone_number(comp1);
 }
 \end{minted}
-\caption{Fake an output table using setf(ios::left)}
-\label{source_code_3}
-\end{listing}
 
-% ---- end subsection
+To make a one-liner out of the main part that is less error prone we require a 'conversion'
+in the Make class as follows:
 
-\subsection{Constants and enumerations}
-Enumerations are essentially of type const int. Constants are usually declared as global variables to
-make them accessible to all functions.
-\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-enum color {RED, GREEN, BLUE, YELLOW}; //or
-enum color {RED=2, GREEN, BLUE=5, YELLOW};
-\end{minted}
-\noindent
-In the above, the first line is shorthand for \ldots
-\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-const int RED = 0, GREEN = 1, BLUE = 2, YELLOW = 3;
-\end{minted}
-\noindent
-\ldots and the second line is shorthand for \ldots
-\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-const int RED = 2, GREEN = 3, BLUE = 5, YELLOW = 6;
-\end{minted}
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+struct Make
+{
+	char* manufacturer;
+	char* model;
+    
+	//------ CASTNIG HERE ---------
+	operator Company()
+    	{
+		Company result;
+        		result.name = manufacturer;
+	        return result;
+    	}
+    	//-----------------------------
+};
 
-\noindent
-\underline{A quick example}
-\begin{listing}[h]
-\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-enum Seasons {spring, summer, autumn, winter}
 int main()
 {
-	Seasons season_1 = winter;
-		//'Seasons' is the type name
-		//'season_1' is the variable name
-		//'winter' is the value (which would be the const int 3
+    	get_phone_number(get_bus_form_database().make);
+    	//The outer function is then called with an object
+    	//of make
 }
 \end{minted}
-\caption{Basic enum example}
-\label{source_code_4}
+\caption{Overloading type conversions (i.e. casts)}
+\label{source_code_1}
 \end{listing}
-
-% ---- end subsection
-
-\subsection{Expressions}
-\subsubsection*{Arithmetic}
-
-\begin{table}[h]
-\begin{center}
-\renewcommand{\arraystretch}{1.8}
-\begin{tabular}{ m{4cm} m{11cm}} 
-\hline
- +, -, *, / & are basic arithmetic operators \\ 
-\hline
-\% & Modulo operator (note if numerator is negative the result is negative) \\  
- \hline
- number += 1 & Adds one to number (this also works with the other operators above\\
-\hline
-a *= c1 + c2 & Is same as a = a * (c1 + c2)\\
-\hline
-$n++$ OR $n--$ & Is same as n += 1 (n is in/de-cremented by 1, AFTER the line of code has executed\\
-\hline
-$++n$ OR $--n$ & Is same as n-= 1 (n is in/de-cremented BEFORE the line of code has executed\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Summary of arithmetic operators}
-\label{table_1}
-\end{table}
-
-
-\subsubsection*{Boolean operators}
-\begin{itemize}
-	\item \textgreater, \textless, \textgreater=, \textless= \ldots used for greater, smaller, etc.
-	\item == \ldots \emph{equals}
-	\item != \ldots \emph{does not equal}
-	\item \&\& \ldots \emph{and}
-	\item \textpipe \textpipe \ldots \emph{or}	 
-\end{itemize}
-
-
-\subsubsection*{Precedence of operations}
-When in doubt - or to make program more readable - just use brackets.
-\begin{itemize}
-	\item The unary operators \ldots +, -, !, ++, and $--$
-	\item The binary arithmetic operations \ldots *, /, \%
-	\item The binary arithmetic operations \ldots +, -
-	\item The boolean operations \ldots \textgreater, \textless, \textgreater=, \textless=
-	\item The boolean operations \ldots ==, !=
-	\item The boolean operation \ldots \&\&		
-	\item The boolean operation \ldots \textpipe \textpipe
-\end{itemize}
-
-
-% ------------- END SECTION
-
-
-
-
-
-
 
 
 

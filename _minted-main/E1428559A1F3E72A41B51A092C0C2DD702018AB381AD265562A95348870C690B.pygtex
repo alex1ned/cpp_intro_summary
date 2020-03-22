@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}ifndef CLASS\PYGZus{}HEADER\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}define CLASS\PYGZus{}HEADER\PYGZus{}H}
+
+\PYG{k}{class} \PYG{n+nc}{Class\PYGZus{}header}\PYG{p}{\PYGZob{}\PYGZcb{};}
+
+\PYG{c+cp}{\PYGZsh{}endif}
+\end{Verbatim}

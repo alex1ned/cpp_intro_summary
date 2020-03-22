@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Creation of namespace}
+\PYG{k}{namespace} \PYG{n}{name\PYGZus{}of\PYGZus{}namespace}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//some code (e.g. class definition goes here)}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{//Using a namespace}
+\PYG{k}{using} \PYG{k}{namespace} \PYG{n}{name\PYGZus{}of\PYGZus{}namespace}\PYG{p}{;}
+\end{Verbatim}

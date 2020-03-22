@@ -1,0 +1,31 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Bus}\PYG{o}{*} \PYG{n+nf}{getFullBus}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//Two dynamic busses}
+	\PYG{n}{Bus}\PYG{o}{*} \PYG{n}{b1} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Bus}\PYG{p}{;}
+	\PYG{n}{Bus}\PYG{o}{*} \PYG{n}{b2} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Bus}\PYG{p}{;}
+	
+	\PYG{c+c1}{//Three dynamic Passengers}
+	\PYG{n}{Passenger}\PYG{o}{*} \PYG{n}{holger} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Passenger}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}holger\PYGZdq{}}\PYG{p}{);}
+	\PYG{n}{Passenger}\PYG{o}{*} \PYG{n}{will} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Passenger}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}will\PYGZdq{}}\PYG{p}{);}
+	\PYG{n}{Passenger}\PYG{o}{*} \PYG{n}{fidelis} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Passenger}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}fidelis\PYGZdq{}}\PYG{p}{);}
+	
+	\PYG{c+c1}{//Let people enter the busses}
+	\PYG{n}{b1}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{havePassengerEnter}\PYG{p}{(}\PYG{n}{holger}\PYG{p}{);}
+	\PYG{n}{b2}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{havePassengerEnter}\PYG{p}{(}\PYG{n}{will}\PYG{p}{);}
+	\PYG{n}{b2}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{havePassengerEnter}\PYG{p}{(}\PYG{n}{fidelis}\PYG{p}{);}
+	
+	\PYG{c+c1}{//Let Fidelis leave (no longer is in occupants array of the b2}
+	\PYG{c+c1}{//but the dynamic variable fidelis is still in stack frame}
+	\PYG{n}{b2}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{havePassengerLeave}\PYG{p}{(}\PYG{n}{fidelis}\PYG{p}{);}
+	
+	\PYG{c+c1}{//Free up memory}
+	\PYG{k}{delete} \PYG{n}{b2}\PYG{p}{;} \PYG{c+c1}{//deletes Bus instance (is it a problem that will is still in b2?)}
+	\PYG{k}{delete} \PYG{n}{will}\PYG{p}{;}
+	\PYG{k}{delete} \PYG{n}{fidelis}\PYG{p}{;}
+	
+	\PYG{c+c1}{//Return instance b1 (which has now ownership of \PYGZsq{}holger\PYGZsq{}).}
+	\PYG{c+c1}{//To ensure objects owned by other objects are deleted \PYGZhy{} use destructors.}
+	\PYG{k}{return} \PYG{n}{b1}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

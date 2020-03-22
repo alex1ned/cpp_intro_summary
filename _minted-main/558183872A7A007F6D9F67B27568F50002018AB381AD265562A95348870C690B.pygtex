@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{Date}\PYG{o}{*} \PYG{n}{today}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{,} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{2016}\PYG{p}{);}
+	
+	\PYG{p}{\PYGZob{}}	\PYG{c+c1}{//This creates a syntactic scope}
+		\PYG{n}{Date}\PYG{o}{*} \PYG{n}{alsoToday} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Date}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{2016}\PYG{p}{);}
+		\PYG{n}{today} \PYG{o}{=} \PYG{n}{alsoToday}\PYG{p}{;}
+		\PYG{c+c1}{//Note that after the above line, today will not be deletable, hence}
+		\PYG{n}{before} \PYG{n}{assigning} \PYG{n}{you} \PYG{n}{need} \PYG{n}{to} \PYG{k}{delete}
+		\PYG{c+c1}{//After reassigning today (after it was deleted) you can then delete}
+		\PYG{c+c1}{//it again in the outer scope .. alsoToday would never have}
+		\PYG{c+c1}{//to be deleted.}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{c+c1}{//\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZgt{} Mistake: Also today is not visible here hence you cannot access today}
+	\PYG{c+c1}{//as well}
+	\PYG{k}{delete} \PYG{n}{today}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

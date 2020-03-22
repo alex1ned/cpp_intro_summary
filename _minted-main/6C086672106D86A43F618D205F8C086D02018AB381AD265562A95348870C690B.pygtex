@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{MAX\PYGZus{}NAME\PYGZus{}SIZE} \PYG{o}{=} \PYG{l+m+mi}{30}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//Create two string objects}
+	\PYG{n}{StringVar} \PYG{n}{yourName}\PYG{p}{(}\PYG{n}{MAX\PYGZus{}NAME\PYGZus{}SIZE}\PYG{p}{);} \PYG{c+c1}{//use of second constructor}
+	\PYG{n}{StringVar} \PYG{n}{ourName}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Borg\PYGZdq{}}\PYG{p}{);} \PYG{c+c1}{//uses third constructor}
+	
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}What  is your name? \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+	\PYG{n}{yourName}\PYG{p}{.}\PYG{n}{inputLine}\PYG{p}{(}\PYG{n}{cin}\PYG{p}{);}
+	
+	\PYG{c+c1}{//This only works because we have overloaded the \PYGZsq{}\PYGZlt{}\PYGZlt{}\PYGZsq{} operator}
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}We are: \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{ourName} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}We will meet again \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{yourName} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{using} \PYG{n}{ns1}\PYG{o}{::}\PYG{n}{fun1}\PYG{p}{;}
+\PYG{k}{using} \PYG{n}{ns2}\PYG{o}{::}\PYG{n}{fun2}\PYG{p}{;}
+\end{Verbatim}

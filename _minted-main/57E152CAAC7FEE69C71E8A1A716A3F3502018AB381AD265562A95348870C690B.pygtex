@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{Coordinate}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{n}{Coordinate}\PYG{p}{();} \PYG{c+c1}{//default constructor}
+	\PYG{n}{Coordinate}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{);}
+	\PYG{n}{Coordinate}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{y}\PYG{p}{);}
+
+\PYG{k}{private}\PYG{o}{:}
+	\PYG{k+kt}{int} \PYG{n}{x} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{c+c1}{//Default value}
+	\PYG{k+kt}{int} \PYG{n}{y} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{c+c1}{//Default value}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{n}{Coordinate}\PYG{o}{::}\PYG{n}{Coordinate}\PYG{p}{()} \PYG{p}{\PYGZob{}\PYGZcb{}}
+\PYG{n}{Coordinate}\PYG{o}{::}\PYG{n}{Coordinate}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x\PYGZus{}val}\PYG{p}{)} \PYG{o}{:} \PYG{n}{x}\PYG{p}{(}\PYG{n}{x\PYGZus{}val}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
+\end{Verbatim}

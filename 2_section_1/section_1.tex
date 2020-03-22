@@ -1,108 +1,541 @@
-\section{Introduction}
+\section{C++ introduction to classes}
 
-\subsection{A basic C++ program}
-\begin{listing}[h]
+The below illustrates the declaration, definition, and use of a basic classes. Also note that
+classes can do the following \ldots
+
+\begin{itemize}
+	\item A class can be a member variable of another class.
+	\item A class can be a formal function parameter.
+	\item A function may return an object - i.e. the return value of a function may be
+	an object type.
+\end{itemize}
+
+%------------------------------------------------------------
+\subsection{Classes basics}
+
+\subsubsection*{Declaration of class goes into separate header file or where globals are declared}
+\begin{listing}[H]
 \begin{minted}
-[
-frame=lines,
-linenos,
-fontsize=\small,
-obeytabs=true,
-tabsize=3
-]
-{c++}
-#include <iostream>
-
-using namespace std;
-
-int main() 
-{  
-	cout << "Hello World!" << endl;
-	return 0;
-}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+Class Day_of_year // where Day_of_year is called the type qualifier
+{
+public:    //<< indictates that methods and objects have no restriction on them
+	void output(); //<-- This is a member function (called methods)
+	int month;    //<-- These are member variabes
+	int day;
+}; // don't forget the semicolon
 \end{minted}
-\caption{`Hello World!' code}
+\caption{Declaration of a class}
 \label{source_code_1}
 \end{listing}
 
-\ldots where \ldots
 
-\begin{itemize}	
-	\item \emph{\#include \textless iostream\textgreater} is the include directive that tells the compiler and linker that the program
-	will need to be linked to a library of routines that handle input from the keyboard and output to the screen (i.e. the cin and cout
-	statements). The header file ``iostream'' constains the information about this library 
-	\item \emph{using namespace std;} is the using directive
-	\begin{itemize}
-		\item C++ divides (e.g. cin and cout) into subcollections of names called `namespaces'
-		\item Here it says, the program will be using names that have a meaning in the `std' namespace
-	\end{itemize}	
-	\item \emph{return 0;} returns 0 to the OS of the computer to signal that the program has completed successfully
-	(the statement is optional)
-		
-\end{itemize}
 
-\subsection{Some terminology and special characters}
+\subsubsection*{Definitions of member functions of the class go into a separate file}
+For the function declaration you need to use the scope resolution operaotr \emph{::}.
+Note that in member function definitions you do can directly refer to the member 
+variables such as \emph{month} or \emph{day}.
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void Day_of_year::output()
+{
+	cout << month;
+	cout << day << endl;
+}
+\end{minted}
+\caption{Definition of class member functions}
+\label{source_code_1}
+\end{listing}
+
+
+
+\subsubsection*{Create an instance of a class and refer to member variables}
+An instance of a class is like a variable name which has the \emph{class name}
+as its underlying datatype.
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+int main()
+{
+	Day_of_year today, birthday //create two instances of a class
+    
+	//assign the member variables of the instance
+	today.month = 10;
+	today.day = 26;
+    
+	//call the method on the instance and print it out
+	cout << today.output();
+}
+\end{minted}
+\caption{Create an instance of a class and refer to its members}
+\label{source_code_1}
+\end{listing}
+
+
+
+
+%------------------------------------------------------------
+\subsection{Make all member variables and as many member functions as possible private}
+To do that you should write accessor and mutator functions. To ensure that member
+variables cannot be accessed by functions other than member functions (and friendly functions),
+use the \emph{private} keyword.
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+Class Day_of_year
+{
+public:    
+	void input();
+	void output();
+	int get_month();
+	int get_day();
+    
+	void set(int new_month, int new_day);
+	// Reset date through arguments of function
+
+private:
+	void check_date();
+	int month;
+	int day;
+};
+\end{minted}
+\caption{Make member variables private and add accessor and mutator functions}
+\label{source_code_1}
+\end{listing}
+
+
+\subsubsection*{Use of the assignment operator for class objects}
+Using the assignment operator on classes objects will set the member variables of one
+class equal to that of the other (this also applies for private member variables).
+
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+Day_of_year today, tomorrow;
+today = tomorrow; // is legal
+
+// equivalently you can write ...
+
+today.month = tomorrow.month;
+today.day = tomorrow.day;
+\end{minted}
+
+
+
+
+
+%------------------------------------------------------------
+\subsection{Programming example: Bank account class}
+The below is a bank account class with a balance and interest rate. Class
+has member functions that compounds the balance and prints, prints out the
+values and sets the member variables to a value.
+
+
+\subsubsection*{Interface}
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+class BankAccount
+{
+public:
+	//Sets the member variables to the values used as arguments
+	void set(int dollars, int cents, double rate);
+	
+	//Updates the account balance according to the initial balance and the rate
+	void update();
+	
+	//Returns the account balance
+	double getBalance();
+	
+	//Returns the rate
+	double getRate();
+	
+	
+	void output(ostream& out);
+	
+private:
+	double balance;
+	double iRate;
+	double fraction(double percent);
+		//converts pct to fraction (e.g. fraction(50.3) returns 0.503)
+};
+\end{minted}
+\caption{Bank account class - interface}
+\label{source_code_1}
+\end{listing}
+
+
+\subsubsection*{Implementation}
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void BankAccount::set(int dollars, int cents, double rate)
+{
+	if (dollars < 0 || cents < 0 || rate < 0)
+	{
+		cout << "Illegal";
+		return;
+	}
+	balance = dollars + 0.01 * cents;
+	iRate = rate;
+}
+
+void BankAccount::update()
+{
+	balance += balance * fraction(iRate);
+}
+
+double BankAccount::fraction(double percent)
+{
+	return (percent / 100);
+}
+
+double BankAccount::getBalance()
+{
+	return balance;
+}
+
+double BankAccount::getRate()
+{
+	return iRate;
+}
+
+void BankAccount::output(ostream& out)
+{
+	out.setf(ios::fixed);
+	out.setf(ios::showpoint);
+	out.precision(2);
+	out << "Account balance $" << balance;
+	out << "Interest rate " << i_rate << "%" <<endl;
+}
+\end{minted}
+\caption{Bank account class - implementation}
+\label{source_code_1}
+\end{listing}
+
+
+\subsubsection*{Use in main function}
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+int main()
+{
+	BankAccount account1, account2; //two instances
+	
+	account1.set(123, 99, 3.0); //normally use a constructor for this initialisation
+	account1.output(cout); //prints it to the screen
+	account1.update(); //adds the interest to the balance
+	
+	account2 = account1; //sets all member variables equal
+	account2.output(cout);
+}
+\end{minted}
+\caption{Bank account class - used in a main function}
+\label{source_code_1}
+\end{listing}
+
+
+%------------------------------------------------------------
+\subsection{Constructor for initialisation}
+
 \begin{itemize}
-	\item \emph{Variable declaration}: signals the compiler to set aside enough space for a
-	particular type -- the variable has a random/unpredictable value.
-	\item \emph{Variable assignment}: assigns a value to a variable (also reassign).
-	\item \emph{Variable initialisation}: assigns a value to a variable at the point of declaration (note
-	that `cont' variables can only be initialised and not assigned and are thus \emph{not} reassignable).
-	\item \emph{Function declaration}: tells the compiler the existence of the function (before the
-	\emph{main} function).
-	\item \emph{Function definition}: defines the behaviour of the function (usually after the
-	\emph{main} function unless function is defined at point of declaration).
-	\item \emph{\textbackslash{}n} or \emph{endl} \ldots are new-line characters (but \emph{endl} also
-	flushes the output buffer.
-	\item \emph{\textbackslash{}t} \ldots is the tab character.
-	\item \emph{\textbackslash{}0} \ldots is the sentinel character (used as last character in a \emph{char array}
-	to mark it as a c-string variable.
+	\item Is a member function that is used to initialise some or all member variables
+	of an object at point of object declaration.
+	\item The constructor is automatically called when an object is declared.
+	\item You can overload the constructor (i.e. have more than one constructor).
+	\item It is typical to have one default constructor (with no parameters).
+	\item You can define a constructor like other member functions but note that
+	\begin{enumerate}
+		\item Must have same name as class.
+		\item Cannot return a value (not even void).
+		\item Is in public space of the class definition (otherwise you cannot create
+		an object).
+	\end{enumerate}
+\end{itemize}
+
+\subsubsection*{Syntax when using a constructor}
+The below shows how to declare a constructor in the class definition and then 
+defining the constructor in the function definition file used for the class. This version
+is not truly recommendable because this version does not truly initialise the member
+variables but rather assigns them some values. Hence, if you have a const member variable
+the use of this constructor would be illegal. After the below example you can see how to truly
+initialise member variables. 
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//In header define the class interface
+class BankAccount
+{
+public:
+	//This is the constructor function declaration
+	BankAccount(int dollars, int cents, int rate);
+private:
+	double balance;
+	double iRate;
+}
+
+//In function definition file add the constructor definition
+BankAccount::BankAccount(int dollars, int cents, int rate)
+{
+	if (dollars < 0 || cents < 0 || rate < 0)
+	{
+		cout << "Illegal";
+		exit(1);
+	}
+	balance = dollars + 0.01*cents;
+	iRate = rate;
+}
+\end{minted}
+\caption{Syntax when using a constructor}
+\label{source_code_1}
+\end{listing}
+
+Having included the constructor you can now declare an instance using the following \ldots
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+BankAccount account1(10, 50, 2.0);
+BankAccount account2(500, 0, 4.5);
+\end{minted}
+
+
+\subsubsection*{Constructor with real initialisation}
+The below shows two constructor definitions where the member variables are initialised
+in the initialisation section after the colon.
+
+The initialisation section \ldots
+\begin{itemize}
+	\item Consists of a : followed by a list of some or all member variables separated by
+	commas.
+	\item Each member variable is followed by its initialising value in parentheses.
+	\item The initialising values can be given in terms of the constructor parameters.
+\end{itemize}
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//In class definition file
+class BankAccount
+{
+public:
+	//Default constructor that sets balance and rate to 0
+	BankAccount();
+	
+	//Another constructor
+	BankAccount(int dollars, int cents, double rate);
+	
+private:
+	double balance;
+	double iRate;
+};
+
+//In function definition file for the class
+BankAccount::BankAccount() : balance(0), iRate(0) {//no need for body}
+
+BankAccount::BankAccount(int dollars, int cents, double rate) :
+	balance(dollars + 0.01*cents), iRate(rate)
+{
+	if (dollars < 0 || cents < 0 || rate < 0)
+	{
+		cout << "Illegal";
+		exit(1);
+	}
+}
+\end{minted}
+\caption{Syntax for constructor with initialisation section}
+\label{source_code_1}
+\end{listing}
+
+Note that the constructor functions could also directly be defined at declaration in the 
+class definition.
+
+\subsubsection*{Use of constructor when declaring a dynamic variable}
+Initialisers can also be specified if the object is created as a dynamic variable:
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+BankAccount* my_account = new BankAccount(300, 3.2);
+\end{minted}
+
+
+\subsubsection*{Constructor delegation}
+\begin{itemize}
+	\item Allows one constructor to call another one.
+	\item E.g. set the default constructor to invoke the constructor with two parameters.
+\end{itemize}
+
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+Coordinate::Coordinate() : Coordinate(99, 99) {}
+\end{minted}
+
+
+\subsubsection*{Constructors with default arguments}
+Like with all other functions you can use default arguments in constructors. The default
+values for the member variables can, however, also be directly in the class definition when
+the member variables are declared -- see two examples below.
+
+The problem with the second constructor is that \emph{occupancy} may not be initialised.
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+int getCapacityFromRegistry(char* serialNumber); // imagine you have a database somewhere
+class Bus
+{
+	int capacity;
+	float occupancy;
+	char* serialNumber;
+public:
+        //Here in construct. declaration we set def. param of occupancy to 0
+        Bus(int capacity, float occupancy = 0) : capacity(capacity), occupancy(occupancy){};
+		//If you call Bus(4); then capacity is 4 and occupancy is 0
+		//If you call Bus(4, 2); then capacity is 4 and occupancy is 2
+        
+        //In this constructor definition we set capacity to what we got rom the registry
+        Bus(char* serialNumber) : serialNumber(serialNumber)
+        {
+		capacity = getCapacityFromRegistry(serialNumber);
+        };
+}
+\end{minted}
+\caption{Constructor with default arguments 1/2}
+\label{source_code_1}
+\end{listing}
+
+To make sure all member variables are initialised we can also define default values where
+the variables are declared.
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+int getCapacityFromRegistry(char* serialNumber); // imagine you have a database somewhere
+class Bus
+{
+	//Set some default values here...
+	int capacity = 99;
+	float occupancy = 0;
+	char* serialNumber = "unregistered";
+public:
+        Bus(int capacity, float occupancy = 0) : capacity(capacity), occupancy(occupancy){};
+        
+        Bus(char* serialNumber) : serialNumber(serialNumber) {};
+        		//Using this constructor then capacity and occupancy will be initialised
+		//at 99 and 0 respectively.
+}
+\end{minted}
+\caption{Constructor with default arguments 2/2}
+\label{source_code_1}
+\end{listing}
+
+
+
+%------------------------------------------------------------
+\subsection{Member initialisers using default values}
+
+\begin{itemize}
+	\item Allows to set default values for member variables.
+	\item When object is created, member variables are automatically initialised to these
+	specified values.
+\end{itemize}
+
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+class Coordinate
+{
+public:
+	Coordinate(); //default constructor
+	Coordinate(int x);
+	Coordinate(int x, int y);
+
+private:
+	int x = 1; //Default value
+	int y = 2; //Default value
+};
+
+Coordinate::Coordinate() {}
+Coordinate::Coordinate(int x_val) : x(x_val) {}
+\end{minted}
+
+With the above class if you call Coordinate c1; then  x is 1 and y is 2 (the default
+values). If you call Coordinate c2(10), then x is 1 and y is 10.
+
+
+
+%------------------------------------------------------------
+\subsection{A note on abstract data types}
+To define a class so that it is an ADT we need to separate the specification
+of how the type is used from the details of how the type is implemented.
+The separation should be complete such that you can change the implementation
+of the class w/o needing to make any changes in any program that uses the class ADT.
+
+Follow these rules:
+\begin{itemize}
+	\item Make all member variables private.
+	\item Make the functions the class user needs to use public and sufficiently explain
+	their use.
+	\item Make any helping functions private member functions.
+	\item Separate the interface from the implementation.
 \end{itemize}
 
 
-\subsection{Some commonly used predefined functions}
 
-\begin{table}[h]
-\begin{center}
-\renewcommand{\arraystretch}{1.8}
-\begin{tabular}{ m{3cm} m{8cm} m{3cm}} 
-\textbf{Name} & \textbf{Description} & \textbf{Library header}\\
-\hline
-sqrt(d) & Takes the square root of a \emph{real} number & cmath\\
-\hline
-pow(n, m) & Result of n to power of m & cmath\\
-\hline
-abs(i) & Absolute value of an integer & cstdlib\\
-\hline
-labs(i) & Absolute value of a long int & cstdlib\\
-\hline
-fabs(d) & Absolute value of a double & cmath\\
-\hline
-ceil(d) & Rounds UP a double & cmath\\
-\hline
-floor(d) & Rounds DOWN a double & cmath\\
-\hline
-srand() & Seed random number generator & cstdlib\\
-\hline
-rand() & Random number generator & cstdlib\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Commonly used predefined functions}
-\label{table_1}
-\end{table}
+%------------------------------------------------------------
+\subsection{Brief introduction to inheritance}
+Inheritance means a class that inherits aspects of another (parent class). It allows you to
+define a general class and then later define more specialised classes that add some new details.
 
+If class A is a derived class of some other class B, then class A has all the features of class B but
+also has added features. Class A is the child and class B the parent.
 
+\subsubsection*{Defining a derived class}
+Add a colon : followed by the keyword \emph{public} and the \emph{name of the parent} class to
+specify a derived class.
 
+The below is a derived class of the BankAccount class thus it inherits ALL member variables
+(balance, iRate) and all member functions from the BankAccount class.
 
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+class SavingsAccount : public BankAccount
+{
+public:
+	//Constructor
+	savingsAccount(int dollars, int cents, double rate);
+	
+	void deposit(int dollars, int cents);
+	void withdraw(int dollars, int cents);
+private:
+};
 
+//The definition of the SavingsAccount constructor calls the BankAccount constructor
+SavingsAccount::SavingsAccount(int dollars, int cents, double rate) :
+	BankAccount(dollars, cents, rate) {}
+\end{minted}
+\caption{Syntax for class inheritance}
+\label{source_code_1}
+\end{listing}
 
+With an instance such as SavingsAccount account(100, 50, 5.5) you can call functions of
+the BankAccount class such as account.output().
 
+We can go a step further and derive more specialised classes from the SavingsAccount class.
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+class CDAccount : public SavingsAccount
+{
+public:
+	CDAccount(int dollars, int cents, double rate);
+	int getDaysToMaturity();
+	void decrementDaysToMaturity();
+private:
+	int daysToMaturity;
+};
+\end{minted}
+\caption{Second level of class inheritance}
+\label{source_code_1}
+\end{listing}
 
-
-
-
-
-
-
-
+The CDAccount class access to all member variables and functions of SavingsAccount
+and BankAccount.

@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n+nf}{getCapacityFromRegistry}\PYG{p}{(}\PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{serialNumber}\PYG{p}{);} \PYG{c+c1}{// imagine you have a database somewhere}
+\PYG{k}{class} \PYG{n+nc}{Bus}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//Set some default values here...}
+	\PYG{k+kt}{int} \PYG{n}{capacity} \PYG{o}{=} \PYG{l+m+mi}{99}\PYG{p}{;}
+	\PYG{k+kt}{float} \PYG{n}{occupancy} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{serialNumber} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}unregistered\PYGZdq{}}\PYG{p}{;}
+\PYG{k}{public}\PYG{o}{:}
+        \PYG{n}{Bus}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{capacity}\PYG{p}{,} \PYG{k+kt}{float} \PYG{n}{occupancy} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{o}{:} \PYG{n}{capacity}\PYG{p}{(}\PYG{n}{capacity}\PYG{p}{),} \PYG{n}{occupancy}\PYG{p}{(}\PYG{n}{occupancy}\PYG{p}{)\PYGZob{}\PYGZcb{};}
+
+        \PYG{n}{Bus}\PYG{p}{(}\PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{serialNumber}\PYG{p}{)} \PYG{o}{:} \PYG{n}{serialNumber}\PYG{p}{(}\PYG{n}{serialNumber}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{};}
+        		\PYG{c+c1}{//Using this constructor then capacity and occupancy will be initialised}
+		\PYG{c+c1}{//at 99 and 0 respectively.}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

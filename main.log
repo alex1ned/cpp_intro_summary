@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.10)  8 FEB 2020 13:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.10)  22 MAR 2020 21:49
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1094,181 +1094,103 @@ runsystem(rm main.aex)...executed.
 
 (./main.aux
 
-LaTeX Warning: Label `table_1' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code_2' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `table_1' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `table_1' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `table_1' multiply defined.
-
-
-LaTeX Warning: Label `table_1' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
-
-
-LaTeX Warning: Label `source_code' multiply defined.
+LaTeX Warning: Label `source_code_1' multiply defined.
 
 )
 \openout1 = `main.aux'.
@@ -1395,696 +1317,348 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 3.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 17.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 17.
+)
+\tf@toc=\write7
+\openout7 = `main.toc'.
+
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
 Make it at least 13.59999pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[1])
-\tf@toc=\write7
-\openout7 = `main.toc'.
-
- [2] (./main.lot)
+[1] (./main.lot)
 \tf@lot=\write8
 \openout8 = `main.lot'.
 
- [3] (./main.lof)
+ [2] (./main.lof)
 \tf@lof=\write9
 \openout9 = `main.lof'.
 
- [4] (./main.lol
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 22.
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/base/omlcmr.fd
-File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 22.
- [5])
+ [3] (./main.lol)
 \tf@lol=\write10
 \openout10 = `main.lol'.
 
- [6]
+ [4]
 (./2_section_1/section_1.tex
 \openout4 = `main.pyg'.
 
  (./_minted-main/default-pyg-prefix.pygstyle)
 (./_minted-main/manni.pygstyle)
-(./_minted-main/923844605B23C4A5DD58A7BCC208F13002018AB381AD265562A95348870C690
+(./_minted-main/D5516491FD0FFEEC3580B600F4FAC47002018AB381AD265562A95348870C690
 B.pygtex
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 4.
-)
-LaTeX Font Info:    Font shape `OML/cmr/m/it' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 31.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 55.
- (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 55.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-) [7] (./3_section_2/section_2.tex
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/475C093E2D18FD388CA38EA12C69DFD702018AB381AD265562A95348870C690
-B.pygtex
-LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 10.
-
+LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 8.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 ))
-[8]
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/EB0FE5E37ED200FB9DF5A0A3534B22B902018AB381AD265562A95348870C690
+(./_minted-main/8783353A35FA4FAD4234E8CB03B7E40D02018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/6DFD744C23B8DAB6C8598DCD4262B03C02018AB381AD265562A95348870C690
+(./_minted-main/FBBE3DFB80801156E2D8D1FB5E8038BD02018AB381AD265562A95348870C690
+B.pygtex) [5]
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/7F949B739B945D25CD8CFFC6FBA22CB302018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/981B7EA58856564EB97C945E0C31769C02018AB381AD265562A95348870C690
+(./_minted-main/6EB7299FD7E77EB7AA293082E54C277302018AB381AD265562A95348870C690
+B.pygtex) [6]
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/E0FFB66A2E2DB95524C507B5346A724302018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/766FFC635D480C2410F6C55AA70DFE2802018AB381AD265562A95348870C690
-B.pygtex [9])
+(./_minted-main/995A19144497315D1F8E9F5DA2E3D48302018AB381AD265562A95348870C690
+B.pygtex) [7]
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/C94CEE8EC0EC14B0C293B6A7DA8099EC02018AB381AD265562A95348870C690
+(./_minted-main/03EB9889EBBB4D87AB609C1637A6480802018AB381AD265562A95348870C690
+B.pygtex) [8]
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/A9C3613E60C1AACA3043618CDE5B83AD02018AB381AD265562A95348870C690
+B.pygtex) [9]
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/1340A0A1875D5B6265524E5B63142D7B02018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/D42EA94C1A244B6E34F00A3CA573926D02018AB381AD265562A95348870C690
+(./_minted-main/BADC7CC987B47C7D9C4EDD80AE4991FB02018AB381AD265562A95348870C690
+B.pygtex) [10]
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/F6E046B912E20CDF215FF87A1FC2922202018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/B66864D8456B9AFCCEBB25D5B9803BD602018AB381AD265562A95348870C690
+(./_minted-main/2DA7122297309FA5CF2AC52BEC5B33B202018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/758E52DCEF3E08518FF1DDA5A053064B02018AB381AD265562A95348870C690
+(./_minted-main/1263453D092571917588672AF67B693A02018AB381AD265562A95348870C690
+B.pygtex) [11]
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/E514E9ACB73D44DBE5AE11D86911883002018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/C124F8AB626CE11C18BBEEB922D6CAF402018AB381AD265562A95348870C690
-B.pygtex)
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[10]) [11] (./4_section_3/section_3.tex
+(./_minted-main/57E152CAAC7FEE69C71E8A1A716A3F3502018AB381AD265562A95348870C690
+B.pygtex [12])
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/17D4F04B42D3C09345C8223E7184631402018AB381AD265562A95348870C690
-B.pygtex) [12]
+(./_minted-main/F337C479E4F4D7FA705C4E36F8C0497F02018AB381AD265562A95348870C690
+B.pygtex) [13]
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/C13F20F4366E53951B07552C889452B202018AB381AD265562A95348870C690
-B.pygtex)
+(./_minted-main/53198F43E8A57898E50462806D5E752202018AB381AD265562A95348870C690
+B.pygtex)) [14] (./3_section_2/section_2.tex
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/85DD4DEC0C8AD6773E448684D2A7083302018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/2014EA94EDE2FEA9C879AA7A82C4728A02018AB381AD265562A95348870C690
-B.pygtex) [13]) [14] (./5_section_4/section_4.tex
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/EBB82D667174E0FBAE802D1E65BD73F502018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/E04DF4E0A8EFEAF270D9FA0D725F5A1102018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/01A05D11CD7AC38C0E69BC8CF909F0ED02018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/BA7EAB61F366F7663B2CB0D49D3E641902018AB381AD265562A95348870C690
+(./_minted-main/F495C4F17B5564AF2CF4919331F18E6D02018AB381AD265562A95348870C690
 B.pygtex) [15]
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/834A384E0B9CC811AF85186544C2955502018AB381AD265562A95348870C690
+(./_minted-main/9C360925CEEBDF90780D00F41757513402018AB381AD265562A95348870C690
+B.pygtex)
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/50919A4EB529EF8110BCB09A49CDA2E602018AB381AD265562A95348870C690
 B.pygtex) [16]
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/1A9B2DFECF6BBADFD66712DAEE48864802018AB381AD265562A95348870C690
+(./_minted-main/3AEE94503EC2FE59BE82C5FE849218FE02018AB381AD265562A95348870C690
 B.pygtex) [17]
+LaTeX Font Info:    Font shape `OML/cmr/bx/n' in size <10.95> not available
+(Font)              Font shape `OML/cmm/b/it' tried instead on input line 228.
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/6342C6235C21D4B9A63BA1165C7F7E2402018AB381AD265562A95348870C690
+(./_minted-main/18941C8A497F2CA04425DE6823D041C802018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/A435BA74454D5D518DDA27FCF43CA1A002018AB381AD265562A95348870C690
+(./_minted-main/9D79F189F5B3215AECF6CD94793037C402018AB381AD265562A95348870C690
 B.pygtex) [18]
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/28B3F251278AFC57EE420C353F734DDD02018AB381AD265562A95348870C690
-B.pygtex) [19]) [20] (./6_section_5/section_5.tex
+(./_minted-main/6DE0E1D840C49F2F8EE6F0216DF3554D02018AB381AD265562A95348870C690
+B.pygtex) [19]
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/A5322BBCA82D08C866FE988A0316266F02018AB381AD265562A95348870C690
+(./_minted-main/92BA9E44ED990C8C4445744537F10FFD02018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/6FA23E525F1244A4D6D0B3D8E69CBA3602018AB381AD265562A95348870C690
+(./_minted-main/D546A95E81FFB7CD6C756BBE5474286202018AB381AD265562A95348870C690
+B.pygtex [20])
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/6BB502CCBD725B8A7E4CE802A1D4663202018AB381AD265562A95348870C690
+B.pygtex)) [21] (./4_section_3/section_3.tex
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/8198F4DA08C0CEABDBE2162483CDD56402018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/BEA17FA4B12989EA760CD8B0FF9B200B02018AB381AD265562A95348870C690
-B.pygtex)
+(./_minted-main/DC97FD564669DCAFB2F5E5BAFB839CFC02018AB381AD265562A95348870C690
+B.pygtex) [22]
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/1A473E7AF9A18C655259FA4BA307BFE902018AB381AD265562A95348870C690
-B.pygtex) [21]
+(./_minted-main/4F7BA0558468AAA021394FD6836B54DC02018AB381AD265562A95348870C690
+B.pygtex [23])
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/0BA54E4792589A01062385BB8310B30A02018AB381AD265562A95348870C690
-B.pygtex)
-LaTeX Font Info:    Font shape `OML/cmr/bx/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/b/it' tried instead on input line 122.
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/ADA80E4F6EA4B2255612858074B4863F02018AB381AD265562A95348870C690
-B.pygtex [22])
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/A8B9ABD3F8C7C046B9D39C96FFD2FA7602018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/0D0BD7CC50E40054FBBF61DBAFA9D3DD02018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/25732A9960BB31F697E73D7D5E9FEC4E02018AB381AD265562A95348870C690
-B.pygtex) [23]
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/64BD0A6A3C5B553444E6B7DBDCB8DA8402018AB381AD265562A95348870C690
+(./_minted-main/D7C376D184BC13D72EAC2E8ED48C999F02018AB381AD265562A95348870C690
 B.pygtex) [24]
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/92623ADF5CA1A7841ACB4C7CF0D25A0702018AB381AD265562A95348870C690
+(./_minted-main/787C9EA3E0BB9B75724F0E663360D66402018AB381AD265562A95348870C690
+B.pygtex)
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/350C18F4C33273A1F8603D51D84C10B202018AB381AD265562A95348870C690
 B.pygtex) [25]
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/184E06536C5F1553EADC4477269C133302018AB381AD265562A95348870C690
-B.pygtex)
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-) [26] (./7_section_6/section_6.tex
+(./_minted-main/EE5FB8DE16208144360535F5F530C2FD02018AB381AD265562A95348870C690
+B.pygtex) [26]
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/5DC5063345FD9421888AD7ABFD595C2602018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/67E813C6BE7B3EFEF2BCABA520DBE72102018AB381AD265562A95348870C690
+(./_minted-main/B994C8EF1C86DEA1F31123001C03988802018AB381AD265562A95348870C690
 B.pygtex) [27]
+Overfull \vbox (204.14825pt too high) has occurred while \output is active []
+
+
+[28]
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/3B2480F91B93B5477CA8E7A8BF2CF22802018AB381AD265562A95348870C690
+(./_minted-main/6C086672106D86A43F618D205F8C086D02018AB381AD265562A95348870C690
+B.pygtex)) [29] (./5_section_4/section_4.tex
+Overfull \hbox (9.06999pt too wide) in paragraph at lines 10--12
+[]\OT1/cmr/m/n/10.95 Put the mem-ber func-tion def-i-ni-tions into a cpp file (
+im-ple-men-ta-tion) e.g. class[]impl.cpp 
+ []
+
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/E1428559A1F3E72A41B51A092C0C2DD702018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/72DB22AD1D442CC1277C86E2F09EE2B402018AB381AD265562A95348870C690
+(./_minted-main/E785F73999849C44F5F490A11025AD4302018AB381AD265562A95348870C690
+B.pygtex) [30]
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/D4C74F9B23F2CC4983FE1DD72962AEAE02018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/DF861A9F785AE2D798D406AD3234911502018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/D6A258385D3B4A6D0DDD3A064059B32C02018AB381AD265562A95348870C690
-B.pygtex) [28]
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/AB0F8752F116BA1188D145F58AD243AB02018AB381AD265562A95348870C690
-B.pygtex) [29]
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/1A34CD81F8B3E918C23627217712D37402018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/899908E7E257D6047EDD23FB43B5C60A02018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/600409D7E693FE3D7014C3299E54622502018AB381AD265562A95348870C690
-B.pygtex [30])
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/A13E3E0BD8D8D129F6F95B548CB9608902018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/1E4F35CB8771EBAB96CF7BC65098A0EA02018AB381AD265562A95348870C690
+(./_minted-main/1A7D156EB999361377485F0DB690355302018AB381AD265562A95348870C690
 B.pygtex) [31]
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/A3F0A0C1724CEC1D2E5FDAEF4598341402018AB381AD265562A95348870C690
+(./_minted-main/17216197CDD5383817B0AA5ECC75A3C802018AB381AD265562A95348870C690
+B.pygtex)
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/6B8ABDDFBA68F7F19CF0F3EC168FD80C02018AB381AD265562A95348870C690
+B.pygtex)
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/E8568CC34595DFB0D8441D4F7EA9523F02018AB381AD265562A95348870C690
 B.pygtex) [32]
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/264F1718B8DD84697A4FFD77BEBFC6F602018AB381AD265562A95348870C690
+(./_minted-main/A4FB7DE6B31F7EACF7372CC43241CAD902018AB381AD265562A95348870C690
+B.pygtex) [33]) [34] (./6_section_5/section_5.tex
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/7320A4FD879C4B95738C600EC649BDEF02018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/DC8BEB5EB2C08536B579CCEB18D0085F02018AB381AD265562A95348870C690
+(./_minted-main/A55FC1A9BCCE465FC5E9687B2DD49E9102018AB381AD265562A95348870C690
+B.pygtex [35])
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/558183872A7A007F6D9F67B27568F50002018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/719ED1C5495516D86C08AA1C7DD5C1AC02018AB381AD265562A95348870C690
+(./_minted-main/A6AFCFEF5D0B3E2D53A283822D40D48B02018AB381AD265562A95348870C690
+B.pygtex [36])
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/C357F274B10BE115D25617DCC533AE3702018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/6FA7CC63134E1C9485BE63CAA8433C5402018AB381AD265562A95348870C690
-B.pygtex) [33]
+(./_minted-main/8478EB9C01344A982192B26366A8892C02018AB381AD265562A95348870C690
+B.pygtex [37])
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/733CC49A4D034A046FE32A41F1DE100902018AB381AD265562A95348870C690
+(./_minted-main/369BCDF7CC1664F60F40809A4BBA3AC202018AB381AD265562A95348870C690
+B.pygtex [38])
+\openout4 = `main.pyg'.
+
+
+(./_minted-main/C95BBBE5B5A530CB617490E89F55BE3402018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/86FAB131BB69AFECB23682D9B6CBB31B02018AB381AD265562A95348870C690
-B.pygtex)
-Underfull \hbox (badness 10000) in paragraph at lines 487--487
-[]|\OT1/cmr/bx/n/10.95 Return
- []
-
-
-Underfull \hbox (badness 1210) in paragraph at lines 506--508
-\OT1/cmr/m/n/10.95 is large enough to con-tain both
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[34]
+(./_minted-main/CE1C58C5B1197E383BB3F29BECC5150D02018AB381AD265562A95348870C690
+B.pygtex [39])
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/8034572F0D3F7B34E8F160A6B351665802018AB381AD265562A95348870C690
+(./_minted-main/ECD42B37B9053D8DB7C41EC8679E7C8202018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/F756595CA6732368D42D8B18F4DC97F502018AB381AD265562A95348870C690
-B.pygtex) [35]
+(./_minted-main/31672DD283B804D41C4D0C72E4219DBC02018AB381AD265562A95348870C690
+B.pygtex [40])
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/44BAB36BDFB7926100A9F71BE4F385E602018AB381AD265562A95348870C690
-B.pygtex) [36]
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/359FB84188576B5F6D8E7571D85B5BEA02018AB381AD265562A95348870C690
+(./_minted-main/BB3D576EE4CCD8ACF744B0AD2083418402018AB381AD265562A95348870C690
 B.pygtex)
 \openout4 = `main.pyg'.
 
 
-(./_minted-main/C4798423469EA84505630400AE3854DD02018AB381AD265562A95348870C690
-B.pygtex) [37]
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/1835D55F9691EA93FB41FD38C0D878B502018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/32A54DA41F11EA4C53FBC3737397102702018AB381AD265562A95348870C690
-B.pygtex) [38]) [39] (./8_section_7/section_7.tex
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/3322A3CEA091ED377155E728DBDD316602018AB381AD265562A95348870C690
-B.pygtex)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 44.
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/D8FC50859FA1CA61378E48187D9699BF02018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/4C4477D0265F9E53380A73D8E18BF19402018AB381AD265562A95348870C690
-B.pygtex) [40] [41] [42]
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/AA1CACB5222631DA62BFFB30306BAB7D02018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/77ECA9802628F2F6F0B622859030F27702018AB381AD265562A95348870C690
-B.pygtex)) [43] (./9_section_8/section_8.tex
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/D074337A3250F1B94E0D3952337A616802018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/A08EB0A5DA033E2BBA95AC363F73421C02018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/980794C2354A3D8AC43B984DFC63EA8502018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/7079EE3C96F452E48E7FB4AC8668965302018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/9382DBB04291550871BEBD64980F12AD02018AB381AD265562A95348870C690
-B.pygtex)) [44] (./10_section_9/section_9.tex
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/07D19254FE3DC00E16833F893CA60CBC02018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/9049531DDB6174C278F27D12B52C2DC702018AB381AD265562A95348870C690
-B.pygtex) [45]
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/6C58D8D2DBBFE7C95520C1E190876EBC02018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/645183F912413528ADDB9DC7E8176AA002018AB381AD265562A95348870C690
-B.pygtex) [46]
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/27E16726929FC9AF5617494CBF77ABB002018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/5708F6D67B3AF37B46B7D37CED3CAE7F02018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/AE0AAA9D551249FC3018CF8F510791A902018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/279E39C6749BF67C4F5E317F2D19E1CA02018AB381AD265562A95348870C690
-B.pygtex [47])
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/1718194C0E97581B102BD2BF826CFF9202018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/1D1FBB5BA1C2E116257D51C7479F570602018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/5B4C68BB358DC0CD4524EC77AF48AE1C02018AB381AD265562A95348870C690
-B.pygtex) [48]) [49] (./11_section_10/section_10.tex
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/643390BFF2D483B3784CBCBEA9FB485002018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/AD59EFB6A6570670CBB018A0C6D8D7C302018AB381AD265562A95348870C690
-B.pygtex) [50]
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/B7F62D2FEA0A5180C14A62CC034675A702018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/AB48618AE5BDBF6DDD49E2509D54113702018AB381AD265562A95348870C690
-B.pygtex) [51] [52]
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/6DC3F39468135A138EEC764DE800487902018AB381AD265562A95348870C690
-B.pygtex) [53]) [54] (./12_section_11/section_11.tex
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/43B2701223F5672147F6C3FA0FCBF33202018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/8D91DC87FC7C6DE65CCD7CFE7BB2F89D02018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/888D89B37657FB1F2CF1B7F66BC8C4BF02018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/421D6991D89F3A547F0CE2FEB6D8E6E702018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/7293D13FA748FEEE339582696CBD15D702018AB381AD265562A95348870C690
-B.pygtex [55])
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/36F3FA6B094AADA6E2DF2198A914306702018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/D447BA5B63A1B71F490BE7EA9274239A02018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/42F5C6F931CAE6B75C1FF33DEA8F092602018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/1DDD5A15192A78A31BDAAD8C90427F0202018AB381AD265562A95348870C690
-B.pygtex [56])) [57] (./13_section_12/section_12.tex
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/0FC602476E1B7F7AF5968D1122C8119B02018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/0435782CB247218F8C5178FBBAEC7A4B02018AB381AD265562A95348870C690
-B.pygtex) [58]
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/9DC986FF0A1C1F992B71A8DB46A5A8C202018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/1C3593F3A6DC8B1216F564A3C64D734402018AB381AD265562A95348870C690
-B.pygtex) [59]
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/EED8369BEADC06EB6121D5C4C3F756A502018AB381AD265562A95348870C690
-B.pygtex) [60]
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/4AD25618A995F3969CB4FEB5C1504FE602018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/F72E56ABADC49D08FFAC667C5134BCE902018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/A7613B2785722A5ABE30DFD9E6E6B93302018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/84C314D17BA8BEA959BAE01C15740EC602018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/D61C5579EAAE235BA93B7744B86C129802018AB381AD265562A95348870C690
-B.pygtex [61])
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/EF4C9BF2C9B68D99A7FB90E678829E6E02018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/D0B1ECE87160F9C7532BF7897F7D995302018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/4150CF36ED45DF4C598E0340D53036E102018AB381AD265562A95348870C690
-B.pygtex [62])
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/F309A06D1E763A84CE673450CEE37FEC02018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/6117B89FB61C2C32BDFD379FF4300E4B02018AB381AD265562A95348870C690
-B.pygtex [63])
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/3514CA9F71F1D01E587605BC83922B9302018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/B4D85B53B5D70AE1765A1A7AA09B96C502018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/BE004A7C56EA2E7F9C366C07CECF240D02018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/696A455FCD512809213E495DB85D54CE02018AB381AD265562A95348870C690
-B.pygtex [64])
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/5B2FA9C22818E62B37104C139253B6CB02018AB381AD265562A95348870C690
-B.pygtex [65])
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/E95C084F4E84F547EB6C5A0602E018EB02018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/5D0107017E5328AA1E45C6319A1B124402018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/622C8CE62CCA11B9BD73EA3E85C9B80E02018AB381AD265562A95348870C690
-B.pygtex)
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/335F52BB6268305EBCE33E70289AEE6D02018AB381AD265562A95348870C690
-B.pygtex [66])
-\openout4 = `main.pyg'.
-
-
-(./_minted-main/52CDA6A43C0C659E3AE3B417586D35FF02018AB381AD265562A95348870C690
-B.pygtex)) [67] (./main.aux)
+(./_minted-main/3BDBEDAA07B49EA984F9B755F90BE5B502018AB381AD265562A95348870C690
+B.pygtex [41])) [42] (./7_section_6/section_6.tex) [43]
+(./8_section_7/section_7.tex) [44] (./9_section_8/section_8.tex) [45]
+(./10_section_9/section_9.tex) [46] (./main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -2092,13 +1666,13 @@ runsystem(rm main.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 31979 strings out of 492616
- 802517 string characters out of 6129481
- 1015716 words of memory out of 5000000
- 34855 multiletter control sequences out of 15000+600000
- 15470 words of font info for 55 fonts, out of 8000000 for 9000
+ 31608 strings out of 492616
+ 779735 string characters out of 6129481
+ 992768 words of memory out of 5000000
+ 34692 multiletter control sequences out of 15000+600000
+ 15014 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,12n,98p,862b,744s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,12n,98p,862b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
@@ -2116,12 +1690,11 @@ l/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local
 /texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/
 texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfit1000.pfb></usr/local/te
 xlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texl
-ive/2019/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texliv
-e/2019/texmf-dist/fonts/type1/public/tipa/tipa10.pfb>
-Output written on main.pdf (68 pages, 539264 bytes).
+ive/2019/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on main.pdf (47 pages, 492642 bytes).
 PDF statistics:
- 305 PDF objects out of 1000 (max. 8388607)
- 211 compressed objects within 3 object streams
+ 233 PDF objects out of 1000 (max. 8388607)
+ 162 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  23 words of extra memory for PDF output out of 10000 (max. 10000000)
 

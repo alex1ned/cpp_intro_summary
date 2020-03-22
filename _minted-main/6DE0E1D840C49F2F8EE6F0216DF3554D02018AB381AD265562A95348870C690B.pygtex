@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//In class definition}
+\PYG{k}{class} \PYG{n+nc}{StringVar}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{k+kt}{void} \PYG{k}{operator} \PYG{o}{=}\PYG{p}{(}\PYG{k}{const} \PYG{n}{StringVar}\PYG{o}{\PYGZam{}} \PYG{n}{rightSide}\PYG{p}{);}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{//Function definition}
+\PYG{k+kt}{void} \PYG{n}{StringVar}\PYG{o}{::}\PYG{k}{operator} \PYG{o}{=} \PYG{p}{(}\PYG{n}{StringVar}\PYG{o}{\PYGZam{}} \PYG{n}{rightSide}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{newLength} \PYG{o}{=} \PYG{n}{strlen}\PYG{p}{(}\PYG{n}{rightSide}\PYG{p}{.}\PYG{n}{value}\PYG{p}{);}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{newLength} \PYG{o}{\PYGZgt{}} \PYG{n}{maxLength}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{k}{delete} \PYG{p}{[]} \PYG{n}{value}\PYG{p}{;}
+		\PYG{n}{maxLength} \PYG{o}{=} \PYG{n}{newLength}\PYG{p}{;}
+		\PYG{n}{value} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{char}\PYG{p}{[}\PYG{n}{maxLength} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{];}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{newLength}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{value}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{rightSide}\PYG{p}{.}\PYG{n}{value}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{n}{value}\PYG{p}{[}\PYG{n}{newLength}\PYG{p}{]} \PYG{o}{=} \PYG{l+s+sc}{\PYGZsq{}\PYGZbs{}0\PYGZsq{}}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

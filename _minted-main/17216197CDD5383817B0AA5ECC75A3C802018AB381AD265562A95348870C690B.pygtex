@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{namespace}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//Definition1}
+	\PYG{c+c1}{//...}
+	\PYG{c+c1}{//DefinitionN}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

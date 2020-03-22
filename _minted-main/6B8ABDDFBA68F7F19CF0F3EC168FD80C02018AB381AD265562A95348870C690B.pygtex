@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}ifndef DTIME\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}define DTIME\PYGZus{}H}
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+\PYG{k}{using} \PYG{k}{namespace} \PYG{n}{std}\PYG{p}{;}
+
+\PYG{c+c1}{//one grouping of the namespace (other is in implementation)}
+\PYG{k}{namespace} \PYG{n}{dtimealexander}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{class} \PYG{n+nc}{DigitalTime}
+	\PYG{p}{\PYGZob{}}
+		\PYG{c+c1}{//Class definition}
+	\PYG{p}{\PYGZcb{};}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+cp}{\PYGZsh{}endif}
+\end{Verbatim}

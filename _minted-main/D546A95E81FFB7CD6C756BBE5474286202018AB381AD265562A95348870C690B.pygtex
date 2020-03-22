@@ -1,0 +1,29 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{struct} \PYG{n}{Company}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{name}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+\PYG{k+kt}{int} \PYG{n+nf}{get\PYGZus{}phone\PYGZus{}number}\PYG{p}{(}\PYG{n}{Company} \PYG{n}{c}\PYG{p}{);}
+
+\PYG{k}{struct} \PYG{n}{Make}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{manufacturer}\PYG{p}{;}
+	\PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{model}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{k}{struct} \PYG{n}{Bus}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{capacity}\PYG{p}{;}
+	\PYG{n}{Make} \PYG{n}{make}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{//==============================}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+    \PYG{n}{Bus} \PYG{n}{bus1}\PYG{p}{;} \PYG{c+c1}{//get it from some database}
+    \PYG{n}{Company} \PYG{n}{comp1}\PYG{p}{;}
+    \PYG{n}{comp1}\PYG{p}{.}\PYG{n}{name} \PYG{o}{=} \PYG{n}{bus1}\PYG{p}{.}\PYG{n}{manufacturer}\PYG{p}{.}\PYG{n}{name}\PYG{p}{;}
+    \PYG{n}{get\PYGZus{}phone\PYGZus{}number}\PYG{p}{(}\PYG{n}{comp1}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

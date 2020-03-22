@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Declare DESTRUCTOR in class definition}
+\PYG{k}{class} \PYG{n+nc}{StringVar}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{o}{\PYGZti{}}\PYG{n}{StringVar}\PYG{p}{();}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{//Define DESTRUCTOR}
+\PYG{n}{StringVar}\PYG{o}{::\PYGZti{}}\PYG{n}{StringVar}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{delete} \PYG{p}{[]} \PYG{n}{value}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

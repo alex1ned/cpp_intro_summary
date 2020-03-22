@@ -1,348 +1,461 @@
-\section{Files and streams}
+\section{Introduction to memory management}
 
+C++ does not, like some other programming languages (Java, Python) collect garbage
+(i.e. variables that cannot be reached from the stack) and does not automatically delete
+them. Hence, whenever dynamic memory (heap memory) is created these need to be
+deleted at some point.
+
+The problem with automatic garbage collection (GC) is that it is tricky to get fast, given it
+is single threaded. GC might trigger at any moment which is bad for predictable runtime
+and predictable memory consumption.
+
+Having said that, there are libraries for automatic GC in C++.
+
+You can find out if you have memory leaks using \emph{valgrind}.
+
+%------------------------------------------------------------------------------------------------------------
+\subsection{Common memory management errors}
+
+\subsubsection*{Stack (local variables) memory errors}
 \begin{itemize}
-	\item A file is just a linear sequence of \emph{characters}.
-	\item A stream is a channel on which data is passed from senders to receivers.
-	\item Streams allow travel in only one direction (out from the program on an output
-	stream or received from the program on an input stream.
-	\item The standard input stream \emph{cin} is connected to the keyboard and 
-	the standard output stream is connected to the monitor \emph{cout}.
-	\item To use streams we need to include the \emph{fstream} header file.
+	\item Reading/writing to memory out of the bounds of a static array.
+	\item Function pointer corruption: Invalid passing of function pointer
+	and thus a  bad call to a function (accessing a reference to a dead variable).
+\end{itemize}
+
+\subsubsection*{Heap memory errors}
+\begin{itemize}
+	\item Memory allocation error (malloc() \& new; can return NULL).
+	\item Attempting to free memory that was already freed or that was never allocated.
+	\item Attempting to read/write memory already freed or that was never allocated
+	(e.g. because an object is in automatic memory).
+	\item Reading/writing to memory out of the bounds of a dynamically allocated array
+	(leaking memory).
 \end{itemize}
 
 
-\subsection{Creating \& opening streams and checking for failure}
-\subsubsection*{Creating a stream}
+%------------------------------------------------------------------------------------------------------------
+\subsection{Simple examples where dynamic memory is not properly freed (w/o classes)}
 
-Creating a stream is a bid like a variable declaration. The below creates an instance of the
-the class \emph{ifstream}, called in\_stream, and \emph{ofstream}, called out\_stream.
-
-\begin{listing}[H]
+\subsubsection*{Mistake - try to access an already freed memory address}
+The below will not compile because you try to access an already freed address.
 \begin{minted}
 [frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-#include <fstream>
-
-ifstream in_stream;
-ofstream out_stream;
-\end{minted}
-\caption{Creating a stream}
-\label{source_code}
-\end{listing}
-
-\subsubsection*{Connecting and disconnecting streams to files}
-Use the member functions \emph{open} and \emph{close} - remember to always close. Also note that
-when opening an output stream, the contents of the file are deleted and is then ready for new input.
-Closing an output stream will also put an EOF marker at the end.
-
-\begin{listing}[H]
-\begin{minted}
-[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-in_stream.open("filename.txt");
-out_stream.open("other_filename.txt");
-
-//Remember to always close ...
-in_stream.close();
-out_stream.close();
-\end{minted}
-\caption{Connecting and disconnecting streams}
-\label{source_code}
-\end{listing}
-
-To \emph{append} to an output stream (thus not to overwrite), open it using the following line:
-\begin{minted}
-[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-out_stream.open("some_file.txt', ios::app); //requires iostream
-\end{minted}
-
-
-\subsubsection*{Checking for failure with file commands}
-Use the member function \emph{.fail( )} -- can do this with input and output streams. Place this statement
-immediately after opening a stream.
-
-\begin{listing}[H]
-\begin{minted}
-[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-#include <iostream>
-#include <fstream>
-#include <cstdlib>
-
-int main()
+void main()
 {
-	ifstream in;
+	//Automatic memory
+	Date tomorrow(6, 10, 2016);
 	
-	in.open("some_text.csv");
-	if (in_stream.fail())
+	//Dynamic memory
+	Date* today = new Date(5, 10, 2016);
+	delete today; //Dynamic memory is cleaned here
+	
+	//---> Mistake: Try to access an already freed address
+	today.day = 8;
+}
+\end{minted}
+
+
+\subsubsection*{Mistake - try to free a variable that in the incorrect scope}
+In the below when we try to free alsoToday, we cannot access the address because
+we are not in the right scope (i.e. it should have been deleted earlier). This code does
+note compile
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void main()
+{
+	Date* today(6, 10, 2016);
+	
+	{	//This creates a syntactic scope
+		Date* alsoToday = new Date(5, 10, 2016);
+		today = alsoToday;
+		//Note that after the above line, today will not be deletable, hence
+		before assigning you need to delete
+		//After reassigning today (after it was deleted) you can then delete
+		//it again in the outer scope .. alsoToday would never have
+		//to be deleted.
+	}
+	//---> Mistake: alsoToday is NOT visible in this scope
+	delete alsoToday;
+
+	delete today;
+}
+\end{minted}
+
+\subsubsection*{Mistake - try to free a variable that in the incorrect scope}
+Same problem as before but this code will compile but leak.
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void main()
+{
+	Date* today(6, 10, 2016);
+	
+	{	//This creates a syntactic scope
+		Date* alsoToday = new Date(5, 10, 2016);
+		today = alsoToday;
+		//Note that after the above line, today will not be deletable, hence
+		before assigning you need to delete
+		//After reassigning today (after it was deleted) you can then delete
+		//it again in the outer scope .. alsoToday would never have
+		//to be deleted.
+	}
+	//---> Mistake: Also today is not visible here hence you cannot access today
+	//as well
+	delete today;
+}
+\end{minted}
+
+\subsubsection*{Mistake - double free}
+Same code principle as before but trying to free the same address twice. This code
+will not compile.
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void main()
+{
+	Date* today(6, 10, 2016);
+	
+	{	//This creates a syntactic scope
+		Date* alsoToday = new Date(5, 10, 2016);
+		today = alsoToday;
+		delete alsoToday; //alsoToday refers to today
+	}
+	//---> Mistake: Also today has already been deleted and now you try again
+	delete today;
+}
+\end{minted}
+
+
+\subsubsection*{Correct way}
+You need to delete today before reassigning it and then delete today again in the outer
+scope -- alsoToday never needs to be deleted.
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void main()
+{
+	Date* today(6, 10, 2016);
 	{
-		cout << "Sorry, the file was not opened!" << endl;
-		exit(1);
+		Date* alsoToday = new Date(5, 10, 2016);
+		delete today; //needs to be deleted here before reassining
+		today = alsoToday; //Now the ownership of alsoToday is transferred to
+		//today (hence alsoToday does not need to be deleted)...
 	}
-	...
+	delete today; //... however, today needs to be deleted here again
 }
 \end{minted}
-\caption{Checking for failure when opening a stream}
-\label{source_code}
-\end{listing}
 
 
-%--------------------------------------------------------------------------------------------
+%------------------------------------------------------------------------------------------------------------
+\subsection{Who is the owner of the dynamic memory}
+Ownership is conceptual -- any pointer can be owning or not-owning, variable or
+member variable. Conventionally we say that references do not own.
 
-\subsection{Character input and output and checking for end-of-file}
-You can get or put characters one at a time using the member functions \emph{get} and
-\emph{put} (or also \emph{putback}. Alternatively you can use the operators \emph{\textless\textless} or
-\emph{\textgreater\textgreater} to read in or put out blocks of characters (useful for numbers).
+\noindent
+Stack memory is easy: the function retains ownership.
 
-\subsubsection*{Input/output with get, put, putback}
-The functions take a single argument of type \emph{char} and always only handle one character
-at a time (where an empty space or new line etc. are also all chars. 
+\noindent
+Local variables are easy: upon exit ownership is decided (deleted or transferred).
 
-\begin{listing}[H]
+\noindent
+Class member variables are tricky \ldots
+\begin{itemize}
+	\item Some member functions transfer ownership.
+	\item Some member functions need to delete the objects.
+	\item Some don't do anything.
+\end{itemize}
+
+
+%------------------------------------------------------------------------------------------------------------
+\subsection{Destructor based memory de-allocation}
+
+For the below examples we use the following class and function definitions.
 \begin{minted}
 [frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-char character;
-in_stream.get(character);
-	//gets the next character of the input file whose value is assigned to the character
-	
-out_stream.put('4'); //puts 4 as a type character into the output file
-//OR
-out_stream.put(character); //puts a character into the output file
+int capacity = 99;
 
-
-in_stream.putback(character);
-	//Puts the character implicitly back into the input file and repositions to this character
-in_stream.putback('7');
-	//Can also put another character pack to the input file
-	//NOTE that both do not alter the actual input file (this is just implicit).
-
-\end{minted}
-\caption{Illustration of character input/output using get and put}
-\label{source_code}
-\end{listing}
-
-
-\subsubsection*{Input/output with the operators \textless\textless and \textgreater\textgreater}
-The problem we have is that some data types, such as int, double etc., have to be converted into
-character sequences before they can be written to a file, and these character sequences have to be
-converted back again when they are input. The operators \textless\textless and \textgreater\textgreater
-do some of this conversion automatically.
-
-\begin{minted}
-[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-out_stream << 437 << ' ';
-	//Here the characters '4' '3' '7' are output to the file and end with an empty character 
-\end{minted}
-
-For input streams you could also read in numbers with it - note that the \textless\textless skips
-over blank space (irrespective of the data type).
-
-\begin{minted}
-[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-int number;
-in_stream >> number;
-\end{minted}
-
-You can also read in ever other item using the syntax below \ldots
-
-\begin{minted}
-[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-int number;
-in_stream >> number >> number;
-//if you use 'number' now in a loop it will be every other number ....
-\end{minted}
-
-
-Here you see an example where you try to read in five (two-digit) numbers as either ints or chars.
-When reading them in as ints the count is 5 \ldots using chars the count is 10 - in both
-cases whitespace is stripped and empty characters are not counted.
-
-\begin{listing}[H]
-\begin{minted}
-[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-int main()
+struct Passenger
 {
-    char character;
-    int number = 51;
-    int count = 0;
-    ofstream out_stream;
-    ifstream in_stream1;   //Stream for counting integers
-    ifstream in_stream2;   //Stream for counting characters
+	char const* name;
+	//Constructor definition
+	Passenger(char const* name) : name(name){}
+};
 
-    //Create the file
-    out_stream.open("Integers");
-    for (count = 1 ; count <= 5 ; count++)
-        out_stream << number++ << ' ';
-    out_stream.close();
-    
-    //Count the integers
-    in_stream1.open("Integers");
-    count = 0;
-    in_stream1 >> number;
-    while (!in_stream1.fail())
-    {
-        count++;
-        in_stream1 >> number;
-    }
-    in_stream1.close();
-    cout << "There are " << count << " integers in the file,\n";
-    
-    //Count the characters
-    in_stream2.open("Integers");
-    count = 0;
-    in_stream2 >> character;
-    while (!in_stream2.fail())
-    {
-        count++;
-        in_stream2 >> character;
-    }
-    in_stream2.close();
-    cout << "represented using " << count << " characters.\n";
-}
-\end{minted}
-\caption{Illustration of character input/output using \textless\textless and \textgreater\textgreater}
-\label{source_code}
-\end{listing}
-
-
-
-
-\subsubsection*{Checking for the end of and input file (eof)}
-Once an in-stream reaches the eof, no attempt should be made to read from the file, since the results will
-be unpredictable. To check if the eof is reached, the boolean expression \emph{in\_stream.eof()} would be true.
-
-The below is an important example with a common loop structure. The code reads in a text file and outputs
-each character to the screen and to a copy file.
-
-\begin{listing}[H]
-\begin{minted}
-[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-#include <iostream>
-#include <fstream>
-using namespace std;
-
-int main()
+struct Bus
 {
-	char character;
-	ifstream in_stream;
-	ofstream out_stream;
-
-	in_stream.open("file.cpp");
-	out_stream.open("Copy_of_file");
+	Passenger* occupants[capacity + 1]{};
+	//Is an array of pointers to passenger instances called occupants
+	//+1 because last is NULL (marks end of array)
 	
-	// ... could check for failure to open stream here ...
-	
-	in_stream.get(character); // !!! get char here first once
-	while (!in_stream.eof()) 
-	{	//while we are not at the end-of-file
-		cout << character;
-		out_stream.put(character);
-		in_stream.get(character); // !!! get char here again
+	int findPassengerOrNullTerminator(Passenger* p)
+	{
+		int i = 0;
+		while (occupants[i] != nullptr && occupants[i] != p)
+		{
+			i++;
+		}
+		return i;
 	}
 	
-	out_stream.close(); //always close
-	in_stream.close(); //always close
-}
+	void havePassengerEnter(Passenger* p)
+	{
+		int i = findPassengerOrNullTerminator(p);
+		if (i < capacity)
+		{
+			occupants[i] = p;
+		}
+	}
+	
+	
+	void havePassengerLeave(Passenger* p)
+	{
+		int i = findPassengerOrNullTerminator(p);
+		
+		//Shift everyone from found passenger left by one
+		while (i < 99)
+		{
+			occupants[i] = occupants[i + 1];
+			i++;
+		}
+	}
+};
 \end{minted}
-\caption{Checking for EOF when using input streams}
-\label{source_code}
-\end{listing}
 
-%--------------------------------------------------------------------------------------------
 
-\subsection{Streams as arguments to functions}
-Streams \emph{must} be reference parameters in functions.
+\subsubsection*{Implementation example 1 - code is dangerous}
 
-Below is a the same code, that reads a text-file and copies the content to a new file and
-outputs the contents to the monitor - but here a function \emph{copy\_to( ... )} is used.
-
-\begin{listing}[H]
 \begin{minted}
 [frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-#include <iostream>
-#include <fstream>
+Bus* getFullBus()
+{
+	//Two dynamic busses
+	Bus* b1 = new Bus;
+	Bus* b2 = new Bus;
+	
+	//Three dynamic Passengers
+	Passenger* holger = new Passenger("holger");
+	Passenger* will = new Passenger("will");
+	Passenger* fidelis = new Passenger("fidelis");
+	
+	//Let people enter the busses
+	b1->havePassengerEnter(holger);
+	b2->havePassengerEnter(will);
+	b2->havePassengerEnter(fidelis);
+	
+	//Let Fidelis leave (no longer is in occupants array of the b2
+	//but the dynamic variable fidelis is still in stack frame
+	b2->havePassengerLeave(fidelis);
+	
+	//Free up memory
+	delete b2; //deletes Bus instance (is it a problem that will is still in b2?)
+	delete will;
+	delete fidelis;
+	
+	//Return instance b1 (which has now ownership of 'holger').
+	//To ensure objects owned by other objects are deleted - use destructors.
+	return b1;
+}
+\end{minted}
 
-using namespace std;
 
-void copy_to(ifstream& in, ofstream& out);
 
+\subsubsection*{Enhance example with a destructor in the bus class}
+Not that a destructor is called when the instance of the class goes out of scope
+ore when you specifically delete the instance (if the instance was dynamic memory).
+
+If you have an instance (b1) that is itself dynamic memory that itself holds variables
+of other instances which are also dynamic memory, then the destructor of b1 needs
+to delete the lower level instances (e.g. Passengers below) -- see example below.
+
+You do not need to explicitly delete b1 because if it goes out of scope the variables
+will be deleted anyway.
+
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+class Passenger;
+class Bus
+{
+	Passenger* occupants[capacity + 1]{};
+	~Bus()
+	{
+		for (int i = 0; occupants[i] != nullptr; i++)
+		{
+			delete occupants[i];
+		}
+	}
+}
+//Now if you call delete an instance of Bus (e.g. b1) then the lifetime of
+//the object ends and thus the constructor is called whereby the (as per code
+//above) all instances of Passenger are that are in the occupants array are deleted.
+\end{minted}
+
+
+\subsubsection*{Implementation example 2 - code is fine}
+At the end of the main scope b1 and b2 are out of scope and die. Because we
+have a good destructor definition, b1 and b2 take the passengers with them.
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
 int main()
 {
-	ifstream in_stream;
-	ofstream out_stream;
-
-	in_stream.open("4-6-1.cpp");
-	out_stream.open("Copy_of_4");
+	//Two dynamic busses
+	Bus* b1 = new Bus;
+	Bus* b2 = new Bus;
 	
-	copy_to(in_stream, out_stream);	
+	//Three dynamic Passengers
+	Passenger* holger = new Passenger("holger");
+	Passenger* will = new Passenger("will");
+	Passenger* fidelis = new Passenger("fidelis");
 	
-	out_stream.close();
-	in_stream.close();
-
+	//Let people enter the busses
+	b1->havePassengerEnter(holger);
+	b2->havePassengerEnter(will);
+	b2->havePassengerEnter(fidelis);
+	
+	//Let Fidelis leave (no longer is in occupants array of the b2)
+	//but the dynamic variable fidelis is still in stack frame
+	b2->havePassengerLeave(fidelis);
+	b1->havePassengerEnter(fidelis);
+		
 	return 0;
-}
+} //no memory leaks: b1, b2 die here and take their passengers with them
+\end{minted}
 
-void copy_to(ifstream& in, ofstream& out)
+
+\subsubsection*{Implementation example 3 - code is does not compile}
+Be careful when returning an address by value and using destructor based
+deallocation. Note that here the busses are not stored in heap (but in stackframe
+of the current function) hence you cannot really return their address. Normally
+this code does not even compile -- but dependent on your compiler it actually may.
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+Bus getFullBus()
 {
-	char character;
-	in.get(character);
-	while (!in.fail())
-	{
-		cout << character;
-		out.put(character);
-		in.get(character);
-	}
+	//Two static buss variables
+	Bus b1;
+	Bus b2;
+	
+	//Three dynamic Passengers
+	Passenger* holger = new Passenger("holger");
+	Passenger* will = new Passenger("will");
+	Passenger* fidelis = new Passenger("fidelis");
+	
+	//Let people enter the busses
+	b1.havePassengerEnter(holger);
+	b2.havePassengerEnter(will);
+	b2.havePassengerEnter(fidelis);
+	
+	b2.havePassengerLeave(fidelis);
+	b1.havePassengerEnter(fidelis);
+	
+	return b2;
+	//b1 dies with fidelis and holger on board (this is fine)
+	//b2 is copied - however the destructor is called which deletes will
+	//the copy is returned with an invalid pointer to deleted will - MISTAKE
+
 }
 \end{minted}
-\caption{Streams as arguments to functions - use as reference parameters}
-\label{source_code}
-\end{listing}
 
 
-%--------------------------------------------------------------------------------------------
-
-\subsection{Formatting when using output streams}
-
-\subsubsection*{Member function - .precision( integer )}
-Using the \emph{precision} member function will result in all numbers output
-on that stream to be shown to a certain digit (argument used for integer).
+\subsubsection*{Implementation example 4 - code leaks}
+The function below lets fidelis leave but the question is who owns fidelis thereafter?
+The answer is that no-one owns fidelis.
 
 \begin{minted}
 [frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-out_stream.precision(2);
+void simulateBusses()
+{
+	//Two static buss variables
+	Bus b1;
+	Bus b2;
+	
+	//Three dynamic Passengers
+	Passenger* holger = new Passenger("holger");
+	Passenger* will = new Passenger("will");
+	Passenger* fidelis = new Passenger("fidelis");
+	
+	//Let people enter the busses
+	b1.havePassengerEnter(holger);
+	b2.havePassengerEnter(will);
+	b2.havePassengerEnter(fidelis);
+	
+	//---> LEAK: Let fidelis leave with a function
+	b2.havePassenger Leave(fidelis);
+	//If this function was executed then fidelis is not owned and lost
+}
 \end{minted}
 
 
-\subsubsection*{Flag member function - .setf(some argument here)}
+\subsubsection*{Implementation example 5 - code is dangerous}
+The function below may lead to problems because fidelis is in two busses
+at the same time. Hence it may lead to an incorrect double freeing (fidelis is still only
+one address).
 
-\begin{table}[h]
-\begin{center}
-\renewcommand{\arraystretch}{1.8}
-\begin{tabular}{ m{2.5cm} m{10cm}} 
-\textbf{Flag} & \textbf{Meaning}\\
-\hline
-ios::fixed & Floating point numbers are not written in scientific notation.\\
-\hline
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void simulateBusses()
+{
+	//Two static buss variables
+	Bus b1;
+	Bus b2;
+	
+	//Three dynamic Passengers
+	Passenger* holger = new Passenger("holger");
+	Passenger* will = new Passenger("will");
+	Passenger* fidelis = new Passenger("fidelis");
+	
+	//Let people enter the busses
+	b1.havePassengerEnter(holger);
+	b2.havePassengerEnter(will);
+	b2.havePassengerEnter(fidelis);
+	
+	//---> Dangerous: after line below fidelis is in two busses
+	b1.havePassengerEnter(fidelis);
+}
+\end{minted}
 
-ios::scientific & Floating point numbers are not written in e-notation (if neither this
-or the above is set, the system will decide which to use).\\
-\hline
 
-ios::showpoint & A decimal point and trailing zeros are always shown for floats.\\
-\hline
 
-ios::showpos & A plus sign is output before positive integer values\\
-\hline
 
-ios::right & Item will be at right end of the space (default case) - thus right-justified\\
-\hline
+\subsubsection*{Implementation example 6 - code is good}
+The solution to the aforementioned problem is to make explicit ownership transfer (i.e.
+let fidelis transfer properly to b1).
 
-ios::left & Item will be left-justified\\
-\hline
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+void havePassengerTransfer(Passenger* p, Bus& from, Bus& to)
+{
+	from.havePassengerLeave(p);
+	to.havePassengerEnter(p);
+}
 
-\hline
-\end{tabular}
-\end{center}
-\caption{Common flags for output streams}
-\label{table_1}
-\end{table}
+void simulateBusses()
+{
+	//Two static buss variables
+	Bus b1;
+	Bus b2;
+	
+	//Three dynamic Passengers
+	Passenger* holger = new Passenger("holger");
+	Passenger* will = new Passenger("will");
+	Passenger* fidelis = new Passenger("fidelis");
+	
+	//Let people enter the busses
+	b1.havePassengerEnter(holger);
+	b2.havePassengerEnter(will);
+	b2.havePassengerEnter(fidelis);
+	
+	//---> Explicit ownership transfer (correct)
+	//Ownership of fidelis is transferred from b2 to b1
+	havePassengerTransfer(fidelis, b1, b2);
+}
+\end{minted}
+
+
+
+
+
+
+
+
+
 
 
 

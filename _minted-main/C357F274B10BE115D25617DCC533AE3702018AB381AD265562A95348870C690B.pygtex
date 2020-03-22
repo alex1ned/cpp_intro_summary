@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{Date}\PYG{o}{*} \PYG{n}{today}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{,} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{2016}\PYG{p}{);}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{Date}\PYG{o}{*} \PYG{n}{alsoToday} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Date}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{2016}\PYG{p}{);}
+		\PYG{k}{delete} \PYG{n}{today}\PYG{p}{;} \PYG{c+c1}{//needs to be deleted here before reassining}
+		\PYG{n}{today} \PYG{o}{=} \PYG{n}{alsoToday}\PYG{p}{;} \PYG{c+c1}{//Now the ownership of alsoToday is transferred to}
+		\PYG{c+c1}{//today (hence alsoToday does not need to be deleted)...}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{delete} \PYG{n}{today}\PYG{p}{;} \PYG{c+c1}{//... however, today needs to be deleted here again}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Reminder of the copy constructor}
+\PYG{c+c1}{//As needed, has a variable of same type as the class passed by reference}
+\PYG{n}{String\PYGZus{}var}\PYG{o}{::}\PYG{n}{Stirng\PYGZus{}var}\PYG{p}{(}\PYG{k}{const} \PYG{n}{String\PYGZus{}var}\PYG{o}{\PYGZam{}} \PYG{n}{string\PYGZus{}object}\PYG{p}{)} \PYG{o}{:} \PYG{n}{max\PYGZus{}length}\PYG{p}{(}\PYG{n}{string\PYGZus{}object}\PYG{p}{.}\PYG{n}{length}\PYG{p}{())}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{value} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{char}\PYG{p}{[}\PYG{n}{max\PYGZus{}length} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{];}
+	\PYG{n}{strcpy}\PYG{p}{(}\PYG{n}{value}\PYG{p}{,} \PYG{n}{string\PYGZus{}object}\PYG{p}{.}\PYG{n}{value}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{//Assume code below ...}
+\PYG{n}{String\PYGZus{}var} \PYG{n}{line}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{);} \PYG{c+c1}{//uses first constructor of string class example below}
+\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Enter a string of length 20 or less.\PYGZdq{}}\PYG{p}{;}
+\PYG{n}{line}\PYG{p}{.}\PYG{n}{input\PYGZus{}line}\PYG{p}{(}\PYG{n}{cin}\PYG{p}{);} \PYG{c+c1}{// assigns the \PYGZsq{}line\PYGZsq{} string the value we have typed in}
+
+\PYG{n}{String\PYGZus{}var} \PYG{n+nf}{temporary}\PYG{p}{(}\PYG{n}{line}\PYG{p}{);} \PYG{c+c1}{// Initialized by copy constructor}
+    \PYG{c+c1}{//temporary is a new object}
+    \PYG{c+c1}{//Since line is of type String\PYGZus{}var \PYGZhy{}\PYGZhy{}\PYGZgt{} the copy constructor is invoked.}
+\end{Verbatim}

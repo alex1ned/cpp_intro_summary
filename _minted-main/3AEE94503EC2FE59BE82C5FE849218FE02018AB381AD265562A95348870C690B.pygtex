@@ -1,0 +1,39 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//CLASS DEFINITION}
+\PYG{k}{class} \PYG{n+nc}{Money}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+        \PYG{c+c1}{//Function that returns type \PYGZsq{}Money\PYGZsq{}}
+        \PYG{k}{friend} \PYG{n}{Money} \PYG{k}{operator} \PYG{o}{+}\PYG{p}{(}\PYG{k}{const} \PYG{n}{Money}\PYG{o}{\PYGZam{}} \PYG{n}{amount1}\PYG{p}{,} \PYG{k}{const} \PYG{n}{Money}\PYG{o}{\PYGZam{}} \PYG{n}{amount2}\PYG{p}{);}
+
+        \PYG{c+c1}{//Function that returns type \PYGZsq{}bool\PYGZsq{}}
+        \PYG{k}{friend} \PYG{k+kt}{bool} \PYG{k}{operator} \PYG{o}{==}\PYG{p}{(}\PYG{k}{const} \PYG{n}{Money}\PYG{o}{\PYGZam{}} \PYG{n}{amount1}\PYG{p}{,} \PYG{k}{const} \PYG{n}{Money}\PYG{o}{\PYGZam{}} \PYG{n}{amount2}\PYG{p}{);}
+        		\PYG{c+c1}{//Note that friend keyword is NOT required for overloading the operator}
+		\PYG{c+c1}{//Also you could overload the operator outside the class (but less common)}
+	
+        \PYG{c+c1}{//Constructors and other stuff go here}
+\PYG{k}{private}\PYG{o}{:}
+        \PYG{k+kt}{int} \PYG{n}{all\PYGZus{}cents}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{//FUNCTION DEFINITION}
+\PYG{n}{Money} \PYG{k}{operator} \PYG{o}{+}\PYG{p}{(}\PYG{k}{const} \PYG{n}{Money}\PYG{o}{\PYGZam{}} \PYG{n}{amount1}\PYG{p}{,} \PYG{k}{const} \PYG{n}{Money}\PYG{o}{\PYGZam{}} \PYG{n}{amount2}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{Money} \PYG{n}{temp}\PYG{p}{;}
+	\PYG{n}{temp}\PYG{p}{.}\PYG{n}{all\PYGZus{}cents} \PYG{o}{=} \PYG{n}{amount1}\PYG{p}{.}\PYG{n}{all\PYGZus{}cents} \PYG{o}{+} \PYG{n}{amount2}\PYG{p}{.}\PYG{n}{all\PYGZus{}cents}\PYG{p}{;}
+	\PYG{k}{return} \PYG{n}{temp}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{bool} \PYG{k}{operator} \PYG{o}{==}\PYG{p}{(}\PYG{k}{const} \PYG{n}{Money}\PYG{o}{\PYGZam{}} \PYG{n}{amount1}\PYG{p}{,} \PYG{k}{const} \PYG{n}{Money}\PYG{o}{\PYGZam{}} \PYG{n}{amount2}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{return} \PYG{p}{(}\PYG{n}{amount1}\PYG{p}{.}\PYG{n}{all\PYGZus{}cents} \PYG{o}{==} \PYG{n}{amount2}\PYG{p}{.}\PYG{n}{all\PYGZus{}cents}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{//In MAIN we could write ...}
+\PYG{k+kt}{int} \PYG{n}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{Money} \PYG{n}{cost}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{50}\PYG{p}{),} \PYG{n}{tax}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{15}\PYG{p}{),} \PYG{n}{total}\PYG{p}{;}
+	\PYG{n}{total} \PYG{o}{=} \PYG{n}{cost} \PYG{o}{+} \PYG{n}{tax}\PYG{p}{;}
+	\PYG{c+c1}{//we could now use \PYGZsq{}+\PYGZsq{} instead of having to call an \PYGZsq{}add\PYGZsq{} method}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

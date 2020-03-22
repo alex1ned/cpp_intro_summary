@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Bus} \PYG{n+nf}{getFullBus}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//Two static buss variables}
+	\PYG{n}{Bus} \PYG{n}{b1}\PYG{p}{;}
+	\PYG{n}{Bus} \PYG{n}{b2}\PYG{p}{;}
+	
+	\PYG{c+c1}{//Three dynamic Passengers}
+	\PYG{n}{Passenger}\PYG{o}{*} \PYG{n}{holger} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Passenger}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}holger\PYGZdq{}}\PYG{p}{);}
+	\PYG{n}{Passenger}\PYG{o}{*} \PYG{n}{will} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Passenger}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}will\PYGZdq{}}\PYG{p}{);}
+	\PYG{n}{Passenger}\PYG{o}{*} \PYG{n}{fidelis} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Passenger}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}fidelis\PYGZdq{}}\PYG{p}{);}
+	
+	\PYG{c+c1}{//Let people enter the busses}
+	\PYG{n}{b1}\PYG{p}{.}\PYG{n}{havePassengerEnter}\PYG{p}{(}\PYG{n}{holger}\PYG{p}{);}
+	\PYG{n}{b2}\PYG{p}{.}\PYG{n}{havePassengerEnter}\PYG{p}{(}\PYG{n}{will}\PYG{p}{);}
+	\PYG{n}{b2}\PYG{p}{.}\PYG{n}{havePassengerEnter}\PYG{p}{(}\PYG{n}{fidelis}\PYG{p}{);}
+	
+	\PYG{n}{b2}\PYG{p}{.}\PYG{n}{havePassengerLeave}\PYG{p}{(}\PYG{n}{fidelis}\PYG{p}{);}
+	\PYG{n}{b1}\PYG{p}{.}\PYG{n}{havePassengerEnter}\PYG{p}{(}\PYG{n}{fidelis}\PYG{p}{);}
+	
+	\PYG{k}{return} \PYG{n}{b2}\PYG{p}{;}
+	\PYG{c+c1}{//b1 dies with fidelis and holger on board (this is fine)}
+	\PYG{c+c1}{//b2 is copied \PYGZhy{} however the destructor is called which deletes will}
+	\PYG{c+c1}{//the copy is returned with an invalid pointer to deleted will \PYGZhy{} MISTAKE}
+
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

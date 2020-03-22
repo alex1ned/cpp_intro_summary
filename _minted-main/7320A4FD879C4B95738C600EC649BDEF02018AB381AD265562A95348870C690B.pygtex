@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//Automatic memory}
+	\PYG{n}{Date} \PYG{n}{tomorrow}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{,} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{2016}\PYG{p}{);}
+	
+	\PYG{c+c1}{//Dynamic memory}
+	\PYG{n}{Date}\PYG{o}{*} \PYG{n}{today} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Date}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{2016}\PYG{p}{);}
+	\PYG{k}{delete} \PYG{n}{today}\PYG{p}{;} \PYG{c+c1}{//Dynamic memory is cleaned here}
+	
+	\PYG{c+c1}{//\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZgt{} Mistake: Try to access an already freed address}
+	\PYG{n}{today}\PYG{p}{.}\PYG{n}{day} \PYG{o}{=} \PYG{l+m+mi}{8}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

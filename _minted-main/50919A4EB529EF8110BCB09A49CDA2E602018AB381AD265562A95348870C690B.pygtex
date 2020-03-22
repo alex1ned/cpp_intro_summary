@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n+nf}{guarantee}\PYG{p}{(}\PYG{k}{const} \PYG{n}{Money}\PYG{o}{\PYGZam{}} \PYG{n}{price}\PYG{p}{)} \PYG{c+c1}{//where Money is a class and price is an object of type Money}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{price}\PYG{p}{.}\PYG{n}{get\PYGZus{}value}\PYG{p}{();} \PYG{c+c1}{// where \PYGZsq{}get\PYGZus{}value\PYGZsq{} is a method of the class Money}
+	\PYG{c+c1}{//Then in class \PYGZsq{}get\PYGZus{}value\PYGZsq{} should be \PYGZsq{}const\PYGZsq{}}
+	\PYG{c+c1}{//Even though \PYGZsq{}get\PYGZus{}value\PYGZsq{} does NOT change \PYGZsq{}price\PYGZsq{} but the compiler thinks that}
+	\PYG{c+c1}{//\PYGZsq{}get\PYGZus{}value\PYGZsq{} might change price because the comiler will only know the declaration}
+	\PYG{c+c1}{//of \PYGZsq{}get\PYGZus{}value\PYGZsq{} (not the definition) when calling \PYGZsq{}guarantee()\PYGZsq{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

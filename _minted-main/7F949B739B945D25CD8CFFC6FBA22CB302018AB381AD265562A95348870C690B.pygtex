@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Class} \PYG{n}{Day\PYGZus{}of\PYGZus{}year}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{k+kt}{void} \PYG{n}{input}\PYG{p}{();}
+	\PYG{k+kt}{void} \PYG{n+nf}{output}\PYG{p}{();}
+	\PYG{k+kt}{int} \PYG{n+nf}{get\PYGZus{}month}\PYG{p}{();}
+	\PYG{k+kt}{int} \PYG{n+nf}{get\PYGZus{}day}\PYG{p}{();}
+
+	\PYG{k+kt}{void} \PYG{n+nf}{set}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{new\PYGZus{}month}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{new\PYGZus{}day}\PYG{p}{);}
+	\PYG{c+c1}{// Reset date through arguments of function}
+
+\PYG{k}{private}\PYG{o}{:}
+	\PYG{k+kt}{void} \PYG{n}{check\PYGZus{}date}\PYG{p}{();}
+	\PYG{k+kt}{int} \PYG{n}{month}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{day}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

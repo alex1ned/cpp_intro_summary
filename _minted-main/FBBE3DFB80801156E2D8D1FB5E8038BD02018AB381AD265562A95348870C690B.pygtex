@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{Day\PYGZus{}of\PYGZus{}year} \PYG{n}{today}\PYG{p}{,} \PYG{n}{birthday} \PYG{c+c1}{//create two instances of a class}
+
+	\PYG{c+c1}{//assign the member variables of the instance}
+	\PYG{n}{today}\PYG{p}{.}\PYG{n}{month} \PYG{o}{=} \PYG{l+m+mi}{10}\PYG{p}{;}
+	\PYG{n}{today}\PYG{p}{.}\PYG{n}{day} \PYG{o}{=} \PYG{l+m+mi}{26}\PYG{p}{;}
+
+	\PYG{c+c1}{//call the method on the instance and print it out}
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{today}\PYG{p}{.}\PYG{n}{output}\PYG{p}{();}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

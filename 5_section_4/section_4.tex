@@ -1,343 +1,311 @@
-\section{Branch and loop statements}
+\section{Separate compilation and namespaces}
 
-\subsection{Loops}
-\begin{itemize}
-	\item We use the three loop statements: \emph{for}, \emph{while}, \emph{do-while}.
-	\item Any for-loop can be rewritten as while-loop and vv.
-	\item A do-while-loop differs in that the statement in the braces are executed at
-	least once (before the repetition condition is even checked) - they are useful to check
-	if a user's keyboard input is of the correct format (can help to avoid writing duplicate
-	lines
-\end{itemize}
-
-\subsubsection*{For loop syntax}
-\begin{listing}[H]
-\begin{minted}
-[
-frame=lines,
-linenos,
-fontsize=\small,
-obeytabs=true,
-tabsize=3
-]
-{c++}
-for (int i = 0; i <= 100; i++)
-{	
-	//for the values of i between 0 to 100 (starting at 0 and including 100),
-	//do something 
-	//then increment i by 1
-}
-\end{minted}
-\caption{For loop syntax example}
-\label{source_code}
-\end{listing}
-
-\subsubsection*{While loop syntax}
-\begin{listing}[H]
-\begin{minted}
-[
-frame=lines,
-linenos,
-fontsize=\small,
-obeytabs=true,
-tabsize=3
-]
-{c++}
-int i = 0;
-while (i <= 100)
-{	
-	//if i < 100
-	//do something 
-	i++;
-	//then increment i by 1 (and re-check again if i < 100)
-}
-\end{minted}
-\caption{While loop syntax example}
-\label{source_code}
-\end{listing}
-
-\subsubsection*{Do-while loop syntax}
-\begin{listing}[H]
-\begin{minted}
-[
-frame=lines,
-linenos,
-fontsize=\small,
-obeytabs=true,
-tabsize=3
-]
-{c++}
-int i = 0, candidate_score;
-do
-{	//This part is at least executed once
-	cout << Enter candidate score;
-	cin >> candidate_score;
-	if (candidate_score < 50)
-	{
-		cout << "Failed!";
-	}
-	
-	i++; 
-}
-while (i < 100);
-
-\end{minted}
-\caption{Do-while loop syntax example}
-\label{source_code}
-\end{listing}
-
-
-
-\subsection{If, else if, else, and switch statements}
-
-\subsubsection*{General if, else statement}
-\begin{listing}[H]
-\begin{minted}
-[
-frame=lines,
-linenos,
-fontsize=\small,
-obeytabs=true,
-tabsize=3
-]
-{c++}
-int score = 75;
-if (score <=  100 && score >= 70)
-{
-	//do
-}
-
-else if (score >= 60 && score < 70)
-{
-	//do
-}
-
-else
-{
-	//do
-}
-\end{minted}
-\caption{If, else if, else syntax example}
-\label{source_code}
-\end{listing}
-
-\subsubsection*{Switch statement}
+%------------------------------------------------------------------------------------------------------------
+\subsection{Separate compilation}
 
 \begin{itemize}
-	\item The statements that are executed are those between the first label that matches
-	the value of selector and the first break after this matching label. 
-	\item The \emph{break} statements are optional but help in program clarity
-	\item The selector can have any ordinal type (such as char or int) but cannot be
-	a float or double.
-	\item The default is optional but a good safety measure.
+	\item Define a class and place the definition and implementation in separate files
+	\begin{itemize}
+		\item Definition of class into a header file (called interface) e.g. class\_interface.h
+		\item Put the member function definitions into a cpp file (implementation) e.g.
+		class\_impl.cpp
+		\item Include the header file in the implementation file e.g.
+		\#include "class\_interface.h"
+	\end{itemize}
+	\item Also put the main file and other functions into different files
+	\begin{itemize}
+		\item e.g. functions.cpp
+		\item	e.g. main.cpp
+		\item Include the class header file (and other header files) where needed (e.g.
+		\#include "class\_interface.h").
+	\end{itemize}
 \end{itemize}
 
+\subsubsection*{Using \#ifndef syntax}
+Use the syntax below when making a header file - ensures it is only read once.
 
-\begin{listing}[H]
-\begin{minted}
-[
-frame=lines,
-linenos,
-fontsize=\small,
-obeytabs=true,
-tabsize=3
-]
-{c++}
-int score = 8;
-switch (score)
-{
-	case 0:
-	case 1:
-	case 2:
-	case 3:
-	case 4:
-		cout << "You are a failure!";
-		break; //don't forget the break statement
-	case 5:
-		cout << "Marginally passed!";
-		break;
-	case 6:
-	case 7:
-	case 8:	
-	case 9:
-	case 10:
-		cout << "Pass!"	;
-		break;
-	default:
-		cout << "Incorrect score!"
-		//No break statement needed here
-}
-\end{minted}
-\caption{Switch statement syntax example}
-\label{source_code}
-\end{listing}
-
-
-\subsection{One-liner if statement using the ternary operator}
-The two statements below are equivalent \ldots
 \begin{listing}[H]
 \begin{minted}
 [frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
-//Syntax
-x = (condition) ? (value if true) : (value if false);
+#ifndef CLASS_HEADER_H
+#define CLASS_HEADER_H
 
-//Example
-z = (x > y) ? z : y;
+class Class_header{};
 
-//The above is the same as writing ...
-if (x > y)
-{
-	z = z;
-}
-
-else 
-{
-	z = y;
-}
+#endif
 \end{minted}
-\caption{One liner if using the ternary operator}
-\label{source_code}
+\caption{\#ifndef syntax for header files}
+\label{source_code_1}
 \end{listing}
 
 
 
 
+%------------------------------------------------------------------------------------------------------------
+\subsection{Namespaces}
 
-
-\subsection{Blocks and scoping}
+\subsubsection*{Scope of \emph{using} directive}
 \begin{itemize}
-	\item Variables declared within a block have this block as their scope.
-	\item While inside a block, the program will assume that the identifier refers to the
-	inner variable.
-	\item If the variable can't be found in the block, then it looks one or more scopes outside
-	to find the variable.
+	\item The scope of a using directive is the block which it appears (i.e. from the
+	location of the using directive to the end of the block).
+	\item If the using directive is outside of all blocks, then it applies to all of the
+	file that follows the using directive.
 \end{itemize}
 
-\subsection{Nested loops}
-To loops more clearly try to write them as functions (particularly for nested loops).
-The 3 examples below illustrate this.
-
-\subsubsection*{Nested loops without making them subfunctions - not clear}
+\subsubsection*{Creating and using a namespace}
 \begin{listing}[H]
 \begin{minted}
-[
-frame=lines,
-linenos,
-fontsize=\small,
-obeytabs=true,
-tabsize=3
-]
-{c++}
-//A program that outputs a multiplication table.
-int main()
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//Creation of namespace
+namespace name_of_namespace
 {
-	int number;
+	//some code (e.g. class definition goes here)
+}
+
+//Using a namespace
+using namespace name_of_namespace;
+\end{minted}
+\caption{Creating and using a namespace}
+\label{source_code_1}
+\end{listing}
+
+\subsubsection*{Qualifying names}
+Imagine the following situation \ldots
+\begin{itemize}
+	\item You have two namespaces; ns1 and ns2.
+	\item You want to use the function fun1 (defined in ns1) and fun2 (defined in ns2)/
+	\item Complication: both namespaces also define a function myFunction (where
+	no overloading applies).
+	\item Now when `using' both namespaces we would get conflicting definitions
+	for myFunction.
+\end{itemize}
+
+Hence you need \emph{using declarations} (i.e. that you will only use fun1 and fun2 from the
+two namespaces and nothing else). For that we use the scope resolution operator ::.
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+using ns1::fun1;
+using ns2::fun2;
+\end{minted}
+\caption{Using declaration with scope resolution operator}
+\label{source_code_1}
+\end{listing}
+
+This form is often used when specifying a parameter type. For example the function
+declaration below the parameter inputStream is of type istream (which is defined
+in the std namespace.
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+int getNumber(std::istream inputStream);
+\end{minted}
+
+
+
+\subsubsection*{A subtle difference between using directives and using declarations}
+\begin{enumerate}
+	\item A using declaration makes only one name in the namespace available
+	while a using directive makes all the names in a namespace available.
+	\item A using declaration introduces a name (like cout) into your code so that no
+	other use of the name can be made. However, a using directive only potentially
+	introduces the names in the namespace.
+\end{enumerate}
+
+
+\subsubsection*{Unnamed namespaces}
+Used in a scenario where you have:
+\begin{itemize}
+	\item A class definition with member function declarations (interface file).
+	\item An implementation file which defines the member functions.
+	\begin{itemize}
+		\item But also in implementation file you DECLARE and later DEFINE some other
+		functions that are no member functions.
+		\item To make these \emph{outside} functions local to the compilation unit
+		such that you can re-use their name again, you need to put them into the unnamed
+		namespace.
+	\end{itemize}
+\end{itemize}
+
+Note that a compilation unit is the file you are in and all the text that is included through include
+directives.
+
+To truly hide helping functions and make them local to the implementation file for a certain class
+we need to place them in a special namespace called the unnamed namespace. Otherwise we
+would not be able to define other functions (in another function file that uses the class) that has
+the names of some of the member functions of the class (which violates the principle of
+information hiding).
+
+The unnamed namespace can be used to make a name definition local to a compilation unit
+(i.e. to a file and its included files). Each compilation unit has one unnamed namespace. All
+the identifiers defined in the unnamed namespace are local to the compilation unit. You place
+a definition in the unnamed namespace by placing it in a namespace grouping with no name:
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+namespace
+{
+	//Definition1
+	//...
+	//DefinitionN
+}
+\end{minted}
+\caption{Unnamed namespace}
+\label{source_code_1}
+\end{listing}
+
+You can use any name in the unnamed namespace w/o a qualifier in the compilation unit.
+
+
+\subsubsection*{Unnamed namespaces - illustrative example}
+
+\noindent
+Class interface (dtime.h)
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+#ifndef DTIME_H
+#define DTIME_H
+
+#include <iostream>
+using namespace std;
+
+//one grouping of the namespace (other is in implementation)
+namespace dtimealexander
+{
+	class DigitalTime
+	{
+		//Class definition
+	};
+}
+
+#endif
+\end{minted}
+\caption{Interface file - unnamed namespace example}
+\label{source_code_1}
+\end{listing}
+
+\noindent
+Class implementation file
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+#include <iostream>
+//some other libraries
+#include "dtime.h"
+
+//Grouping for unnamed namespace
+namespace
+{
+	//The function declarations
+	int digitToInt(char c);
+	void readMinute();
+	void readHour();
+}
+
+//Namespace of the class
+namespace dtimealexander
+{
+	bool operator ==() {}
+	DigitalTime::DigitalTime(){}
+	//more member function definitions
+}
+
+//Another grouping for the unnamed namespace
+//to define the functions we have declared before also in unnamed namespace
+namespace
+{
+	int digitToInt(char c) {} //Definition goes in brackets
+	void readMinute() {} //Definition goes in brackets
+	void readHour() {} //Definition goes in brackets
 	
-	for (number = 1 ; number <= 10 ; number++)
-	{
-		int multiplier;
-		for (multiplier = 1 ; multiplier <= 10 ; multiplier++)
-		{
-			cout << number << " x " << multiplier << " = ";
-			cout << number * multiplier << "\n";
-		}
-		cout << "\n";
-	}		
-	return 0;
+	//The functions defined in the unnamed namespace are local
+	//to this compilation unit (this file and all included files)
+	//They can be used anywhere in this file but have 
+	//no meaning outside this compilation unit
 }
 \end{minted}
-\caption{Nested loops illustration 1/3}
-\label{source_code}
+\caption{Implementation file - unnamed namespace example}
+\label{source_code_1}
 \end{listing}
 
-
-\subsubsection*{Nested loops as subfunction - clearer}
+\noindent
+Main file
 \begin{listing}[H]
 \begin{minted}
-[
-frame=lines,
-linenos,
-fontsize=\small,
-obeytabs=true,
-tabsize=3
-]
-{c++}
-//A program that outputs a multiplication table (using a function call for the nested loop)
-void print_times_table(int value, int lower, int upper);
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+#include <iostream>
+#include "dtime.h"
+
+void read_hour(int& the_hour);
+//New function declaration that has same name as one in the class
+//implementation file but it is a different function
 
 int main()
 {
-	int number;
-	
-	for (number = 1 ; number <= 10 ; number++)
-	{
-		print_times_table(number,1,10); //call to nested loop function
-		cout << endl;
-	}			
-	return 0;
+	using namespace std;
+	using namespace dtimealexander;
+	read_hour(23); // call to new function declared in MAIN
 }
 
-void print_times_table(int value, int lower, int upper)
-{
-	int multiplier;		
-	for (multiplier = lower ; multiplier <= upper ; multiplier++)
-	{
-		cout << value << " x " << multiplier << " = ";
-		cout << value * multiplier << endl;
-	}
-}
+//Also need to define the new function here.
 \end{minted}
-\caption{Nested loops illustration 2/3}
-\label{source_code}
+\caption{Main file - unnamed namespace example}
+\label{source_code_1}
 \end{listing}
 
 
 
-\subsubsection*{Nested loops as subfunctions - very clear}
-\begin{listing}[H]
-\begin{minted}
-[
-frame=lines,
-linenos,
-fontsize=\small,
-obeytabs=true,
-tabsize=3
-]
-{c++}
-//Same example but wrapping each loop into a function
-void print_tables(int smallest, int largest);
+\subsubsection*{Confusing the global namespace and the unnamed namespace}
+Both names in the global- and the unnamed namespace may be accessed w/o a qualifier.
+However, names in the global namespace have global scope (all the program files), while names
+in an unnamed namespace are local to a compilation unit.
 
-void print_times_table(int value, int lower, int upper);
 
-int main()
-{
-	print_tables(1,10);			
-	return 0;
-}
 
-void print_tables(int smallest, int largest)
-{
-	int number;
-	for (number = smallest ; number <= largest ; number++)
-	{
-		print_times_table(number,1,10);
-		cout << endl;
-	}
-}
 
-void print_times_table(int value, int lower, int upper)
-{
-	int multiplier;		
-	for (multiplier = lower ; multiplier <= upper ; multiplier++)
-	{
-		cout << value << " x " << multiplier << " = ";
-		cout << value * multiplier << endl;
-	}
-}
-\end{minted}
-\caption{Nested loops illustration 3/3}
-\label{source_code}
-\end{listing}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

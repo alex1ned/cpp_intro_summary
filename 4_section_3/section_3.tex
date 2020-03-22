@@ -1,165 +1,519 @@
-\section{Functions}
+\section{Arrays and classes, destructor, and copy constructor}
 
-\subsection{Declaration and definition}
+You can build arrays of structs or classes, or also structs or classes with arrays as member variables.
 
-\begin{itemize}
-	\item A function needs to be \emph{declared} at the top of the program (or included
-	as in a respective header file (pre-supplied or personally created) -- otherwise the function
-	cannot be called in any other function bodies (such as in \emph{main}).
-	\item A function has one \emph{return type} (such as int, double, int*, int\&, char, char**, \ldots)
-	but can also have a return nothing using \emph{void}.
-	\begin{itemize}
-		\item A void function must not have a return statement - often used when getting user input.
-		\item A non-void needs to have at least one return statement.
-	\end{itemize}
-	\item A function can have multiple return statements, however, the function will stop its
-	execution as soon as the first return statement is reached.
-	\begin{itemize}
-		\item It is good practice to only have ONE return statements and not using either \emph{continue}
-		or \emph{break} statements.
-	\end{itemize}
-	\item Can use 0 or more parameters - which can be either \emph{value} or \emph{reference} parameters
-	\item If you want to return more than one value by a function you need to use a reference parameters.
-\end{itemize}
+%-----------------------------------------------------------------------------------------------
+\subsection{Arrays and classes}
 
-\begin{listing}[h]
-\begin{minted}
-[
-frame=lines,
-linenos,
-fontsize=\small,
-obeytabs=true,
-tabsize=3
-]
-{c++}
-char* function_that_returns_a_pointer_to_a_char(int some_int, double& ref_parameter);
-	//This is the function 'declaration'
-	//char* could also be an array of characters
-int main() 
-{  
-	cout << function_that_returns_a_pointer_to_a_char(3);
-        		//This is the function call
-		//prints out the address the first element of the array
-}
+\subsubsection{Arrays of classes}
+In case you want each indexed variable to contain items of different types - then make the
+array an array of structures or classes. For example if you want an array to hold 10 weather
+data points that each hold a data point for wind and velocity:
 
-char* function_that_returns_a_pointer_to_a_char(int some_int, double& ref_parameter);
-{
-	//This is the function definition and here goes the function body
-}
-\end{minted}
-\caption{An illustration of how to declare, define, and call a function}
-\label{source_code_2}
-\end{listing}
+Note that when an array of classes is declared, the default constructor is called to initialise
+the indexed variables. Thus it is important to have a default constructor for any class that
+will be the base type of an array.
 
-
-\subsubsection*{Value vs reference parameters}
-A value parameter makes a copy of the value of the variable (it is thus the same but not
-not the self-same). Hence the variables are unique to the scope which calls the function and
-the scope of the calling function. The two variables have two different memory addresses and
-changing the value of the one, does not change the value of the other.
-
-If a variable is passed by reference, it is the self-same variable that is used in the new
-scope. Hence, it is only one variable with one memory location -- changing the value of in the
-new function body, also changes its value in the scope of the calling scope. You pass a parameter
-by reference by appending the \emph{\&} to its type in both the function declaration, and definition
-(shown in above example).
-
-\subsubsection*{Function overloading}
-Can use the same function name if the functions are distinguishable by the return type and the number of parameters.
-
-
-
-\subsection{Splitting programs into different files}
-Usually use \ldots
-\begin{itemize}
-	\item \ldots a header file for the function \emph{declaration}
-	\item \ldots and an implementation file for the function \emph{definition}
-\end{itemize}
- 
- \noindent
-Do \ldots
-\begin{itemize}
-	\item Make a header file that just includes the function \emph{declarations} which should
-	also include all comments about how the function is used.
-	\item Make an implementation file that includes the function \emph{definition}.
-	\item Include the header file in both the implementation file \textbf{and} the file where the function
-	is called
-	\begin{itemize}
-		\item It is convention to delimit user defined file-names with double quotations (see example).
-	\end{itemize}
-\end{itemize}
-
- \noindent
-
-\subsubsection*{Example (1/3) - Header file}
-\begin{listing}[h]
-\begin{minted}
-[
-frame=lines,
-linenos,
-fontsize=\small,
-obeytabs=true,
-tabsize=3
-]
-{c++}
-#ifndef NAME_OF_HEADER_FILE_H
-#define NAME_OF_HEADER_FILE_H
-
-	//Add commentary here
-int declaration_of_a_function{double number, char name, int integer};
-
-#endif
-\end{minted}
-\caption{Example of splitting a function across files 1/3}
-\label{source_code}
-\end{listing}
-
-\subsubsection*{Example (2/3) - Implementation file}
-\begin{listing}[h]
-\begin{minted}
-[
-frame=lines,
-linenos,
-fontsize=\small,
-obeytabs=true,
-tabsize=3
-]
-{c++}
-#include "name_of_header_file.hpp"
-	//Don't forget to include the header file
-
-int declaration_of_a_function{double number, char name, int integer}
-{
-	//do something here
-}
-\end{minted}
-\caption{Example of splitting a function across files 2/3}
-\label{source_code}
-\end{listing}
-
-
-\subsubsection*{Example (3/3) - File in which function is called}
 \begin{listing}[H]
 \begin{minted}
-[
-frame=lines,
-linenos,
-fontsize=\small,
-obeytabs=true,
-tabsize=3
-]
-{c++}
-#include "name_of_header_file.hpp"
-	//Don't forget to include the header file
-
-int main()
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//Struct definition
+struct WindInfo
 {
-	int number = declaration_of_a_function(2.0, 'A', 5);
-	return 0;
+	double velocity;
+	char direction;
+};
+
+//Declare the array and fill it
+WindInfo dataPoint[10];
+
+for (int i = 0; i < 10; i++)
+{
+	cout << "Enter velocity: ";
+	cin >> dataPoint[i].velocity;
+	
+	cout << "Enter direction: ";
+	cin >> dataPoint[i].direction;
 }
 \end{minted}
-\caption{Example of splitting a function across files 3/3}
-\label{source_code}
+\caption{An array of structs -- a short example of wind info}
+\label{source_code_1}
 \end{listing}
+
+An example of using the class Monet is given in book page 696 to 697 (but it is self evident).
+
+
+\subsubsection{Arrays as class members}
+You can have a structure or class that has an array as a member variable.
+
+For example, a speed swimmer wants a program to keep track of the practice times for
+various distances. You can use the structure my\_best (the object) (of the type 'Data' (the structure))
+to record a distance (member variable that is an integer) and the times (in seconds; member
+variable that is an array) for each of ten practice tries swimming that distance:
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//Define struct
+struct Data
+{
+	int distance;
+	int time[10];
+	//an array that is a member of a struct which records times for one given distance
+};
+
+//In main
+Data myBest;
+
+myBest.distance = 20;
+cout << "Enter then times (in seconds): ";
+for (int i = 0; i < 10; i++)
+{
+	cin >> myBest.time[i];
+}
+\end{minted}
+\caption{An array as a class member variable}
+\label{source_code_1}
+\end{listing}
+
+If you use a class rather than a structure type, then you can do all your array manipulations
+with member methods.
+
+
+%-----------------------------------------------------------------------------------------------
+\subsection{Programming example: A class for a partially filled array (not hard but interesting)}
+The program stores a list of temperatures in an array, adds them, and checks the size of the array.
+Interesting features include:
+\begin{itemize}
+	\item Use of array in a class.
+	\item Overloading \textless\textless as discussed earlier.
+	\item Using const in member function.
+	\item Use of friend function.
+\end{itemize}
+
+The full example is in book page 699 to 701 and extracts are \ldots
+
+\subsubsection*{Class interface}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+class TemperatureList
+{
+public:
+	//Initialises size at 0
+	TemperatureList(double temperature);
+	
+	/*
+	Adds a temperature to the list if the array is not full and increments size
+	to know when the array is full.
+	*/
+	void addTemperature(double temperature);
+	
+	/*
+	Returns true if size is 50 (i.e. if array is full)
+	*/
+	bool full() const;
+	
+	friend ofstream& operator <<(ofstream& out const TemperatureList& theObject);
+	
+private:
+	double list[50]; //array of temperatures in celsius
+	int size; //number of array positions filled --> initialised at 0
+};
+\end{minted}
+
+
+
+\subsubsection*{Class implementation}
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+TemperatureList::TemperatureList() : size(0) {}
+
+TemperatureList::TemperatureList(double temperature) : size(temperature) {}
+
+void TemperatureList::addTemperature(double temperature)
+{
+	if (full())
+	{
+		cout << "Error, list is full!";
+		exit(1);
+	}
+	
+	else
+	{
+		list[size] = temperature;
+		size++;
+	}
+}
+
+bool TemperatureList::full() const
+{
+	return (size == 50);
+}
+
+ofstream& operator <<(ofstream& out const TemperatureList& theObject)
+{
+	for (int i = 0; i < theObject.size; i++)
+	{
+		out << theObject.list[i] << " C" << endl;
+		return out;
+	}	
+}
+\end{minted}
+
+
+
+
+%-----------------------------------------------------------------------------------------------
+\subsection{Classes and dynamic arrays}
+A dynamic array can have a base type that is a class. A class can have a member variable
+that is a dynamic array. An example of classes and dynamic arrays is given in the programming
+example at the end of this section (`A string variable class').
+
+
+
+
+%-----------------------------------------------------------------------------------------------
+\subsection{Destructor}
+A destructor is a member function that is called automatically when an object of the class
+passes out of scope. This means that if your program contains a local variable that is an
+object with a destructor, then when the function call ends, the destructor is called automatically.
+If the destructor is defined correctly, the call to delete eliminates all the dynamic variables created
+by the object.
+
+Destructors are particularly useful if a dynamic variable is embedded in the implementation of a
+class where the programmer that uses the class does not know about the dynamic variable
+and cannot be expected to know that a call to delete is required (also normally member variables
+are 'private' thus he also could not make a call to delete).
+
+Returning memory to the heap is the main job of the destructor.
+
+The name of a constructor is the name of the class prefixed with `~'.
+
+\subsubsection*{Example of a destructor}
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//Declare DESTRUCTOR in class definition
+class StringVar
+{
+public:
+	~StringVar();
+};
+
+//Define DESTRUCTOR
+StringVar::~StringVar()
+{
+	delete [] value;
+}
+\end{minted}
+\caption{Example of destructor}
+\label{source_code_1}
+\end{listing}
+
+
+
+
+%-----------------------------------------------------------------------------------------------
+\subsection{Copy constructor}
+
+\subsubsection*{Motivation -- pitfall of pointers as call-by-value parameters (B.p. 708 - 709}
+Beware when calling a function with a pointer as parameter. Even when passed as value
+parameter, the pointer variable is still an address. When passing the address to a function
+and then change the value pointed to by the pointer (i.e. the address) you effectively also
+change the value in the main part of your code.
+
+If the parameter type is a class that has member variables of a pointer type you could get
+surprising results. But for for class types you can avoid (and control) the effects of such by
+defining copy constructors.
+
+A copy constructor is \ldots
+\begin{itemize}
+	\item A constructor that has one parameter that is of the same type as the class.
+	\item This parameter must be a call-by-reference parameter.
+	\item Normally the parameter is preceded by const.
+	\item In all other respects a copy-constructor is defined in the same way as other
+	constructors.
+\end{itemize}
+
+The copy constructor is called automatically whenever an argument is `plugged in' for a
+call-by-value parameter of the class type. Any class that used pointers and the new operator
+should have a copy constructor.
+
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//Reminder of the copy constructor
+//As needed, has a variable of same type as the class passed by reference
+String_var::Stirng_var(const String_var& string_object) : max_length(string_object.length())
+{
+	value = new char[max_length + 1];
+	strcpy(value, string_object.value);
+}
+
+//Assume code below ...
+String_var line(20); //uses first constructor of string class example below
+cout << "Enter a string of length 20 or less.";
+line.input_line(cin); // assigns the 'line' string the value we have typed in
+
+String_var temporary(line); // Initialized by copy constructor
+    //temporary is a new object
+    //Since line is of type String_var --> the copy constructor is invoked.
+\end{minted}
+\caption{Example of copy constructor}
+\label{source_code_1}
+\end{listing}
+
+So what happens exactly with the copy constructor?
+\begin{itemize}
+	\item The object \emph{temporary} is initialised by the constructor that has one
+	argument of type const String\_var\&.
+	\item The design of the copy constructor should be such that:
+	\begin{itemize}
+		\item The object being initialised becomes an independent copy of its argument. 
+		\item (i.e. in example that temporary becomes an independent copy of line)
+		\begin{itemize}
+			\item (in this example) this is achieved by giving the object `temporary' a new
+			independent dynamic array variable.
+			\item We then copy the contents of `line' onto `temporary'.
+		\end{itemize}
+		\item This is called a deep copy where all changes we would make on `temporary'
+		would not be made on `line'.
+	\end{itemize}
+\end{itemize}
+
+A copy constructor is also called automatically in certain other situations (whenever C++ needs
+to make a copy of an object it automatically calls the copy-constructor).
+\begin{enumerate}
+	\item When a class object is declared and is initialised by another object of the same type
+	(as in example).
+	\item When a function returns a value of the class type, the copy constructor is called
+	automatically to copy the value specified by the return statement (but only if there is a
+	copy constructor defined).
+	\item Whenever an argument of the class type is plugged in for a call-by-value parameter.
+\end{enumerate}
+
+Book page 710 to 711 further illustrates the need for a copy constructor - if you do not create a
+deep copy you will end up having two pointers pointing to the same value.
+
+Typically for classes that do not involve pointers or dynamically allocated memory you do not
+need copy constructors - a shallow copy performed by default will generally suffice.
+
+The big three (copy constructor, the overloaded assignment operator =, and the destructor)
+are called big three because if you define one of them, you need to define all three.
+
+
+
+
+
+%-----------------------------------------------------------------------------------------------
+\subsection{Programming example: Own string class (B.p. 702)}
+Define a class \emph{StringVar} whose objects are string variables, implemented using
+a dynamic array).
+
+\subsubsection*{Class definition}
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+class StringVar
+{
+public:
+//Four constructors and one destructor
+	StringVar();
+		//Initialises object so it can accept string values up to '100'
+		//and sets the value of the object equal to empty string
+	StringVar(int size);
+		//Initialises object so it can accept string values up to 'size'
+		//and sets the value of the object equal to empty string
+	StringVar(const char a[]);
+		//Pre-condition: the array 'a' contains characters and is terminated with '\0'
+		//Initialises object so its value is the string stored in 'a' and maxLength is
+		//the length of 'a'
+	StringVar(const StringVar& string_object);
+		//Copy constructor (check again)
+	~StringVar();
+		//Returns all dynamic memory to the heap
+	
+//Other member functions
+	int length() const;
+		//Returns length of current string value
+	void inputLine(ifstream& ins);
+		//Precondition: If 'ins' is a file input stream (i.e. not cin), then 'ins' has been 
+		//connected to a file
+		//Action: The next text in in the input stream, up to '\n', is copied to the calling
+		//object. If there is not sufficient room, then only as much as fit is copied
+	friend ofstream& operator <<(ofstream& outs, const StringVar& theString);
+		//Pre-condition: If outs is a file output stream, then outs has
+		//already been connected to a file
+	void operator =(const StringVar& rightSide);
+		//Sets a string variable equal to rightSide
+
+private:
+	char* value; //pointer variable / dynamic array that holds the string
+	int maxLength; //maximum length of value array
+};
+\end{minted}
+\caption{String class programming example 1/3}
+\label{source_code_1}
+\end{listing}
+
+
+
+
+
+\subsubsection*{Member functions definition}
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+#include <cstdlib>
+#include <cstddef>
+#include <cstring>
+
+//---------- Constructors
+StringVar::StringVar() : maxLength(100)
+{
+	value = new char[maxLength + 1];
+	value[0] = '\0';
+}
+
+StringVar::StringVar(int size) : maxLength(size)
+{
+	value = new char[maxLength + 1];
+	value[0] = '\0';
+}
+
+StringVar::StringVar(const char a[]) : maxLength(strlen(a))
+{
+	value = new char[maxLength + 1];
+	strcpy(value, a);
+}
+
+//---------- Copy constructor
+StringVar::StringVar(const StringVar& stringObject)
+	: maxLength(stringObject.length())
+{
+	value = new char[maxLength + 1];
+	strcpy(value, stringObject.value);
+}
+
+//---------- Destructor
+StringVar::~StringVar()
+{
+	delete [] value;
+}
+
+//---------- Other member functions
+int StringVar::length() const
+{
+	return strlen(value);
+}
+
+void StringVar::inputLine(ifstream& ins)
+{
+	ins.getline(value, maxLength + 1);
+}
+
+ofstream& operator <<(ofstream& outs, const StringVar& theString)
+{
+	outs << theString.value;
+	return outs;
+}
+
+void StringVar::operator =(const StringVar& rightSide)
+{
+	int newLength = strlen(rightSide.value);
+	if (newLength > maxLength)
+	{
+		delete [] value;
+		maxLength = newLength;
+		value = new char[maxLength + 1];
+	}
+	
+	for (int i = 0; i < newLength; i++)
+	{
+		value[i] = rightSide.value[i];
+	}
+	value[newLength] = '\0';
+}
+\end{minted}
+\caption{String class programming example 2/3}
+\label{source_code_1}
+\end{listing}
+
+
+
+
+
+\subsubsection*{Illustrative program}
+\begin{listing}[H]
+\begin{minted}
+[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+int MAX_NAME_SIZE = 30;
+int main()
+{
+	//Create two string objects
+	StringVar yourName(MAX_NAME_SIZE); //use of second constructor
+	StringVar ourName("Borg"); //uses third constructor
+	
+	cout << "What  is your name? " << endl;
+	yourName.inputLine(cin);
+	
+	//This only works because we have overloaded the '<<' operator
+	cout << "We are: " << ourName << endl;
+	cout << "We will meet again " << yourName << endl;
+}
+\end{minted}
+\caption{String class programming example 3/3}
+\label{source_code_1}
+\end{listing}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{p1} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{int}\PYG{p}{;} \PYG{c+c1}{//creates new dynamic variable (has no variable name)}
-\PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{o}{*}\PYG{n}{p1}\PYG{p}{;} \PYG{c+c1}{// assign a number to the variable}
-\PYG{o}{*}\PYG{n}{p1} \PYG{o}{=} \PYG{o}{*}\PYG{n}{p1} \PYG{o}{+} \PYG{l+m+mi}{7}\PYG{p}{;} \PYG{c+c1}{// add 7 to the variable}
-\end{Verbatim}

@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Instead of writing this alternative 1}
+\PYG{n}{Money} \PYG{n+nf}{amount}\PYG{p}{(}\PYG{l+m+mi}{100}\PYG{p}{);}
+\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}I have \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{amount}\PYG{p}{.}\PYG{n}{output}\PYG{p}{(}\PYG{n}{cout}\PYG{p}{);}
+
+\PYG{c+c1}{//... you want to write}
+\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}I have \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{amount}\PYG{p}{;} \PYG{c+c1}{//i.e. w/o having to call \PYGZsq{}.output(cout)\PYGZsq{}}
+\end{Verbatim}

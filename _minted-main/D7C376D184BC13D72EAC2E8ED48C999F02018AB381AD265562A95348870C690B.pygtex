@@ -1,0 +1,34 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{TemperatureList}\PYG{o}{::}\PYG{n}{TemperatureList}\PYG{p}{()} \PYG{o}{:} \PYG{n}{size}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
+
+\PYG{n}{TemperatureList}\PYG{o}{::}\PYG{n}{TemperatureList}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{temperature}\PYG{p}{)} \PYG{o}{:} \PYG{n}{size}\PYG{p}{(}\PYG{n}{temperature}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n}{TemperatureList}\PYG{o}{::}\PYG{n}{addTemperature}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{temperature}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{full}\PYG{p}{())}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Error, list is full!\PYGZdq{}}\PYG{p}{;}
+		\PYG{n}{exit}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{k}{else}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{list}\PYG{p}{[}\PYG{n}{size}\PYG{p}{]} \PYG{o}{=} \PYG{n}{temperature}\PYG{p}{;}
+		\PYG{n}{size}\PYG{o}{++}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{bool} \PYG{n}{TemperatureList}\PYG{o}{::}\PYG{n}{full}\PYG{p}{()} \PYG{k}{const}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{return} \PYG{p}{(}\PYG{n}{size} \PYG{o}{==} \PYG{l+m+mi}{50}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{ofstream}\PYG{o}{\PYGZam{}} \PYG{k}{operator} \PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{p}{(}\PYG{n}{ofstream}\PYG{o}{\PYGZam{}} \PYG{n}{out} \PYG{k}{const} \PYG{n}{TemperatureList}\PYG{o}{\PYGZam{}} \PYG{n}{theObject}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{theObject}\PYG{p}{.}\PYG{n}{size}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{out} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{theObject}\PYG{p}{.}\PYG{n}{list}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} C\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+		\PYG{k}{return} \PYG{n}{out}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}	
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

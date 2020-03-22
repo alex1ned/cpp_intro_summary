@@ -1,0 +1,39 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{StringVar}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+\PYG{c+c1}{//Four constructors and one destructor}
+	\PYG{n}{StringVar}\PYG{p}{();}
+		\PYG{c+c1}{//Initialises object so it can accept string values up to \PYGZsq{}100\PYGZsq{}}
+		\PYG{c+c1}{//and sets the value of the object equal to empty string}
+	\PYG{n}{StringVar}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{size}\PYG{p}{);}
+		\PYG{c+c1}{//Initialises object so it can accept string values up to \PYGZsq{}size\PYGZsq{}}
+		\PYG{c+c1}{//and sets the value of the object equal to empty string}
+	\PYG{n}{StringVar}\PYG{p}{(}\PYG{k}{const} \PYG{k+kt}{char} \PYG{n}{a}\PYG{p}{[]);}
+		\PYG{c+c1}{//Pre\PYGZhy{}condition: the array \PYGZsq{}a\PYGZsq{} contains characters and is terminated with \PYGZsq{}\PYGZbs{}0\PYGZsq{}}
+		\PYG{c+c1}{//Initialises object so its value is the string stored in \PYGZsq{}a\PYGZsq{} and maxLength is}
+		\PYG{c+c1}{//the length of \PYGZsq{}a\PYGZsq{}}
+	\PYG{n}{StringVar}\PYG{p}{(}\PYG{k}{const} \PYG{n}{StringVar}\PYG{o}{\PYGZam{}} \PYG{n}{string\PYGZus{}object}\PYG{p}{);}
+		\PYG{c+c1}{//Copy constructor (check again)}
+	\PYG{o}{\PYGZti{}}\PYG{n}{StringVar}\PYG{p}{();}
+		\PYG{c+c1}{//Returns all dynamic memory to the heap}
+	
+\PYG{c+c1}{//Other member functions}
+	\PYG{k+kt}{int} \PYG{n+nf}{length}\PYG{p}{()} \PYG{k}{const}\PYG{p}{;}
+		\PYG{c+c1}{//Returns length of current string value}
+	\PYG{k+kt}{void} \PYG{n+nf}{inputLine}\PYG{p}{(}\PYG{n}{ifstream}\PYG{o}{\PYGZam{}} \PYG{n}{ins}\PYG{p}{);}
+		\PYG{c+c1}{//Precondition: If \PYGZsq{}ins\PYGZsq{} is a file input stream (i.e. not cin), then \PYGZsq{}ins\PYGZsq{} has been}
+		\PYG{c+c1}{//connected to a file}
+		\PYG{c+c1}{//Action: The next text in in the input stream, up to \PYGZsq{}\PYGZbs{}n\PYGZsq{}, is copied to the calling}
+		\PYG{c+c1}{//object. If there is not sufficient room, then only as much as fit is copied}
+	\PYG{k}{friend} \PYG{n}{ofstream}\PYG{o}{\PYGZam{}} \PYG{k}{operator} \PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{p}{(}\PYG{n}{ofstream}\PYG{o}{\PYGZam{}} \PYG{n}{outs}\PYG{p}{,} \PYG{k}{const} \PYG{n}{StringVar}\PYG{o}{\PYGZam{}} \PYG{n}{theString}\PYG{p}{);}
+		\PYG{c+c1}{//Pre\PYGZhy{}condition: If outs is a file output stream, then outs has}
+		\PYG{c+c1}{//already been connected to a file}
+	\PYG{k+kt}{void} \PYG{k}{operator} \PYG{o}{=}\PYG{p}{(}\PYG{k}{const} \PYG{n}{StringVar}\PYG{o}{\PYGZam{}} \PYG{n}{rightSide}\PYG{p}{);}
+		\PYG{c+c1}{//Sets a string variable equal to rightSide}
+
+\PYG{k}{private}\PYG{o}{:}
+	\PYG{k+kt}{char}\PYG{o}{*} \PYG{n}{value}\PYG{p}{;} \PYG{c+c1}{//pointer variable / dynamic array that holds the string}
+	\PYG{k+kt}{int} \PYG{n}{maxLength}\PYG{p}{;} \PYG{c+c1}{//maximum length of value array}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

@@ -1,0 +1,29 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//In class definition file}
+\PYG{k}{class} \PYG{n+nc}{BankAccount}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{c+c1}{//Default constructor that sets balance and rate to 0}
+	\PYG{n}{BankAccount}\PYG{p}{();}
+	
+	\PYG{c+c1}{//Another constructor}
+	\PYG{n}{BankAccount}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{dollars}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{cents}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{rate}\PYG{p}{);}
+	
+\PYG{k}{private}\PYG{o}{:}
+	\PYG{k+kt}{double} \PYG{n}{balance}\PYG{p}{;}
+	\PYG{k+kt}{double} \PYG{n}{iRate}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{//In function definition file for the class}
+\PYG{n}{BankAccount}\PYG{o}{::}\PYG{n}{BankAccount}\PYG{p}{()} \PYG{o}{:} \PYG{n}{balance}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{),} \PYG{n}{iRate}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{c+c1}{//no need for body\PYGZcb{}}
+
+\PYG{n}{BankAccount}\PYG{o}{::}\PYG{n}{BankAccount}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{dollars}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{cents}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{rate}\PYG{p}{)} \PYG{o}{:}
+	\PYG{n}{balance}\PYG{p}{(}\PYG{n}{dollars} \PYG{o}{+} \PYG{l+m+mf}{0.01}\PYG{o}{*}\PYG{n}{cents}\PYG{p}{),} \PYG{n}{iRate}\PYG{p}{(}\PYG{n}{rate}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{dollars} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0} \PYG{o}{||} \PYG{n}{cents} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0} \PYG{o}{||} \PYG{n}{rate} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Illegal\PYGZdq{}}\PYG{p}{;}
+		\PYG{n}{exit}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
