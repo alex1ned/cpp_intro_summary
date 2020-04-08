@@ -1,0 +1,34 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{DivideByZero}
+\PYG{p}{\PYGZob{}\PYGZcb{};}
+
+\PYG{k+kt}{double} \PYG{n+nf}{safeDivide}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{top}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{bottom}\PYG{p}{)} \PYG{k}{throw} \PYG{p}{(}\PYG{n}{DivideByZero}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{bottom} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)}
+		\PYG{k}{throw} \PYG{n}{DivideByZero}\PYG{p}{();}
+		
+	\PYG{k}{return} \PYG{n}{top}\PYG{o}{/}\PYG{k}{static\PYGZus{}cast}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{n}{bottom}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{numerator} \PYG{o}{=} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{n}{denominator} \PYG{o}{=} \PYG{l+m+mi}{20}\PYG{p}{;}
+	\PYG{k+kt}{double} \PYG{n}{quotient}\PYG{p}{;}
+	
+	\PYG{k}{try}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{quotient} \PYG{o}{=} \PYG{n}{safeDivide}\PYG{p}{(}\PYG{n}{numerator}\PYG{p}{,} \PYG{n}{denominator}\PYG{p}{);}
+		\PYG{c+c1}{//The throw statement is in function call}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{c+c1}{//The catch statement is outside the function call}
+	\PYG{k}{catch}\PYG{p}{(}\PYG{n}{DivideByZero}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Error: Division by zero!\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+		\PYG{n}{exit}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Quotient: \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{quotient} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

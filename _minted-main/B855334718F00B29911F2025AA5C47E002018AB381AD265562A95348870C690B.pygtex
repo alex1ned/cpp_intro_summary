@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{double} \PYG{n+nf}{safeDivide}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{top}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{bottom}\PYG{p}{)} \PYG{k}{throw} \PYG{p}{(}\PYG{n}{DivideByZero}\PYG{p}{,} \PYG{k+kt}{int}\PYG{p}{,} \PYG{k+kt}{double}\PYG{p}{,} \PYG{k+kt}{char}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}	\PYG{c+c1}{//NOTE: inside the brackets of the trow statement you only include the types of}
+	\PYG{c+c1}{//exceptions that can be thrown separated by comma (this can be one or more).}
+	\PYG{c+c1}{//You would not include variable names.}
+
+	\PYG{c+c1}{//some function definition}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

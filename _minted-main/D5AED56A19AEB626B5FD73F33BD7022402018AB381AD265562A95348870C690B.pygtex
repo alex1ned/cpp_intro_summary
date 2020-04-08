@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Two exception classes}
+\PYG{k}{class} \PYG{n+nc}{NegativeNumber}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{n}{NegativeNumber}\PYG{p}{(}\PYG{n}{string} \PYG{n}{toCatchBlock}\PYG{p}{);}
+		\PYG{c+c1}{//Sets the message to \PYGZsq{}toCatchBlock\PYGZsq{}}
+	\PYG{n}{string} \PYG{n+nf}{getMessage}\PYG{p}{();}
+		\PYG{c+c1}{//Returns the message}
+\PYG{k}{private}\PYG{o}{:}
+	\PYG{n}{string} \PYG{n}{message}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{k}{class} \PYG{n+nc}{DivideByZeor}
+\PYG{p}{\PYGZob{}\PYGZcb{};}
+\end{Verbatim}

@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//In the below it might not be \PYGZsq{}vector\PYGZsq{} but could be any other container type}
+\PYG{c+c1}{//and it might not be \PYGZsq{}int\PYGZsq{} but it could also be any other type}
+
+\PYG{c+c1}{//Classic iterator}
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}::}\PYG{n}{iterator} \PYG{n}{iteratorName}\PYG{p}{;}
+
+\PYG{c+c1}{//Read\PYGZhy{}only iterator}
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}::}\PYG{n}{const\PYGZus{}iterator} \PYG{n}{iteratorName}\PYG{p}{;}
+
+\PYG{c+c1}{//Reverse iterator}
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}::}\PYG{n}{reverse\PYGZus{}iterator} \PYG{n}{iteratorName}\PYG{p}{;}
+
+\PYG{c+c1}{//Read\PYGZhy{}only reverse iterator}
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}::}\PYG{n}{const\PYGZus{}reverse\PYGZus{}iterator} \PYG{n}{iteratorName}\PYG{p}{;}
+\end{Verbatim}

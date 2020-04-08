@@ -1,0 +1,32 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//\PYGZhy{}\PYGZhy{}\PYGZhy{} 3) Define the child class in a separate file}
+\PYG{c+c1}{//         \PYGZhy{} Note the public keyword with the name of the parent clas}
+\PYG{c+cp}{\PYGZsh{}ifndef CHILD\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}define CHILD\PYGZus{}H}
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}parent.h\PYGZdq{}}
+\PYG{k}{namespace} \PYG{n}{parentnederegger}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{class} \PYG{n+nc}{Child} \PYG{o}{:} \PYG{k}{public} \PYG{n}{Parent}
+	\PYG{p}{\PYGZob{}}
+		\PYG{c+c1}{//NOTE: if \PYGZsq{}Child\PYGZsq{} was a child class also of \PYGZsq{}Parent2\PYGZsq{} then you}
+		\PYG{c+c1}{//would declare it with: \PYGZsq{}class Child : public Parent, Parent2\PYGZsq{}}
+	
+		\PYG{c+c1}{//some class definition}
+		\PYG{k+kt}{int} \PYG{n}{aFunction}\PYG{p}{();} \PYG{c+c1}{//This would be a redefinition of the function}
+	\PYG{p}{\PYGZcb{};}
+\PYG{p}{\PYGZcb{}} \PYG{c+c1}{//parentnederegger}
+
+\PYG{c+cp}{\PYGZsh{}endif}
+
+
+
+\PYG{c+c1}{//\PYGZhy{}\PYGZhy{}\PYGZhy{} 4) Implement the child class (standard as any other class) in separate file}
+\PYG{c+c1}{//         \PYGZhy{} NOTE: Speciality regarding the constructor (see later)}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}child.h\PYGZdq{}}
+\PYG{k}{namespace} \PYG{n}{parentnederegger}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{Child}\PYG{o}{::}\PYG{n}{Child}\PYG{p}{()} \PYG{o}{:} \PYG{c+c1}{//some definition}
+	\PYG{c+c1}{//Other function definitions}
+\PYG{p}{\PYGZcb{}} \PYG{c+c1}{//parentnederegger}
+\end{Verbatim}

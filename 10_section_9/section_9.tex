@@ -1,2 +1,727 @@
 \section{Standard template library and C++ 11}
 
+The C++ standard template library (STL) is not really part of the C++ syntax but it is pretty much used
+as such. Essentially this involves a namespace (`std') in which certain template classes and template
+functions are defined. These include common data structures (i.e. containers) such as vectors, stack,
+queues, etc, as well as functions and variables types to use them. For example most `containers' include
+\emph{iterators}. Iterators are data types which are used like pointers but have some predefined
+functions that help navigate particular `containers' with loops.
+
+%---------------------------------------------------------------------------------------------------------------------
+\subsection{Iterators}
+An iterator is an object that can be used with a container to gain access to elements in the container. An
+iterator is a generalisation of the notion of a pointer, and the operators ==, !=, ++, $--$and behave the same
+for iterators as they do for pointers. Every container class has their own iterators.
+
+The basic outline of how an iterator can cycle through all the elements in a container is
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+STL_Container<type>::iterator p;
+for (p = container.begin(); p != container.end(); p++)
+{
+	//do something
+}
+\end{minted}
+\caption{Basic declaration and use of an interator, syntax}
+\label{source_code_1}
+\end{listing}
+
+STL\_Container is the name of the container class (for example, vector) and type is the data type of the item
+to be stored. The member function begin() returns an iterator located at the first element. The member
+function end() returns a value that serves as a sentinel value one location past the last element in the container.
+
+Once declared and initialised you can typically manipulate iterators using the following overloaded operators:
+\begin{itemize}
+	\item Pre- and postfix increment and decrement operators (++, and --), for moving the iterator to the
+	next or previous data item.
+	\item Equal and unequal operators, == and !=, to test whether two iterators point to the same data
+	location.
+	\item A dereferencing operator to give access to the data located where the pointer points to.
+	But for some STL container classes, *p produces read-only access.
+\end{itemize}
+
+Most container classes (see later section), such as the `vector' template then have member functions
+that point to special data elements in the data structure.
+
+\begin{itemize}
+	\item containerObject.begin() -- returns an iterator for the container that points to the
+	first data item in the container.
+	\item container.end() -- returns an iterator for the container.
+\end{itemize}
+
+Note that instead of explicitly stating the type you could also use \emph{auto} to infer the type.
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//Instead of ...
+vector<int>::iterator p = v.begin();
+
+//... you could also write
+auto p = v.begin();
+\end{minted}
+
+
+\subsubsection*{Example of using iterators}
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+#include <vector>
+using std::vector;
+
+int main()
+{
+	vector<int> container; //--> just a vector called 'container'
+	for (int i = 1; i <= 4; i++)
+	{
+		container.push_back(i);
+	}
+	
+	//Increment each element of the container by 1 
+	vector<int>::iterator p;
+		//This means p is a variable and its type is iterator
+		//iterator is the type named iterator that is defined in the class vector<int>...
+		//...which in turn is defined in the std namespace
+		//If we had not included the using directive 'using std::vector' we would require here
+		//using std::vector<int>::iterator;
+	for (p = container.begin(); p != container.end(); p++)
+	{
+		//Here p is an iterator and you assign it to the beginning of the container
+		//and then iterate through it.
+		*p += 1;
+	}
+}
+\end{minted}
+\caption{Example for using iterators}
+\label{source_code_1}
+\end{listing}
+
+
+\subsubsection{Kinds of iterators}
+Different containers have different kinds of iterators -- the three main kinds are:
+\begin{itemize}
+	\item Forward iterators: ++ works on the iterator (e.g. slist).
+	\item Bidirectional iterators: Both ++ and -- work on the iterator (e.g. list).
+	\item Random access iterators: ++, --, and random access all work with the
+	iterator (e.g. vector).
+\end{itemize}
+
+For random access iterators (e.g. vectors) you can use the following expressions
+\emph{vectorName[2]; *(iteratorName + 2); and iteratorName[2]} are all the same. It is important
+to note that these expressions itself leave the iterator where it is, however they literally mean
+`two locations beyond the location of p' wherever p may be -- p may not be at the beginning of
+the container. Hence it may lead to an issue if p is actually not at the beginning of the container
+and you think it is (perhaps you had used p++ before).
+
+
+\subsubsection{Mutable, constant, and reverse iterators}
+An iterator can usually be of the following types:
+\begin{itemize}
+	\item \emph{iterator}: mutable and non-revers. This means you can change the
+	value of the variable the iterator is pointing to and you move through the container
+	in a classic order (++ advances and -- goes back).
+	\item \emph{const\_iterator}: non-mutable and non-reverse: This means the variable
+	the iterator is pointing to is `read-only' and you move through the container
+	in a classic order (++ advances and -- goes back).
+	\item \emph{reverse\_iterator}: mutable and revers. This means you can change the
+	value of the variable the iterator is pointing to and you move through the container
+	in reverse order (-- advances and ++ goes back; see example).
+	\item \emph{const\_reverse\_iterator}: non-mutable and revers. This means the variable
+	the iterator is pointing to is `read-only' and  you move through the container
+	in reverse order (-- advances and ++ goes back; see example).
+\end{itemize}
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//In the below it might not be 'vector' but could be any other container type
+//and it might not be 'int' but it could also be any other type
+
+//Classic iterator
+std::vector<int>::iterator iteratorName;
+
+//Read-only iterator
+std::vector<int>::const_iterator iteratorName;
+
+//Reverse iterator
+std::vector<int>::reverse_iterator iteratorName;
+
+//Read-only reverse iterator
+std::vector<int>::const_reverse_iterator iteratorName;
+\end{minted}
+\caption{Declare other iterator types}
+\label{source_code_1}
+\end{listing}
+
+Note that for reverse iterators you need to pay attention how you move through the container --
+illustrated in example below. For reverse iterators ++ and -- are interchanged, and you start from
+containerName.rbegin() and end at containerName.rend().
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+#include <vector>
+
+using std::cout;
+using std::endl;
+using std::vector;
+
+int main()
+{
+	//Create a vector called container that holds A, B, C
+	vector<char> container;
+	container.push_back('A');
+	container.push_back('B');
+	container.push_back('C');
+	
+	//Create reverse iterator to move through vector in backward fashin
+	//- Here ++ means we are moving backward
+	//- Also note you start from .rbegin() and not .begin()
+	//  and end at .rend() and not .end()
+	vector<char>::reverse_iterator rp;
+	for (rp = container.rbegin(); rp != container.rend(); rp++)
+	{
+		cout << *rp << " ";
+	}
+	cout << endl;
+}
+\end{minted}
+\caption{Example of using reverse iterators}
+\label{source_code_1}
+\end{listing}
+
+
+
+
+
+%---------------------------------------------------------------------------------------------------------------------
+\subsection{Containers}
+We have different kinds of data structures which are implemented as container templates in the
+STL. Among these are (most importantly): linked lists, vectors, stacks, and queues.
+
+\subsubsection{Sequential containers}
+Sequential containers are vectors, doubly linked lists, singly linked lists, and deques. In the STL
+only double linked lists (i.e. that have pointers pointing to previous and next node) is implemented
+singly linked lists are not.
+
+\noindent
+\textbf{STL basic sequential containers and container member functions}:
+
+\begin{table}[H]
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{ m{3cm} m{8cm} m{3cm}} 
+\textbf{Template name} & \textbf{Iterators} & \textbf{Library header file}\\
+\hline
+
+list & mutable bidirectional, const bidirectional, and both in reverse
+& \textless list\textgreater\\
+\hline
+
+vector & mutable random access, const random access, and both in reverse
+& \textless vector\textgreater\\
+\hline
+
+deque & mutable random access, const random access, and both in reverse
+& \textless deque\textgreater\\
+\hline
+
+slist (may not be available) & mutable and constant forward
+& \textless slist\textgreater\\
+\hline
+\end{tabular}
+\end{center}
+\caption{STL basic sequential containers}
+\label{table_1}
+\end{table}
+
+
+
+\begin{table}[H]
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{ m{4.5cm} m{11cm}} 
+\textbf{Member function (c is an object} & \textbf{Meaning}\\
+\hline
+
+c.size() & Returns the number of elements in the container.\\
+\hline
+
+c.begin() & Returns an iterator located at the first element in the container.\\
+\hline
+
+c.end() & Returns an iterator located one beyond the last element in the container.\\
+\hline
+
+c.rbegin() & Returns an iterator located at the last element in the container. Is used
+with reverse iterators. Not a member function of slist.\\
+\hline
+
+c.rend() & Returns an iterator located at one before the first element in the container. Is used
+with reverse iterators. Not a member function of slist.\\\\
+\hline
+
+c.push\_back(Element) & Inserts the Element at the end of the sequence. Not a member of slist\\
+\hline
+
+c.push\_front(Element) & Insert the Element at the front of the sequence. Not a member of vector.\\
+\hline
+
+c.insert(Iterator, Element) & Insert a copy of Element before the location of `Iterator'.\\
+\hline
+
+c.erase(Iterator) & Removes the element at location Iterator. Returns an iterator at the
+location immediately following. Returns c.end() if the last element is removed.\\
+\hline
+
+c.clear() & A void function that removes all the elements in the container.\\
+\hline
+
+c.front() & Returns a reference to the element in the front of the sequence which is equivalent
+to writing *(c.begin()).\\
+\hline
+
+c1 == c2 & True if both are the same size AND each element of c1 is equal to the
+corresponding element of c2.\\
+\hline
+
+c1 != c2 & !(c1 == c2).\\
+\hline
+\end{tabular}
+\end{center}
+\caption{STL basic container member functions}
+\label{table_1}
+\end{table}
+
+Note that deque stands for doubly ended queue. A deque is a kind of super queue. With a queue you
+add data at one end of the data sequence and remove data from the other end. With a deque you can
+add data at either end and remove data from either end. The template class deque is a template class
+for a deque with a parameter for the type of data stored.
+
+
+\noindent
+\textbf{Basic example of using the \emph{list} container}:
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+#include <iostream>
+#include <list>
+using std::cout;
+using std::endl;
+using std::list;
+
+int main()
+{
+	//Create a doubly linked list object that contains integers
+	//and fill the nodes
+	list<int> listObject;
+	for (int i = 1; i <= 3; i++)
+	{
+		listObject.push_back(i);
+	}
+	
+	//Create a mutable iterator for the list object
+	list<int>::iterator listIterator;
+	for (listIterator = listObject.begin(); listIterator != listObject.end(); listIterator++)
+	{
+		*listIterator = 0;
+	}
+	return 0;
+}
+\end{minted}
+\caption{Basic example of using the `list' container}
+\label{source_code_1}
+\end{listing}
+
+
+
+%+++++++++++++++++++++++++++++
+\subsubsection{Container adapters -- \emph{stack} and \emph{queue}}
+These are stack, queue, and priority queue. These adapter template classes have a default
+container class on top of which they are built but you can also choose the a different
+underlying container.
+
+\noindent
+\textbf{Stack}:
+\begin{itemize}
+	\item Type name: stack\textless TYPE\textgreater or stack\textless TYPE, Underlying\_container\textgreater
+	for a stack of elements of type TYPE.
+	\item Library header: \textless stack\textgreater
+	\item Defined types: value\_type, size\_type.
+	\item No iterators.
+\end{itemize}
+
+\noindent
+Member functions for \emph{stack}
+\begin{table}[H]
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{ m{4.5cm} m{11cm}} 
+\textbf{Member function (s is an object} & \textbf{Meaning}\\
+\hline
+
+s.size() & Returns the number of elements in the stack.\\
+\hline
+
+s.empty() & Returns true if the stack is empty; otherwise false.\\
+\hline
+
+s.top() & Returns a mutable reference to the top member of the stack.\\
+\hline
+
+s.push(Element) & Inserts a copy of Element at the top of the stack.\\
+\hline
+
+s.pop() & Removes the top element of the stack (a void function).\\
+\hline
+
+s1 == s2 & True if they are of equal size and each element of s1 is
+equal to the corresponding element of s2.\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Stack common member functions}
+\label{table_1}
+\end{table}
+
+\noindent
+\textbf{Queue}:
+\begin{itemize}
+	\item Type name: queue\textless TYPE\textgreater or queue\textless TYPE, Underlying\_container\textgreater
+	for a queue of elements of type TYPE.
+	\item For efficiency reasons, the Underlying\_Container cannot be a vector.
+	\item Library header: \textless queue\textgreater
+	\item Defined types: value\_type, size\_type.
+	\item No iterators.
+\end{itemize}
+\begin{table}[H]
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{ m{4.5cm} m{11cm}} 
+\textbf{Member function (q is an object} & \textbf{Meaning}\\
+\hline
+
+q.size() & Returns the number of elements in the queue.\\
+\hline
+
+q.empty() & Returns true if the queue is empty; otherwise false.\\
+\hline
+
+q.front() & Returns a mutable reference to the front member of the queue\\
+\hline
+
+q.back() & Returns a mutable reference to the last member of the queue.\\
+\hline
+
+q.push(Element) & Inserts Element at the back of the queue.\\
+\hline
+
+q.pop() & Removes the front element of the queue (void function).\\
+\hline
+
+q1 == q2 & True if they are of equal size and each element of q1 is
+equal to the corresponding element of q2.\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Queue common member functions}
+\label{table_1}
+\end{table}
+
+For short programs that use the stack templates check the book pages
+1016 -- 1017.
+
+
+
+
+%+++++++++++++++++++++++++++++
+\subsubsection{Associative containers -- \emph{set} and \emph{map}}
+
+\noindent
+\textbf{Set}
+Stores a set of elements of a certain type where each element is only stored once --
+that means if you store an element twice, only one version is actually in it, hence
+all elements in the set are unique.
+
+\begin{itemize}
+	\item Type name: set\textless TYPE\textgreater or set\textless TYPE, Ordeing\textgreater.
+	\item The ordering is used to sort elements for storage. If no ordering is given
+	the ordering is the binary operator \textless.
+	\item Library header \textless set\textgreater.
+	\item Defined types include: value\_type, size\_type.
+	\item Iterators are both const and reverse and all are bidirectional.
+	\item .begin(), .end(), .rbegin(), and .rend() have the expected behaviour.
+	\item Adding or deleting elements does not affect iterators, except for an iterator
+	located at the element removed.
+\end{itemize}
+
+\begin{table}[H]
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{ m{4.5cm} m{11cm}} 
+\textbf{Member function (s is an object} & \textbf{Meaning}\\
+\hline
+
+s.size() & Returns the number of elements in the set.\\
+\hline
+
+s.insert(Element) & Inserts a copy of Element in the set given it is not
+already in the set.\\
+\hline
+
+s.erase(Element) & Removes Element from the set given it is in the set.\\
+\hline
+
+s.find(Element) & Returns a mutable iterator located at the copy of
+Element in the set. If Element is not in the set, then s.end() is returned\\
+\hline
+
+s.erase(Iterator) & Erases the element at the location of the Iterator.\\
+\hline
+
+s.empty() & Returns true if the set is empty and false otherwise.\\
+\hline
+
+s1 == s2 & Returns true if the sets contain the same elements and false otherwise\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Set common member functions}
+\label{table_1}
+\end{table}
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+#include <iostream>
+#include <set>
+using std::cout;
+using std::endl;
+using std::set;
+
+int main()
+{
+	//Declare a set called someSet and fill it
+	set<char> someSet;
+	someSet.insert('A');
+	someSet.insert('D');
+	someSet.insert('B');
+	someSet.insert('D'); //--> this will have no effect given set already includes 'D'
+	
+	//Declare an iterator for set and print out each element
+	set<char>::iterator setIterator;
+	for (setIterator = someSet.begin(); setIterator != someSet.end(); setIterator++)
+	{
+		cout << *setIterator << endl;
+	}
+	
+	//Remove 'B'
+	someSet.erase('B');
+	
+	return 0;
+}
+\end{minted}
+\caption{Short example of using a set template class}
+\label{source_code_1}
+\end{listing}
+
+
+%========
+\noindent
+\textbf{Map}
+A map stores pairs of elements which can be of different type (similar to a python dictionary).
+In essence it is a simple database where one variable is associated to another. For example you
+could a SSN as `key' and a name as variable that is associated to it.
+
+\begin{itemize}
+	\item Type name: map\textless keyType, assocType\textgreater or
+	map\textless keyType, assocType, Ordeing\textgreater for a map that associates
+	(`maps') elements of type keyType to elements of type assocType.
+	\item The ordering is used to sort elements by key value for efficient storage. If no
+	ordering is given, the ordering used is the binary operator \textless.
+	\item Library header: \textless map\textgreater.
+	\item Defined types include: keyType (for the type of the key values), assocType
+	(for the type of the values mapped to the key), and size\_type.
+	\item Iterators are const and also reverse and all are bidirectional. However note that
+	the iterators not including `const\_' are neither constant nor mutable. You change the
+	key value but not the value of type assocType.
+	\item .begin(), .end(), .rbegin(), .rend() have the expected behaviour.
+	\item Adding or deleting elements does not affect iterators, except for an iterator
+	located at the element removed.
+	\item You can access a mapped value using array notation like:
+	\begin{itemize}
+		\item someMapName[``someKeyValue'']
+		\item This can also be used to redefine a the mapped value that is stored
+		at a certain key or you can add a new value to the map.
+	\end{itemize}
+	\item Use the `this' pointer to access either a key or the value mapped to the key
+	(you use it on the a mapIterator:
+	\begin{itemize}
+		\item To access the key: mapIterator-\textgreater first;
+		\item To access the value mapped: mapIterator-\textgreater second;
+	\end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{ m{4.5cm} m{11cm}} 
+\textbf{Member function (m is an object} & \textbf{Meaning}\\
+\hline
+
+m.size() & Returns the number of pairs in the map.\\
+\hline
+
+m.insert(Element) & Inserts Element in the map. Element is of type
+pair\textless keyType, assocType\textgreater. Returns a value of type
+pair\textless iterator, bool\textgreater. If the insertion is successful, the second part of the
+returned pair is true nd the iterator is located at the inserted element\\
+\hline
+
+m.erase(Target\_Key) & Removes the element with the key Target\_key.\\
+\hline
+
+m.find(Target\_key) & Returns an iterator located at the element with key value Target\_key.
+Returns m.end() if there is no such element.\\
+\hline
+
+m.empty() & Returns true if the map is empty and false otherwise.\\
+\hline
+
+m1 == m2 & Returns true if the maps contains the same pairs and false otherwise.\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Map common member functions}
+\label{table_1}
+\end{table}
+
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+#include <iostream>
+#include <map>
+#include <string>
+using std::cout;
+using std::endl;
+using std::map;
+using std::string;
+
+int main()
+{
+	//Declare a map where a string is associated to a string (call map 'planets')
+	map<string, string> planets;
+	
+	//Fill the map with entries
+	planets["Mercury"] = "Hot planet";
+	planets["Venus"] = "Atmosphere of sulphuric acid";
+	planets["Earth"] = "Home";
+	
+	//Use map in certain ways
+	cout << "Entry of Mercury: " << planets["Mercury"] << endl;
+	if (planets.find("Mercury") != planets.end())
+	{
+		cout << "Mercury is in the map." << endl;
+	}
+	
+	//Declare a map iterator and iterate through the map
+	map<string, string>::const_iterator mapIterator;
+	for (mapIterator = planets.begin(); mapIterator != planets.end(); mapIterator++)
+	{
+		//Here you first print out the key and then the mapped value
+		cout << mapIterator->first << " is the key for " << mapIterator->second << endl;
+	}
+	return 0;
+}
+\end{minted}
+\caption{Short example of using a map template class}
+\label{source_code_1}
+\end{listing}
+
+\noindent
+\textbf{Tip: use initialisation, ranged for, and auto with containers}
+You can initialise your container objects using the uniform initialiser list format, which consists
+of initial data in curly braces. You can also use auto and the ranged for loop to easily iterate
+through a container. Consider the following two initialised collection objects (one map and one set):
+
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+map<int, string> personIDs =
+{
+	{1, "Walt"},
+	{2, "Kenrick"}
+};
+
+set<string> colors = {"red", "green", "blue"};
+\end{minted}
+
+We can iterate through each container conveniently using a ranged for loop
+and auto:
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//personIDs and colors are defined in code block above
+for (auto p : personIDs)
+{
+	cout << p.first << " " << p.second << endl; 	
+}
+
+for (auto p : colors)
+{
+	cout << p << " ";
+}
+\end{minted}
+\caption{Easy code to iterate over containers}
+\label{source_code_1}
+\end{listing}
+
+
+%---------------------------------------------------------------------------------------------------------------------
+\subsection{Generic algorithms}
+
+
+
+
+
+
+
+%---------------------------------------------------------------------------------------------------------------------
+\subsection{C++ is evolving}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+
+\end{minted}
+\caption{Definition of a template function}
+\label{source_code_1}
+\end{listing}

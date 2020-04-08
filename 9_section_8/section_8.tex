@@ -1,2 +1,133 @@
 \section{Templates}
 
+Templates allow you to design functions that can be used with arguments of different types
+and to define classes that are much more general than typical ones. For example if you have
+a simple `swap' function that swaps two values, you could only use it with a certain type (e.g. int).
+However, the more general form would be the creation of a template which would allow you to
+define the function and it would work with any type as its inputs (e.g. int, char, double, someClass).
+
+%------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Templates for algorithm abstraction (function templates)}
+
+\begin{itemize}
+	\item The definition and the function declaration begin with the \emph{template prefix}: `template<class T>'.
+	This tells the compiler that the definition or function declaration that follows is a template and the T is
+	a type parameter. You could use any non-reserved word instead of `T' -- but it is typically `T'.
+	\item The `class' keyword is has nothing to do with creating a class.
+	\item You can use more than one type parameter: e.g. `template<class T1, class T2>'
+	\item The function is defined normally.
+	\item You call the function with a type you use in your program (e.g. int, double, someType, etc.).
+	\item Usually it is best not to separate the declaration and definition of template functions. That is to
+	just define them in one go. Otherwise you may have compiler complications.
+	\begin{itemize}
+		\item Thus do not use template function declarations -- only definitions.
+		\item Ensure that the function template definition appears in the same file in which it
+		is used and appears before the function template is called.
+		\item However, the function template definition can appear via an \#include directive.
+		Hence, define it in a .cpp or .hpp file and include it where the file before the template
+		function(s) is/are called.
+	\end{itemize}
+\end{itemize}
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+template<class T>
+void swapValues(T& variable1, T& variable2)
+{
+	T temp;
+	
+	temp = variable1;
+	variable1 = variable2;
+	variable2 = temp;
+}
+\end{minted}
+\caption{Definition of a template function}
+\label{source_code_1}
+\end{listing}
+
+
+
+
+%------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Templates for data abstraction (class templates)}
+You can also create template classes for which the template type (usually `T') is used for some
+class member variables (can also use multiple types T1, Tn - I assume).
+
+
+The class definition and the definitions of the member functions are prefaced with:
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+template<class Type_parameter> //e.g. you can use 'T'
+\end{minted}
+
+The class and member function definitions are then the same as for any ordinary class, except
+that the `Tpye\_parameter' can be used in place of a type.
+
+The following is important to note:
+\begin{itemize}
+	\item Member functions need to be itself defined as template functions
+	(this also holds for constructors and destructors).
+	\item When creating an instance of the class you need to specify which `type' the
+	variables need to be.
+\end{itemize}
+
+An example of a template class could be:
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//Definition of the class
+template<class T>
+class Pair
+{
+public:
+	Pair();
+	Pair(T firstValue, T secondValue);
+	T getElement(int position) const;
+private:
+	T first;
+	T second;
+};
+
+//Definition of constructors
+template<class T>
+Pair<T>::Pair(T, firstValue, T secondValue)
+	: first(firstValue), second(secondValue)
+{}
+
+//Definition of destructors
+template<class T>
+Pair<T>::~Pair()
+{
+	delte [] item;
+}
+
+//Definition of the member functions
+template<class T>
+void Pair<T>::getElement(int position) const
+{
+	//some function definition
+}
+
+//Create an instance of the class
+Pair<int> score;
+	//The 'int' then replaces all member variables types that have type 'T'
+Pair<char> seats;
+	//The 'char' then replaces all member variable tpyes that have type 'T'
+\end{minted}
+\caption{Template class syntax}
+\label{source_code_1}
+\end{listing}
+
+
+\subsubsection*{Type definitions}
+You can define a new class type name that has the same meaning as a specialised class template
+name, such as Pair<int>. The syntax for such a defined class type name is as follows:
+
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+typedef Pair<int> PairOfInt;
+\end{minted}
+
+The type name PairOfInt can then be used to declare objects of type
+Pair<int>, as in the following example:
+
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+PairOfInt pair1, pair2;
+\end{minted}

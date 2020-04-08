@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{NoMilk}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{n}{NoMilk}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{howMany}\PYG{p}{);}
+	\PYG{c+c1}{//Sets \PYGZsq{}count\PYGZsq{} to \PYGZsq{}howMany\PYGZsq{}}
+	
+	\PYG{k+kt}{int} \PYG{n+nf}{getDonuts}\PYG{p}{();}
+	\PYG{c+c1}{//Returns \PYGZsq{}count\PYGZsq{}}
+\PYG{k}{private}\PYG{o}{:}
+	\PYG{k+kt}{int} \PYG{n}{count}\PYG{p}{;} \PYG{c+c1}{//\PYGZhy{}\PYGZhy{}\PYGZgt{} number of donuts}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{//The rest of the program will be exactly the same apart from:}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{milk} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{0}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{throw} \PYG{n}{NoMilk}\PYG{p}{(}\PYG{n}{donuts}\PYG{p}{);}
+	\PYG{c+c1}{//This creates an instance of an object which}
+	\PYG{c+c1}{//is thrown to the catch block}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{catch}\PYG{p}{(}\PYG{n}{NoMilk} \PYG{n}{e}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//Here \PYGZsq{}e\PYGZsq{} is the instance of NoMilk and you refer to the number of donuts}
+	\PYG{c+c1}{//through the getDonut function (i.e. \PYGZsq{}e.getDonuts()\PYGZsq{}).}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

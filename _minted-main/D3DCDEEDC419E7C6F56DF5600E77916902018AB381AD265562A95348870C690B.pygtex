@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//personIDs and colors are defined in code block above}
+\PYG{k}{for} \PYG{p}{(}\PYG{k}{auto} \PYG{n+nl}{p} \PYG{p}{:} \PYG{n}{personIDs}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{p}\PYG{p}{.}\PYG{n}{first} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{p}\PYG{p}{.}\PYG{n}{second} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;} 	
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{for} \PYG{p}{(}\PYG{k}{auto} \PYG{n+nl}{p} \PYG{p}{:} \PYG{n}{colors}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{p} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

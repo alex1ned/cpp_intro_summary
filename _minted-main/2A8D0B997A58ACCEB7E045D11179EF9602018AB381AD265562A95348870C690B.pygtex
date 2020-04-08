@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{STL\PYGZus{}Container}\PYG{o}{\PYGZlt{}}\PYG{n}{type}\PYG{o}{\PYGZgt{}::}\PYG{n}{iterator} \PYG{n}{p}\PYG{p}{;}
+\PYG{k}{for} \PYG{p}{(}\PYG{n}{p} \PYG{o}{=} \PYG{n}{container}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{();} \PYG{n}{p} \PYG{o}{!=} \PYG{n}{container}\PYG{p}{.}\PYG{n}{end}\PYG{p}{();} \PYG{n}{p}\PYG{o}{++}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//do something}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

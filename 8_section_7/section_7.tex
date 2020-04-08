@@ -1,2 +1,428 @@
 \section{Exception handling}
 
+%------------------------------------------------------------------------------------------------------------
+\subsection{Basics - try-throw-catch statements}
+This is the basic mechanism for throwing and catching exceptions. It generally simplifies
+otherwise complex if-else statements.
+
+The throw statement throws the exception (a value). The catch block catches the exception
+(the value). When an exception is thrown, the try block ends and then the code in the catch
+block is executed. After the catch block is completed, the code after the catch block(s) is
+executed (provided the catch block has not ended the program or performed some other special
+action).
+
+If no exception is thrown, then the catch block(s) are ignored.
+
+\subsubsection*{\emph{throw} statement}
+When the throw statement is executed, the execution of the enclosing try block is stopped. If
+the try block is followed by a suitable catch block, then flow of control is transferred to the catch
+block. A throw statement is almost always embedded in a branching statement, such as an if
+statement. The value thrown can be of any type.
+
+The syntax is: \emph{throw ExpressionForValueToBeThrown;}; see example.
+
+\subsubsection*{\emph{catch-block} parameter}
+The catch-block parameter is an identifier in the heading of a catch block that serves as a
+placeholder for an exception (a value) that might be thrown. When a value is thrown in the preceding
+try block, that value is plugged in for the catch-block parameter. In example we use `e' but you can
+also use any other non-reserved word.
+
+\subsubsection*{Syntax}
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+try
+{
+	Some_statements
+	//Either some code with a throw statement or a
+	//function invocation that might throw an exeption
+	Some_more_statements
+}
+catch(TypeName e)
+{	//Note that 'e' is the value that is thrown in the try block if some conditions
+	//are met (see example below
+
+	//Code to be performed if a value of the catch-block
+	//parameter type is thrown in the try block
+}
+\end{minted}
+\caption{Basic try-throw-catch syntax}
+\label{source_code_1}
+\end{listing}
+
+
+
+\subsubsection*{Short example}
+Note the example below is so simple that you would not use a try-throw-catch syntax for such
+a simple code - but it is good for illustration.
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+int main()
+{
+	int donuts, milk;
+	double donutsPerGlass;
+	
+	try
+	{
+		cout << "Enter number of donuts: " << endl;
+		cin >> donuts;
+		cout << "Enter number of glasses: " << endl;
+		cin >> milk;
+		
+		//The below is the condition whether to make a throw
+		if (milk <= 0)
+		{
+			throw donuts;
+			//If a throw is encountered, the throw is thrown value
+			//becomes the value of the parameter in the catch block (i.e. the 'e')
+		}
+		//... if a throw was made, than the execution of try stops at
+		//the throw and continues at the catch
+		
+		donutsPerGlass = donuts/static_cast<double>(milk);
+		cout << "Donuts for each glass of milk: " << donutsPerGlass;
+	}
+	catch(int e)
+	{
+		//'e' is the thrown value from the try block
+		cout << e << "donuts, and no milk!";
+	}
+	return 0;
+}
+\end{minted}
+\caption{Simple example of using try-throw-catch}
+\label{source_code_1}
+\end{listing}
+
+
+
+
+%------------------------------------------------------------------------------------------------------------
+\subsection{Defining your own exception classes}
+A common thing is to define a class whose objects can carry the precise kind of information
+you want to throw to the catch block. It is just a standard class used in a particular way. An
+instance of the class would only be created in the try block if and only if you would enter a
+throw statement.
+
+For example for the previous example you could define the following exception class.
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+class NoMilk
+{
+public:
+	NoMilk(int howMany);
+	//Sets 'count' to 'howMany'
+	
+	int getDonuts();
+	//Returns 'count'
+private:
+	int count; //--> number of donuts
+};
+
+//The rest of the program will be exactly the same apart from:
+if (milk <= 0)
+{
+	throw NoMilk(donuts);
+	//This creates an instance of an object which
+	//is thrown to the catch block
+}
+
+catch(NoMilk e)
+{
+	//Here 'e' is the instance of NoMilk and you refer to the number of donuts
+	//through the getDonut function (i.e. 'e.getDonuts()').
+}
+\end{minted}
+\caption{Exception class}
+\label{source_code_1}
+\end{listing}
+
+
+
+
+
+%------------------------------------------------------------------------------------------------------------
+\subsection{Multiple throws and catches}
+One try block can throw multiple and different exceptions. For each exception you would
+make one exception class. When catching multiple exceptions, the order of the catch blocks
+can be important.
+
+When an exception value is thrown in a try block, the following catch blocks are tried in order,
+and the first one that matches the type of the exception thrown is the one that is executed.
+
+\subsubsection*{Example of throwing multiple exceptions}
+In the example below we have two exception classes with but three throw blocks and two
+catch blocks.
+
+\noindent
+Definition of two exception classes:
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//Two exception classes
+class NegativeNumber
+{
+public:
+	NegativeNumber(string toCatchBlock);
+		//Sets the message to 'toCatchBlock'
+	string getMessage();
+		//Returns the message
+private:
+	string message;
+};
+
+class DivideByZeor
+{};
+\end{minted}
+\caption{Exception class}
+\label{source_code_1}
+\end{listing}
+
+\noindent
+main function:
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+int main()
+{
+	int jemHadar = 5, klingons = 10;
+	double portion;
+	
+	try
+	{
+		if (jemHadar < 0)
+			throw NegativeNumber("JemHadar");
+		if (klingons < 0)
+			throw NegativeNumber("Klingons");
+		if (klingons = 0)
+			throw DivideByZero();
+		else
+		{
+			portion = jemHadar/static_cast<double>(klingons);
+		}
+	}
+	
+	//First catch block
+	catch(NegativeNumber e)
+	{
+		cout << "Cannot have a negative number of ";
+		cout << e.getMessage() << endl;
+	}
+	
+	//Second catch block
+	catch(DivideByZero)
+	{
+		cout << "Send for help." < endl;
+	}
+}
+\end{minted}
+\caption{Exception class}
+\label{source_code_1}
+\end{listing}
+
+Note that you can have a catch block that catches a thrown value of any type (see below).
+You would literally type the `...'.
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+catch(...)
+{
+	//Some code
+}
+\end{minted}
+
+
+\subsubsection*{Exception classes can be trivial}
+This refers to a class with no member variables and functions (other than the default constructor)
+such as the \emph{DivideByZeo} class above. 
+
+Throwing an object of the class DivideByZero can activate the appropriate catch block. When
+using a trivial exception class, you normally do not have anything you can do with the exception
+(the thrown value) once it gets to the catch block. The exception is just being used to get you to the
+catch block. Thus, you can omit the catch-block parameter. (You can omit the catch-block parameter
+anytime you do not need it, whether the exception type is trivial or not.)
+
+
+
+
+
+%------------------------------------------------------------------------------------------------------------
+\subsection{Throwing an exception in a function}
+Often it is good practice to throw an exception inside a function call. You can then decide to
+catch the exception inside the function that throws the exception -- or you can also catch the
+exception outside the function. Put in another wording:
+
+\begin{itemize}
+	\item You could define a function in which you define a try-block, throw an
+	exception, and catch it all inside the function.
+	\item Alternatively you can define a function that only throws an exception.
+	You would call the function inside a try block. Here you could decide whether to catch
+	the exception INSIDE the function or OUTSIDE the function (straight after the try block
+	in which the function was called) -- as in example below.
+\end{itemize}
+
+If you throw an exception inside a function you require an \emph{exception specification}. This is
+a \emph{throw} statement next the the function declaration and definition (see example and section
+below).
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+double safeDivide(int top, int bottom) throw (DivideByZero, int, double, char)
+{	//NOTE: inside the brackets of the trow statement you only include the types of
+	//exceptions that can be thrown separated by comma (this can be one or more).
+	//You would not include variable names.
+
+	//some function definition
+}
+\end{minted}
+
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+class DivideByZero
+{};
+
+double safeDivide(int top, int bottom) throw (DivideByZero)
+{
+	if (bottom == 0)
+		throw DivideByZero();
+		
+	return top/static_cast<double>(bottom);
+}
+
+int main()
+{
+	int numerator = 10, denominator = 20;
+	double quotient;
+	
+	try
+	{
+		quotient = safeDivide(numerator, denominator);
+		//The throw statement is in function call
+	}
+	
+	//The catch statement is outside the function call
+	catch(DivideByZero)
+	{
+		cout << "Error: Division by zero!" << endl;
+		exit(0);
+	}
+	
+	cout << "Quotient: " << quotient << endl;
+	return 0;
+}
+\end{minted}
+\caption{Throwing exception inside a function}
+\label{source_code_1}
+\end{listing}
+
+
+
+
+%------------------------------------------------------------------------------------------------------------
+\subsection{Exception specification}
+If you throw an exception inside a function you require an \emph{exception specification}. This is
+a \emph{throw} statement next the the function declaration and definition.
+\begin{itemize}
+	\item Inside the brackets of the throw keyword you include all possible exception types
+	separated by comma.
+	\item You would not include variable names -- only the types.
+\end{itemize}
+
+You use this as a warning for programmers that use the function that the function might possibly
+throw an exception. If there are exceptions that might be thrown, but not caught in the function
+definition, then those exception types should be listed in an exception specification.
+
+If an exception is not caught inside a function then the next suitable catch statement outside the
+function will catch the exception.
+
+If an exception is thrown in a function but is not listed in the exception specification, and not caught
+inside the function), then it will not be caught by any catch block. Instead your program will end.
+
+However, if there is no specification list at all, not even an empty one, then it is the same as if all
+exceptions were listed in the specification list, and so throwing an exception will not end the program.
+
+Keep in mind that the exception specification is for exceptions that `get outside' the function. If they
+do not get outside the function, they do not belong in the exception specification. If they get outside
+the function, they belong in the exception specification no matter where they originate. If a function
+definition includes an invocation of another function and that other function can throw an exception that
+is not caught, then the type of the exception should be placed in the exception specification of the outer
+function.
+
+
+\subsubsection*{Exception specification in a derived class}
+Keep in mind that an object of a derived class1 is also an object of its base class. So, if D is a derived
+class of class B and B is in the exception specification, then a thrown object of class D will be treated
+normally, since it is an object of class B and B is in the exception specification.
+
+However, no automatic type conversions are done. If double is in the exception specification, that does
+not account for throwing an int value. You would need to include both int and double in the exception
+specification.
+
+Note that when you redefine or override a function definition, you cannot add any exceptions to the
+exception specification (but you can delete some exceptions if you want). This makes sense, since an
+object of the derived class can be used anyplace an object of the base class can be used, and so a
+redefined function must fit any code written for an object of the base class.
+
+One final warning: Not all compilers treat the exception specification as they are supposed to. Some
+compilers essentially treat the exception specification as a comment, and so with those compilers, the
+exception specification has no effect on your code. It is still good practice to include them should the
+compiler recognise them as such.
+
+
+
+
+
+%------------------------------------------------------------------------------------------------------------
+\subsection{Best practices for exception handling}
+Firstly, its best to use the throwing of exceptions rarely as if often overcomplicates the code. You can
+catch exceptions in completely different places of your program as to where they are thrown and thus
+may make your code hard to follow.
+
+\subsubsection*{When to throw an exception}
+\begin{itemize}
+	\item Separate throwing an exception and catching the exception into separate functions.
+	Mostly you would \ldots
+	\begin{itemize}
+		\item Include any throw statement within a function definition.
+		\item List the exception in the exception specification for the function.
+		\item Place the catch clause in a \emph{different} function.
+	\end{itemize}
+	\item Exceptions should be reserved for situations in which the way the exceptional
+	condition is handled depends on how and where the function is used.
+	\item If the way that the exceptional condition is handled depends on how and where
+	the function is invoked, then the best thing to do is to let the programmer who invokes
+	the function and handle the exception.
+	\item If an exception is thrown but not caught anywhere, your program will end.
+	\item Avoid creating nested try-catch blocks - but if you do, exceptions not caught in the
+	inner block are caught in the outer block.
+\end{itemize}
+
+
+\subsubsection*{Exception class hierarchies}
+It can be very useful to define a hierarchy of exception classes. For example, you might have an
+`ArithmeticError' exception class and then define an exception class `DivideByZeroError' that is a derived
+class of ArithmeticError. Since a DivideByZeroError is an ArithmeticError, every catch block for an
+ArithmeticError will catch a DivideByZeroError. If you list ArithmeticError in an exception specification, then
+you have, in effect, also added DivideByZeroError to the exception specification, whether or not you list
+DivideByZeroError by name in the exception specification.
+
+\subsubsection*{Testing for available memory when creating dynamic pointers}
+Since \emph{new} will throw a \emph{bad\_alloc} exception when there is not enough memory to create the
+variable, you can check for running out of memory as follows:
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+try
+{
+	NodePtr pointer = new Node;
+}
+
+catch(badAlloc)
+{
+	cout << "Ran out of memory!" << endl;
+}
+\end{minted}
+\caption{Testing for available memory using exception handling}
+\label{source_code_1}
+\end{listing}
+
+\subsubsection*{Rethrowing and exception}
+It is legal to throw an exception within a catch block. In rare cases, you may want to catch an exception
+and then, depending on the details, decide to throw the same or a different exception for handling farther
+up the chain of exception-handling blocks.

@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}list\PYGZgt{}}
+\PYG{k}{using} \PYG{n}{std}\PYG{o}{::}\PYG{n}{cout}\PYG{p}{;}
+\PYG{k}{using} \PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+\PYG{k}{using} \PYG{n}{std}\PYG{o}{::}\PYG{n}{list}\PYG{p}{;}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//Create a doubly linked list object that contains integers}
+	\PYG{c+c1}{//and fill the nodes}
+	\PYG{n}{list}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{listObject}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{3}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{listObject}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{c+c1}{//Create a mutable iterator for the list object}
+	\PYG{n}{list}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}::}\PYG{n}{iterator} \PYG{n}{listIterator}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{listIterator} \PYG{o}{=} \PYG{n}{listObject}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{();} \PYG{n}{listIterator} \PYG{o}{!=} \PYG{n}{listObject}\PYG{p}{.}\PYG{n}{end}\PYG{p}{();} \PYG{n}{listIterator}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{o}{*}\PYG{n}{listIterator} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

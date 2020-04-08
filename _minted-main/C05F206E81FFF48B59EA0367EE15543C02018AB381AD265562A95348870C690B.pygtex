@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Parent}\PYG{o}{*} \PYG{n}{pParent} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Child}\PYG{p}{;}
+\PYG{c+c1}{//... some code ...}
+\PYG{k}{delete} \PYG{n}{pParent}\PYG{p}{;}
+\end{Verbatim}

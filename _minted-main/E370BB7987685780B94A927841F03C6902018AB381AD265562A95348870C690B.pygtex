@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Child}\PYG{o}{::}\PYG{n}{Child}\PYG{p}{(}\PYG{k}{const} \PYG{n}{Child}\PYG{o}{\PYGZam{}} \PYG{n}{object}\PYG{p}{)}
+	\PYG{o}{:} \PYG{n}{Base}\PYG{p}{(}\PYG{n}{object}\PYG{p}{),} \PYG{o}{\PYGZlt{}}\PYG{n}{more} \PYG{n}{initialisation} \PYG{n}{here}\PYG{o}{\PYGZgt{}}
+\PYG{p}{\PYGZob{}\PYGZcb{}}
+\end{Verbatim}

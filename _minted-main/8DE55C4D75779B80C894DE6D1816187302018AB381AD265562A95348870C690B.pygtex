@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{try}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{Some\PYGZus{}statements}
+	\PYG{c+c1}{//Either some code with a throw statement or a}
+	\PYG{c+c1}{//function invocation that might throw an exeption}
+	\PYG{n}{Some\PYGZus{}more\PYGZus{}statements}
+\PYG{p}{\PYGZcb{}}
+\PYG{k}{catch}\PYG{p}{(}\PYG{n}{TypeName} \PYG{n}{e}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}	\PYG{c+c1}{//Note that \PYGZsq{}e\PYGZsq{} is the value that is thrown in the try block if some conditions}
+	\PYG{c+c1}{//are met (see example below}
+
+	\PYG{c+c1}{//Code to be performed if a value of the catch\PYGZhy{}block}
+	\PYG{c+c1}{//parameter type is thrown in the try block}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

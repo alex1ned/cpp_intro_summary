@@ -1,0 +1,40 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Definition of the class}
+\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{k}{class} \PYG{n+nc}{T}\PYG{o}{\PYGZgt{}}
+\PYG{k}{class} \PYG{n+nc}{Pair}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{n}{Pair}\PYG{p}{();}
+	\PYG{n}{Pair}\PYG{p}{(}\PYG{n}{T} \PYG{n}{firstValue}\PYG{p}{,} \PYG{n}{T} \PYG{n}{secondValue}\PYG{p}{);}
+	\PYG{n}{T} \PYG{n+nf}{getElement}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{position}\PYG{p}{)} \PYG{k}{const}\PYG{p}{;}
+\PYG{k}{private}\PYG{o}{:}
+	\PYG{n}{T} \PYG{n}{first}\PYG{p}{;}
+	\PYG{n}{T} \PYG{n}{second}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{//Definition of constructors}
+\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{k}{class} \PYG{n+nc}{T}\PYG{o}{\PYGZgt{}}
+\PYG{n}{Pair}\PYG{o}{\PYGZlt{}}\PYG{n}{T}\PYG{o}{\PYGZgt{}::}\PYG{n}{Pair}\PYG{p}{(}\PYG{n}{T}\PYG{p}{,} \PYG{n}{firstValue}\PYG{p}{,} \PYG{n}{T} \PYG{n}{secondValue}\PYG{p}{)}
+	\PYG{o}{:} \PYG{n}{first}\PYG{p}{(}\PYG{n}{firstValue}\PYG{p}{),} \PYG{n}{second}\PYG{p}{(}\PYG{n}{secondValue}\PYG{p}{)}
+\PYG{p}{\PYGZob{}\PYGZcb{}}
+
+\PYG{c+c1}{//Definition of destructors}
+\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{k}{class} \PYG{n+nc}{T}\PYG{o}{\PYGZgt{}}
+\PYG{n}{Pair}\PYG{o}{\PYGZlt{}}\PYG{n}{T}\PYG{o}{\PYGZgt{}::\PYGZti{}}\PYG{n}{Pair}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{delte} \PYG{p}{[]} \PYG{n}{item}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{//Definition of the member functions}
+\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{k}{class} \PYG{n+nc}{T}\PYG{o}{\PYGZgt{}}
+\PYG{k+kt}{void} \PYG{n}{Pair}\PYG{o}{\PYGZlt{}}\PYG{n}{T}\PYG{o}{\PYGZgt{}::}\PYG{n}{getElement}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{position}\PYG{p}{)} \PYG{k}{const}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//some function definition}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{//Create an instance of the class}
+\PYG{n}{Pair}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{score}\PYG{p}{;}
+	\PYG{c+c1}{//The \PYGZsq{}int\PYGZsq{} then replaces all member variables types that have type \PYGZsq{}T\PYGZsq{}}
+\PYG{n}{Pair}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{char}\PYG{o}{\PYGZgt{}} \PYG{n}{seats}\PYG{p}{;}
+	\PYG{c+c1}{//The \PYGZsq{}char\PYGZsq{} then replaces all member variable tpyes that have type \PYGZsq{}T\PYGZsq{}}
+\end{Verbatim}

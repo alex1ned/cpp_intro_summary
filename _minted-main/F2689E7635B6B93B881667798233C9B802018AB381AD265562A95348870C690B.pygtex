@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}vector\PYGZgt{}}
+
+\PYG{k}{using} \PYG{n}{std}\PYG{o}{::}\PYG{n}{cout}\PYG{p}{;}
+\PYG{k}{using} \PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+\PYG{k}{using} \PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{p}{;}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//Create a vector called container that holds A, B, C}
+	\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{char}\PYG{o}{\PYGZgt{}} \PYG{n}{container}\PYG{p}{;}
+	\PYG{n}{container}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{l+s+sc}{\PYGZsq{}A\PYGZsq{}}\PYG{p}{);}
+	\PYG{n}{container}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{l+s+sc}{\PYGZsq{}B\PYGZsq{}}\PYG{p}{);}
+	\PYG{n}{container}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{l+s+sc}{\PYGZsq{}C\PYGZsq{}}\PYG{p}{);}
+	
+	\PYG{c+c1}{//Create reverse iterator to move through vector in backward fashin}
+	\PYG{c+c1}{//\PYGZhy{} Here ++ means we are moving backward}
+	\PYG{c+c1}{//\PYGZhy{} Also note you start from .rbegin() and not .begin()}
+	\PYG{c+c1}{//  and end at .rend() and not .end()}
+	\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{char}\PYG{o}{\PYGZgt{}::}\PYG{n}{reverse\PYGZus{}iterator} \PYG{n}{rp}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{rp} \PYG{o}{=} \PYG{n}{container}\PYG{p}{.}\PYG{n}{rbegin}\PYG{p}{();} \PYG{n}{rp} \PYG{o}{!=} \PYG{n}{container}\PYG{p}{.}\PYG{n}{rend}\PYG{p}{();} \PYG{n}{rp}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{o}{*}\PYG{n}{rp} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

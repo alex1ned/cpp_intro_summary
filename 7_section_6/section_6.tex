@@ -1,7 +1,13 @@
 \section{Inheritance}
 Inheritance involves a class being derived from another class and thus
 inherits all the member variables and member functions of the parent class.
-You can have multiple levels of class derivation (ancestor classes).
+You can have multiple levels of class derivation (ancestor classes). Also,
+a class can be derived from two parent classes, i.e. would then inherit the
+member variables and functions from both parent classes. An example could
+be a class \emph{Person} with two derived classes \emph{Faculty} and
+\emph{Student}. Finally a class \emph{TeachingAssistent} which would be a
+derived class from Student and Faculty. Hence, the class TA would inherit all
+member variables and functions from Person, Student, and Faculty.
 
 Note that private member variables of an ancestor class can only be accessed
 by the derived class through mutator and accessor functions that are publicly
@@ -14,10 +20,131 @@ functions, and thus their use limited to the class in which they are defined.
 You can redefine a member function in the derived class if you wish to do so. This
 may be the case if you only want 
 
+What is also important to note is that every object of the child class can be used
+anywhere an object of the parent class can be used. For example you can use
+an argument of type \emph{Child} when a function requires an argument of type
+\emph{Parent}. You can assign an object of the class \emph{Child} to a variable
+of type \emph{Parent} but NOT vice versa.
+
+More generally, an object of a class can be used anywhere that an object of any
+of its ancestor classes can be used.
+
 
 %------------------------------------------------------------------------------------------------------------
 \subsection{Basic syntax of inheritance}
+When using inheritance you will, ideally split the program across the following files:
+\begin{itemize}
+	\item An interface file (class definition) for the parent class (header file).
+	\item An implementation file for the parent class (ccp file) that \emph{includes}
+	the header file of this class.
+	\item An interface file for \emph{each} derived class that \emph{includes} the
+	header file of its direct parent(s).
+	\item An implementation file for \emph{each} derived class that \emph{includes}
+	only its own header file (because the parent headers are already included in the
+	header file of the derived class).
+\end{itemize}
 
+The syntax is as follows \ldots
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//For all the below use the identical namespace definition
+
+//--- 1) Define the parent class in a separate file
+#ifndef PARENT_H
+#define PARENT_H
+namespace parentnederegger
+{
+	class Parent
+	{
+		// 1) All member variables should be private
+		//     and write accessor and mutator functions.
+		
+		// 2) All private member functions are essentially
+		//     not inherited, hence only make them private if they
+		//     are only helper functions and only used within the class.
+		
+		// 3) Note that you should declare and define your desired
+		//      constructors. These should initialise ALL member variables.
+		//      When defining the constructors of the child class, the child it
+		//      should call the constructor of the parent class to initialise the
+		//      inherited member variables and then also initialise the new member
+		//      member variables of the child class.
+		
+		int aFunction();
+	};
+} //parentnederegger
+#endif
+
+
+//--- 2) Implement the parent class in a separate file
+#include "parent.h"
+
+namespace parentnederegger
+{
+	Parent::Parent() //some definitions of constructor
+	//More function definitions
+} //parentnederegger
+\end{minted}
+\caption{Basic syntax for inheritance 1/2}
+\label{source_code_1}
+\end{listing}
+
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//--- 3) Define the child class in a separate file
+//         - Note the public keyword with the name of the parent clas
+#ifndef CHILD_H
+#define CHILD_H
+
+#include "parent.h"
+namespace parentnederegger
+{
+	class Child : public Parent
+	{
+		//NOTE: if 'Child' was a child class also of 'Parent2' then you
+		//would declare it with: 'class Child : public Parent, Parent2'
+	
+		//some class definition
+		int aFunction(); //This would be a redefinition of the function
+	};
+} //parentnederegger
+
+#endif
+
+
+
+//--- 4) Implement the child class (standard as any other class) in separate file
+//         - NOTE: Speciality regarding the constructor (see later)
+#include "child.h"
+namespace parentnederegger
+{
+	Child::Child() : //some definition
+	//Other function definitions
+} //parentnederegger
+\end{minted}
+\caption{Basic syntax for inheritance 2/2}
+\label{source_code_1}
+\end{listing}
+
+Assume that the parent class has the member variable \emph{int age} and the child
+class has the member variable \emph{char* name}. Also assume you create an
+instance of the Child class called child1. You can now access both variables from
+this instance.
+
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+Child child1;
+
+//If the member variables were public you can access them...
+child.age;
+child.name;
+//However this should ALWAYS be private hence you would access them
+//using accessor functions
+
+child.getAge(); //getAge should be a public member function of the Parent
+child.getName(); //getName should be public member function of the Child
+\end{minted}
 
 
 
@@ -25,38 +152,522 @@ may be the case if you only want
 
 %------------------------------------------------------------------------------------------------------------
 \subsection{Constructors in derived classes}
+A constructor in a base class is not inherited in the derived class, but you can (and
+should) invoke a constructor of a the base class within the definition of a derived class
+constructor.
+
+A constructor for the base class initialise all the data inherited from the base class.
+Thus, a constructor for a derived class begins with an invocation of a constructor
+for the base class.
+
+You should ALWAYS include an invocation of one of the base class constructors
+in the initialisation section of a derived class constructor. If you do not include one,
+then the default constructor version of the base class constructor will be invoked
+automatically (but preferably you should explicitly state it for clarity).
+
+If you have three classes, A, B, and C. Where B is a descendant of A and C is a 
+descendant of B. Then, if you declare an instance of C then the constructor of A
+is called first, then a constructor for B is called, and finally the remaining actions
+of the C constructor are taken.
+
+
+\subsubsection*{Example of constructor syntax}
+Assume you have a parent class called \emph{Employee}, with two member variables
+name, number, and a child class called \emph{HourlyEmployee} with two more member
+variables called hourlyRate and hours.
+
+Note that you initialise the inherited member variables by calling the constructor of 
+the parent class first in the initialisation section. After that you initialise the new member 
+variables (still also in the initialisation section).
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+HourlyEmployee::HourlyEmployee(string name, int number, int rate, int theHours)
+	: Employee(name, number), hourlyRate(rate),  hours(theHours)
+{
+	//deliberately left blank as all variables are initialised in the initialisation section
+	//The inherited member variables are initialised by calling the constructor of
+	//the parent class, and the new member variables are declared thereafter.
+}
+\end{minted}
+\caption{Constructor in inherited class}
+\label{source_code_1}
+\end{listing}
+
+
 
 
 
 %------------------------------------------------------------------------------------------------------------
-\subsection{Do not use private member variables form the base class}
+\subsection{Private member variables and functions }
+
+\subsubsection*{Write accessor and mutator functions for private member variables of parent}
+Note that you cannot access the private member variables of the parent class by
+name - they are also private for descendent/child classes. You need to write public
+accessor and mutator functions in the parent class to access these variables.
+
+\subsubsection*{Private member functions are effectively not inherited}
+A private member function of a parent is not accessible from the child. Hence, they
+should only be used as helping functions.
+
+\subsubsection*{The \emph{protected} qualifier}
+If you use the \emph{protected} qualifier instead of public/private in the class definition
+for member variables of member functions these variables are then accessible/changeable
+by name from child classes / descendent classes - however, not by any other classes.
+
+Also note, that member variables that are protected in the base class act as though they
+were also marked protected in any derived class.
+
+It is, however, bad programming style to use protected member variables.
+
 
 
 
 %------------------------------------------------------------------------------------------------------------
-\subsection{Use of \emph{protected} qualifier (private member functions are effectively not inherited)}
+\subsection{Redefinition of an inherited function}
+If a derived class requires a different implementation for an inherited member function, the
+function may be redefined in the derived class. When a member function is redefined, you
+must list its declaration in the definition of the derived class. If you do not wish to redefine a
+member function that is inherited from the base class, then it is not listed in the definition of
+the derived class.
+
+Note that if a function has the same name in a derived class as in the base class but has 
+a different signature, then this is overloading and not redefining.
+
+\subsubsection*{Access the base function of a redefined function}
+Note that if you have redefined a function (e.g. myFunction() ), and you wish to access
+its parent definition on an object of the child class. If the parent class is called Parent and
+the child class is called Child then you can access the definition of the function in the base
+class on a child object using: \emph{childInstance.Parent::myfunction()}.
+
+
 
 
 
 %------------------------------------------------------------------------------------------------------------
-\subsection{Redefinition of an inherited funciton}
+\subsection{Inheritance details}
+Note that the following functions are not inherited if they are defined in the base class:
+\begin{itemize}
+	\item Constructors
+	\item Destructors
+	\item Copy-constructors
+	\item An overloaded assignment operator `='
+\end{itemize}
+
+\subsubsection*{Overloaded assignment operator `='}
+If Child is a class derived from Paremt, then the definition of the overloaded assignment
+operator for the class Child would typically begin with something like the following:
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+Child& Child::operator =(const Child& rightSide)
+{
+	//First call to parent overloaded assignment operator
+	Parent::operator =(rightSide);
+
+	//Here you set new member variables of the Child class
+}
+\end{minted}
+\caption{Overloaded assignment operator in derived class}
+\label{source_code_1}
+\end{listing}
+
+Hence you first have a call to the overloaded assignment operator of the Parent class
+which takes care of the inherited member variables and their data. The definition of the
+overloaded assignment operator would then go on to set new member variables that
+were introduced in the definition of the class Child.
+
+
+\subsubsection*{Copy-constructor}
+A similar situation holds for the copy-constructor. Use the copy-constructor of the Parent
+class to set up the inherited member variables. Then the new member variables of the
+Child class are initialised thereafter.
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+Child::Child(const Child& object)
+	: Base(object), <more initialisation here>
+{}
+\end{minted}
+\caption{Copy constructor in derived class}
+\label{source_code_1}
+\end{listing}
+
+Note that on the above, `object' is of type Child and thus also of type Parent. Hence
+`object' is a legal argument to the copy constructor for the Parent class.
+
+\subsubsection*{Destructor in derived class}
+When the destructor for the derived class is invoked, it automatically invokes the
+destructor of the base class. The derived class destructor therefore need only worry
+about using delete on the member variables (and any data they point to) that are added
+in the derived class. It is the job of the base class destructor to invoke delete on the
+inherited member variables.
+
+If class B is derived from class A and class C is derived from class B, then when an object
+of the class C goes out of scope, first the destructor for the class C is called, then the
+destructor for class B is called, and finally the destructor for class A is called. Note that the
+order in which destructors are called is the reverse of the order in which constructors are called.
 
 
 
 
 
+%------------------------------------------------------------------------------------------------------------
+\subsection{Polymorphism and virtual functions}
+Polymorphism refers to the ability to associate multiple meanings to one function name by means
+of the mechanism of late binding. Late binding is a technique of waiting until run-time to determine
+the implementation of a procedure.
+
+\subsubsection*{Late binding}
+A virtual function is one that may be used before it is defined. When you make a function virtual,
+you are telling the compiler that you do not know how this function is implemented and to wait until
+it is used in a program, and then get the implementation from the object instance.
+
+If you redefine a virtual function in a child class we call this overriding and not redefining.
+
+The problem of making a function virtual is that it decreased efficiency of the program - which is
+why we do not make every function virtual.
+
+In essence you require a virtual function if you have \ldots
+\begin{itemize}
+	\item A Parent and Child class.
+	\item A function, F, of Parent is used by another function, M, of the class.
+	\item The function F is redefined by the child.
+	\item M is NOT redefined but you use the inherited function definition.
+	\item However, M always requires the definition of F of the current class.
+\end{itemize}
+
+To make a function virtual:
+\begin{itemize}
+	\item Use the reserved word \emph{virtual} to the function declaration.
+	\item Do not use \emph{virtual} in the function definition.
+\end{itemize}
+
+This is illustrated in the example below.
+
+\subsubsection*{Illustrative example of virtual function}
+Assume a record-keeping program for an automobile parts store for which you have different type
+of sales such as a normal sale, a discount sale, or also mail-order sales. The standard sale class
+will be the parent to the other classes and has the member variable `price'. With the program you
+also want to compute daily gross sales which is the sum of all individual sales.
+
+You have the following classes to start with:
+\begin{itemize}
+	\item Sale -- which is the parent.
+		\item `Sale' has a member function called `bill()' which essentially is a `getPrice()' 
+		function.
+		\item `bill()' is used by other functions and is redefined by the descendent classes.
+		\item Hence `bill()' needs to be virtual.
+	\item DiscountSale -- which is derived from Sale
+\end{itemize}
+
+\noindent
+Interface for \emph{Sales}
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//Note you should put it into a separate namespace
+
+class Sale
+{
+public:
+	//The two constructors just set `price'
+	Sale();
+	Sale(double thePrice);
+
+	virtual double bill() const;
+		//Bill returns price (needs to be virtual)
+
+	double savings(const Sale& other) const;
+		//Returns the savings if you buy other instead of the calling object
+		//Includes a call to `bill()'
+protected:
+	double price;
+};
+
+//Overloaded `<' operator:
+bool operator <(const Sale& first, const Sale& second);
+	//Compares two sales to see which is larger
+	//Includes a call to `bill()'
+\end{minted}
+\caption{Example: Virtual functions - interface for `Sales'}
+\label{source_code_1}
+\end{listing}
+
+
+\noindent
+Implementation of \emph{Sales}
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+#include "sale.hpp"
+//Note: you should put it into a separate namespace
+
+Sale::Sale() : price(0)
+{}
+
+Sale::Sale(double thePrice) : price(thePrice)
+{}
+
+//Note that virtual is just needed in the declaration (not in definition)
+double Sale::bill() const
+{
+	return price;
+}
+
+double Sale::savings(const Sale& other) const
+{
+	return (bill() - other.bill());
+}
+
+bool operator <(const Sale& first, const Sale& second)
+{
+	return (first.bill() < second.bill());
+}
+\end{minted}
+\caption{Example: Virtual functions - implementation for `Sale'}
+\label{source_code_1}
+\end{listing}
+
+
+\noindent
+Interface of \emph{DiscountSale}
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+#include "sale.hpp"
+//Note: also put in a namespace as before
+
+class DiscountSale : public Sale
+{
+public:
+	Discount();
+	DiscountSale(double thePrice, double theDiscount);
+	
+	virtual double bill() const;
+		//Note: the keyword virtual is not needed here but it is good
+		//practice to include it
+protected:
+	double discount; //hence the function has a price (inherited) and a discount
+};
+\end{minted}
+\caption{Example: Virtual functions - interface for `DiscountSale'}
+\label{source_code_1}
+\end{listing}
+
+
+\noindent
+Implementation of \emph{DiscountSale}
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+#include "discountsale.hpp"
+//Note: also put in a namespace as before
+
+DiscountSale::DiscountSale() : Sale(), discount(0)
+{}
+
+DiscountSale::DiscountSale(double thePrice, double theDiscount)
+	: Sale(thePrice), discount(theDiscount)
+{}
+
+double DiscountSale::bill() const
+{
+	double fraction = discount/100;
+	return (1 - fraction) * price;
+	//Note that you can reference to price by name because it is a protected member
+	//in the parent class (and not merely private).
+}
+\end{minted}
+\caption{Example: Virtual functions - implementation for `DiscountSale'}
+\label{source_code_1}
+\end{listing}
+
+As explained earlier, DiscountSale requires a different definition for its version of the function
+`bill()'. But, when the member function savings and the overloaded operator < are used with
+an object of the class DiscountSale, they will use the version of the function definition for
+`bill()' that was given with the class DiscountSale.
+
+This is indeed a pretty fancy trick for C++ to pull off. Consider the function call d1.savings(d2)
+for objects d1 and d2 of the class DiscountSale. The definition of the function savings (even for
+an object of the class DiscountSale) is given in the implementation file for the base class Sale,
+which was compiled before we ever even thought of the class DiscountSale. Yet, in the function
+call d1.savings(d2), the line that calls the function bill knows enough to use the definition of the
+function bill given for the class DiscountSale.
+
+
+\noindent
+Example usage: main function
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+#include <iostream>
+#include "sale.hpp"
+#include "discountsale.hpp"
+
+using namespace std;
+
+int main()
+{
+	Sale simple(10.00);
+	DiscountSale discount(11.00, 10);
+	
+	cout.setf(ios::fixed);
+	cout.setf(ios::showpoint);
+	cout.precision(2);
+
+	if (discount < simple)
+	{
+		cout << "Discounted item is cheaper." << endl;
+		cout << "Savings is $" << simple.savings(discount) << endl;
+	}
+	else
+	{
+		cout << "Discounted item is not cheaper." << endl;
+	}
+	return 0;
+}
+\end{minted}
+\caption{Example: Virtual functions - sample usage in a main function}
+\label{source_code_1}
+\end{listing}
 
 
 
 
+\subsubsection*{Virtual functions and extended type compatibility and the slicing problem}
+To deal with the slicing problem (explained below) in C++ inheritance you will use dynamic
+pointers to class objects. For that please note the following important concepts:
+
+\begin{itemize}
+	\item If the domain type of the pointer pParent is a base class for the domain type of
+	the pointer pChild, then you can assign: \emph{pParent = pChild} \ldots w/o losing any
+	of the data members or member functions of the dynamic variable being pointed to by
+	pChild.
+	\item Although all extra fields of the dynamic variable are there, you will need
+	\emph{virtual} member functions to access them.
+\end{itemize}
+
+Assume you have two classes, Pet and Dog where Dog is a descendent of Pet.
+\begin{itemize}
+	\item Pet has the member variable `name'.
+	\item Dog has an additional member variable `breed'.
+\end{itemize}
+
+In C++ it i possible to assign all variables of an instance of Dog to an instance of Pet. However,
+even though this assignment is allowed the value that is assigned to the instance of Pet loses its
+`breed' field. This is called the slicing problem.
+
+\noindent
+Short illustration of the slicing problem
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+//Class of Pet
+class Pet
+{
+public:
+	virtual void print();
+		//Prints out the name
+	string name;
+};
+
+//Class of Dog
+class Dog : public Pet
+{
+public:
+	virtual void print(); //keyword 'virtual' not needed but good style
+		//Prints out the name + the breed (thus needs to be virtual)
+	string breed;
+};
+
+//Assume the below is embedded in a proper main function
+Dog vDog;
+Pet vPet;
+
+vDog.name = "Tiny";
+vDog.breed = "Great Dane";
+
+//!!!!!
+vPet = vDog;
+//Note: this assignment is legit, but you lose the breed field in vPet
+\end{minted}
+\caption{Short illustration of the slicing problem}
+\label{source_code_1}
+\end{listing}
+
+
+But C++ offers a way to treat a Dog as a Pet w/o throwing away the name of the breed.
+To so so we use \emph{pointers to dynamic object instances}. In the below you can still
+access the breed field from pPet. Also the `print()' function would work because it is a
+virtual function. Most importantly if you call print() on pPet or pDog it will print out the same
+thing even though originally pPet has a different print() function. This is because pPet is
+essentially a Dog.
+
+However, you can only access `breed' through pPet using a virtual function and NOT directly
+by name (please see below).
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+Pet* pPet;
+Dog* pDog = new Dog;
+
+pDog->name = "Tiny";
+pDog->breed = "Great Dane";
+
+pPet = pDog;
+//Note: this is legit and we do not lose the breed field in the pDog instance.
+
+//The below is NOT legitimate...
+cout << "name: " << pPet->name << "breed: " << pPet->breed;
+//... this is because breed is not a member function of pPet.
+//You can only make a call yo 'breed' through pPet using a virtual function.
+\end{minted}
+\caption{Solution to slicing problem using pointers to dynamic object instances}
+\label{source_code_1}
+\end{listing}
+
+
+\subsubsection*{Pitfall: Attempting to compile w/o defining all virtual member functions}
+Usually it is recommended to develop incrementally and test in between. However, if you
+have a class with a virtual function make sure you fully define all virtual member functions
+before compiling -- otherwise you may get strange errors which are hard to identify.
 
 
 
+\subsubsection*{Good programming tip: Make destructors virtual}
+If you are dealing with inheritance it is good practice to make destructors virtual, particularly
+if you make
+
+Note that if you mark a destructor of a parent class as virtual, then ALL destructors of the
+child classes are virtual as well (w/o even specifying it).
+
+Suppose you have the following two classes, Parent and Child:
+\begin{itemize}
+	\item Parent which has a member variable `pP' of pointer type.
+	\begin{itemize}
+		\item The constructor creates a dynamic variable pointed to by `pP'.
+		\item The destructor deletes the dynamic variable pointed to by pP.
+	\end{itemize}
+	\item Child which has a member variable `pC' of a pointer type.
+	\begin{itemize}
+		\item The constructor creates a dynamic variable pointed to by `pC'.
+		\item The destructor deletes the dynamic variable pointed to by `pC'.
+	\end{itemize}
+\end{itemize}
 
 
+Now if you have the following:
+\begin{minted}[frame=lines, linenos, fontsize=\small, obeytabs=true, tabsize=3]{c++}
+Parent* pParent = new Child;
+//... some code ...
+delete pParent;
+\end{minted}
 
+No suppose that the destructor of `Parent' is NOT marked as virtual, then only the destructor
+for `Parent' will be invoked. This will return to the heap the memory for the dynamic variable
+pointed to by pP, but the memory for the dynamic variable pointed to by pC will never be returned
+to the heap (until the program ends).
 
-
+However (and this is why you should make destructors virtual), if the destructor for the Parent
+class were marked virtual, then when delete is applied to pParent, the destructor for the class Child
+would be invoked (since the object pointed to is of type Child). The destructor for the class
+Child would delete the dynamic variable pointed to by pC and then automatically invoke the
+destructor for the class Parent, and that would delete the dynamic variable pointed to by pP.
 
 
 

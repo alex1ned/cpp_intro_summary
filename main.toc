@@ -1,45 +1,63 @@
 \babel@toc {english}{}
-\contentsline {section}{\numberline {1}C++ introduction to classes}{5}% 
-\contentsline {subsection}{\numberline {1.1}Classes basics}{5}% 
-\contentsline {subsection}{\numberline {1.2}Make all member variables and as many member functions as possible private}{6}% 
-\contentsline {subsection}{\numberline {1.3}Programming example: Bank account class}{7}% 
-\contentsline {subsection}{\numberline {1.4}Constructor for initialisation}{9}% 
-\contentsline {subsection}{\numberline {1.5}Member initialisers using default values}{12}% 
-\contentsline {subsection}{\numberline {1.6}A note on abstract data types}{13}% 
-\contentsline {subsection}{\numberline {1.7}Brief introduction to inheritance}{13}% 
-\contentsline {section}{\numberline {2}Friend functions and operator overloading}{15}% 
-\contentsline {subsection}{\numberline {2.1}Friend functions}{15}% 
-\contentsline {subsection}{\numberline {2.2}The const parameter modifier}{15}% 
-\contentsline {subsection}{\numberline {2.3}Overloading operators}{16}% 
-\contentsline {subsubsection}{\numberline {2.3.1}Overloading binary operators}{16}% 
-\contentsline {subsubsection}{\numberline {2.3.2}Constructors for automatic type conversion}{18}% 
-\contentsline {subsubsection}{\numberline {2.3.3}Overloading unary operators}{18}% 
-\contentsline {subsubsection}{\numberline {2.3.4}Overloading \textgreater \textgreater {} and \textless \textless {} operators}{18}% 
-\contentsline {subsubsection}{\numberline {2.3.5}Overloading the assignment operator `='}{19}% 
-\contentsline {subsubsection}{\numberline {2.3.6}Overloading conversions (i.e. casts)}{20}% 
-\contentsline {section}{\numberline {3}Arrays and classes, destructor, and copy constructor}{22}% 
-\contentsline {subsection}{\numberline {3.1}Arrays and classes}{22}% 
-\contentsline {subsubsection}{\numberline {3.1.1}Arrays of classes}{22}% 
-\contentsline {subsubsection}{\numberline {3.1.2}Arrays as class members}{22}% 
-\contentsline {subsection}{\numberline {3.2}Programming example: A class for a partially filled array (not hard but interesting)}{23}% 
-\contentsline {subsection}{\numberline {3.3}Classes and dynamic arrays}{24}% 
-\contentsline {subsection}{\numberline {3.4}Destructor}{24}% 
-\contentsline {subsection}{\numberline {3.5}Copy constructor}{25}% 
-\contentsline {subsection}{\numberline {3.6}Programming example: Own string class (B.p. 702)}{26}% 
-\contentsline {section}{\numberline {4}Separate compilation and namespaces}{30}% 
-\contentsline {subsection}{\numberline {4.1}Separate compilation}{30}% 
-\contentsline {subsection}{\numberline {4.2}Namespaces}{30}% 
-\contentsline {section}{\numberline {5}Introduction to memory management}{35}% 
-\contentsline {subsection}{\numberline {5.1}Common memory management errors}{35}% 
-\contentsline {subsection}{\numberline {5.2}Simple examples where dynamic memory is not properly freed (w/o classes)}{35}% 
-\contentsline {subsection}{\numberline {5.3}Who is the owner of the dynamic memory}{37}% 
-\contentsline {subsection}{\numberline {5.4}Destructor based memory de-allocation}{37}% 
-\contentsline {section}{\numberline {6}Inheritance}{43}% 
-\contentsline {subsection}{\numberline {6.1}Basic syntax of inheritance}{43}% 
-\contentsline {subsection}{\numberline {6.2}Constructors in derived classes}{43}% 
-\contentsline {subsection}{\numberline {6.3}Do not use private member variables form the base class}{43}% 
-\contentsline {subsection}{\numberline {6.4}Use of \emph {protected} qualifier (private member functions are effectively not inherited)}{43}% 
-\contentsline {subsection}{\numberline {6.5}Redefinition of an inherited funciton}{43}% 
-\contentsline {section}{\numberline {7}Exception handling}{44}% 
-\contentsline {section}{\numberline {8}Templates}{45}% 
-\contentsline {section}{\numberline {9}Standard template library and C++ 11}{46}% 
+\contentsline {section}{\numberline {1}C++ introduction to classes}{7}% 
+\contentsline {subsection}{\numberline {1.1}Classes basics}{7}% 
+\contentsline {subsection}{\numberline {1.2}Make all member variables and as many member functions as possible private}{8}% 
+\contentsline {subsection}{\numberline {1.3}Programming example: Bank account class}{9}% 
+\contentsline {subsection}{\numberline {1.4}Constructor for initialisation}{11}% 
+\contentsline {subsection}{\numberline {1.5}Member initialisers using default values}{14}% 
+\contentsline {subsection}{\numberline {1.6}A note on abstract data types}{15}% 
+\contentsline {subsection}{\numberline {1.7}Brief introduction to inheritance}{15}% 
+\contentsline {section}{\numberline {2}Friend functions and operator overloading}{17}% 
+\contentsline {subsection}{\numberline {2.1}Friend functions}{17}% 
+\contentsline {subsection}{\numberline {2.2}The const parameter modifier}{17}% 
+\contentsline {subsection}{\numberline {2.3}Overloading operators}{18}% 
+\contentsline {subsubsection}{\numberline {2.3.1}Overloading binary operators}{18}% 
+\contentsline {subsubsection}{\numberline {2.3.2}Constructors for automatic type conversion}{20}% 
+\contentsline {subsubsection}{\numberline {2.3.3}Overloading unary operators}{20}% 
+\contentsline {subsubsection}{\numberline {2.3.4}Overloading \textgreater \textgreater {} and \textless \textless {} operators}{20}% 
+\contentsline {subsubsection}{\numberline {2.3.5}Overloading the assignment operator `='}{21}% 
+\contentsline {subsubsection}{\numberline {2.3.6}Overloading conversions (i.e. casts)}{22}% 
+\contentsline {section}{\numberline {3}Arrays and classes, destructor, and copy constructor}{24}% 
+\contentsline {subsection}{\numberline {3.1}Arrays and classes}{24}% 
+\contentsline {subsubsection}{\numberline {3.1.1}Arrays of classes}{24}% 
+\contentsline {subsubsection}{\numberline {3.1.2}Arrays as class members}{24}% 
+\contentsline {subsection}{\numberline {3.2}Programming example: A class for a partially filled array (not hard but interesting)}{25}% 
+\contentsline {subsection}{\numberline {3.3}Classes and dynamic arrays}{26}% 
+\contentsline {subsection}{\numberline {3.4}Destructor}{26}% 
+\contentsline {subsection}{\numberline {3.5}Copy constructor}{27}% 
+\contentsline {subsection}{\numberline {3.6}Programming example: Own string class (B.p. 702)}{28}% 
+\contentsline {section}{\numberline {4}Separate compilation and namespaces}{32}% 
+\contentsline {subsection}{\numberline {4.1}Separate compilation}{32}% 
+\contentsline {subsection}{\numberline {4.2}Namespaces}{32}% 
+\contentsline {section}{\numberline {5}Introduction to memory management}{37}% 
+\contentsline {subsection}{\numberline {5.1}Common memory management errors}{37}% 
+\contentsline {subsection}{\numberline {5.2}Simple examples where dynamic memory is not properly freed (w/o classes)}{37}% 
+\contentsline {subsection}{\numberline {5.3}Who is the owner of the dynamic memory}{39}% 
+\contentsline {subsection}{\numberline {5.4}Destructor based memory de-allocation}{39}% 
+\contentsline {section}{\numberline {6}Inheritance}{45}% 
+\contentsline {subsection}{\numberline {6.1}Basic syntax of inheritance}{45}% 
+\contentsline {subsection}{\numberline {6.2}Constructors in derived classes}{47}% 
+\contentsline {subsection}{\numberline {6.3}Private member variables and functions }{48}% 
+\contentsline {subsection}{\numberline {6.4}Redefinition of an inherited function}{48}% 
+\contentsline {subsection}{\numberline {6.5}Inheritance details}{49}% 
+\contentsline {subsection}{\numberline {6.6}Polymorphism and virtual functions}{50}% 
+\contentsline {section}{\numberline {7}Exception handling}{57}% 
+\contentsline {subsection}{\numberline {7.1}Basics - try-throw-catch statements}{57}% 
+\contentsline {subsection}{\numberline {7.2}Defining your own exception classes}{58}% 
+\contentsline {subsection}{\numberline {7.3}Multiple throws and catches}{59}% 
+\contentsline {subsection}{\numberline {7.4}Throwing an exception in a function}{61}% 
+\contentsline {subsection}{\numberline {7.5}Exception specification}{62}% 
+\contentsline {subsection}{\numberline {7.6}Best practices for exception handling}{63}% 
+\contentsline {section}{\numberline {8}Templates}{65}% 
+\contentsline {subsection}{\numberline {8.1}Templates for algorithm abstraction (function templates)}{65}% 
+\contentsline {subsection}{\numberline {8.2}Templates for data abstraction (class templates)}{65}% 
+\contentsline {section}{\numberline {9}Standard template library and C++ 11}{68}% 
+\contentsline {subsection}{\numberline {9.1}Iterators}{68}% 
+\contentsline {subsubsection}{\numberline {9.1.1}Kinds of iterators}{69}% 
+\contentsline {subsubsection}{\numberline {9.1.2}Mutable, constant, and reverse iterators}{69}% 
+\contentsline {subsection}{\numberline {9.2}Containers}{71}% 
+\contentsline {subsubsection}{\numberline {9.2.1}Sequential containers}{71}% 
+\contentsline {subsubsection}{\numberline {9.2.2}Container adapters -- \emph {stack} and \emph {queue}}{74}% 
+\contentsline {subsubsection}{\numberline {9.2.3}Associative containers -- \emph {set} and \emph {map}}{76}% 
+\contentsline {subsection}{\numberline {9.3}Generic algorithms}{80}% 
+\contentsline {subsection}{\numberline {9.4}C++ is evolving}{80}% 

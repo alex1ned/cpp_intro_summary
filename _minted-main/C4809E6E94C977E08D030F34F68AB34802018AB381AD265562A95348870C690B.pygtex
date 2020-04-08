@@ -1,0 +1,30 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Class of Pet}
+\PYG{k}{class} \PYG{n+nc}{Pet}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{k}{virtual} \PYG{k+kt}{void} \PYG{n}{print}\PYG{p}{();}
+		\PYG{c+c1}{//Prints out the name}
+	\PYG{n}{string} \PYG{n}{name}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{//Class of Dog}
+\PYG{k}{class} \PYG{n+nc}{Dog} \PYG{o}{:} \PYG{k}{public} \PYG{n}{Pet}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{k}{virtual} \PYG{k+kt}{void} \PYG{n}{print}\PYG{p}{();} \PYG{c+c1}{//keyword \PYGZsq{}virtual\PYGZsq{} not needed but good style}
+		\PYG{c+c1}{//Prints out the name + the breed (thus needs to be virtual)}
+	\PYG{n}{string} \PYG{n}{breed}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{//Assume the below is embedded in a proper main function}
+\PYG{n}{Dog} \PYG{n}{vDog}\PYG{p}{;}
+\PYG{n}{Pet} \PYG{n}{vPet}\PYG{p}{;}
+
+\PYG{n}{vDog}\PYG{p}{.}\PYG{n}{name} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Tiny\PYGZdq{}}\PYG{p}{;}
+\PYG{n}{vDog}\PYG{p}{.}\PYG{n}{breed} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Great Dane\PYGZdq{}}\PYG{p}{;}
+
+\PYG{c+c1}{//!!!!!}
+\PYG{n}{vPet} \PYG{o}{=} \PYG{n}{vDog}\PYG{p}{;}
+\PYG{c+c1}{//Note: this assignment is legit, but you lose the breed field in vPet}
+\end{Verbatim}

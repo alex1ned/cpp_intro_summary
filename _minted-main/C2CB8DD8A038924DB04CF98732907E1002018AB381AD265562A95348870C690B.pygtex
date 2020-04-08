@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Child}\PYG{o}{\PYGZam{}} \PYG{n}{Child}\PYG{o}{::}\PYG{k}{operator} \PYG{o}{=}\PYG{p}{(}\PYG{k}{const} \PYG{n}{Child}\PYG{o}{\PYGZam{}} \PYG{n}{rightSide}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//First call to parent overloaded assignment operator}
+	\PYG{n}{Parent}\PYG{o}{::}\PYG{k}{operator} \PYG{o}{=}\PYG{p}{(}\PYG{n}{rightSide}\PYG{p}{);}
+
+	\PYG{c+c1}{//Here you set new member variables of the Child class}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

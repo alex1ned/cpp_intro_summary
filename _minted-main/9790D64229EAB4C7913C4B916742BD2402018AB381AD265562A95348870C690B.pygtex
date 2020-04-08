@@ -1,0 +1,36 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}map\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}string\PYGZgt{}}
+\PYG{k}{using} \PYG{n}{std}\PYG{o}{::}\PYG{n}{cout}\PYG{p}{;}
+\PYG{k}{using} \PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+\PYG{k}{using} \PYG{n}{std}\PYG{o}{::}\PYG{n}{map}\PYG{p}{;}
+\PYG{k}{using} \PYG{n}{std}\PYG{o}{::}\PYG{n}{string}\PYG{p}{;}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//Declare a map where a string is associated to a string (call map \PYGZsq{}planets\PYGZsq{})}
+	\PYG{n}{map}\PYG{o}{\PYGZlt{}}\PYG{n}{string}\PYG{p}{,} \PYG{n}{string}\PYG{o}{\PYGZgt{}} \PYG{n}{planets}\PYG{p}{;}
+	
+	\PYG{c+c1}{//Fill the map with entries}
+	\PYG{n}{planets}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}Mercury\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Hot planet\PYGZdq{}}\PYG{p}{;}
+	\PYG{n}{planets}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}Venus\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Atmosphere of sulphuric acid\PYGZdq{}}\PYG{p}{;}
+	\PYG{n}{planets}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}Earth\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Home\PYGZdq{}}\PYG{p}{;}
+	
+	\PYG{c+c1}{//Use map in certain ways}
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Entry of Mercury: \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{planets}\PYG{p}{[}\PYG{l+s}{\PYGZdq{}Mercury\PYGZdq{}}\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{planets}\PYG{p}{.}\PYG{n}{find}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Mercury\PYGZdq{}}\PYG{p}{)} \PYG{o}{!=} \PYG{n}{planets}\PYG{p}{.}\PYG{n}{end}\PYG{p}{())}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Mercury is in the map.\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{c+c1}{//Declare a map iterator and iterate through the map}
+	\PYG{n}{map}\PYG{o}{\PYGZlt{}}\PYG{n}{string}\PYG{p}{,} \PYG{n}{string}\PYG{o}{\PYGZgt{}::}\PYG{n}{const\PYGZus{}iterator} \PYG{n}{mapIterator}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{mapIterator} \PYG{o}{=} \PYG{n}{planets}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{();} \PYG{n}{mapIterator} \PYG{o}{!=} \PYG{n}{planets}\PYG{p}{.}\PYG{n}{end}\PYG{p}{();} \PYG{n}{mapIterator}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{c+c1}{//Here you first print out the key and then the mapped value}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{mapIterator}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{first} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} is the key for \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{mapIterator}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{second} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

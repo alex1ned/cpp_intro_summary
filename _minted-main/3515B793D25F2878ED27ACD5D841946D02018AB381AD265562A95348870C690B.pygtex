@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Child} \PYG{n}{child1}\PYG{p}{;}
+
+\PYG{c+c1}{//If the member variables were public you can access them...}
+\PYG{n}{child}\PYG{p}{.}\PYG{n}{age}\PYG{p}{;}
+\PYG{n}{child}\PYG{p}{.}\PYG{n}{name}\PYG{p}{;}
+\PYG{c+c1}{//However this should ALWAYS be private hence you would access them}
+\PYG{c+c1}{//using accessor functions}
+
+\PYG{n}{child}\PYG{p}{.}\PYG{n}{getAge}\PYG{p}{();} \PYG{c+c1}{//getAge should be a public member function of the Parent}
+\PYG{n}{child}\PYG{p}{.}\PYG{n}{getName}\PYG{p}{();} \PYG{c+c1}{//getName should be public member function of the Child}
+\end{Verbatim}

@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}sale.hpp\PYGZdq{}}
+\PYG{c+c1}{//Note: also put in a namespace as before}
+
+\PYG{k}{class} \PYG{n+nc}{DiscountSale} \PYG{o}{:} \PYG{k}{public} \PYG{n}{Sale}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{n}{Discount}\PYG{p}{();}
+	\PYG{n}{DiscountSale}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{thePrice}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{theDiscount}\PYG{p}{);}
+	
+	\PYG{k}{virtual} \PYG{k+kt}{double} \PYG{n+nf}{bill}\PYG{p}{()} \PYG{k}{const}\PYG{p}{;}
+		\PYG{c+c1}{//Note: the keyword virtual is not needed here but it is good}
+		\PYG{c+c1}{//practice to include it}
+\PYG{k}{protected}\PYG{o}{:}
+	\PYG{k+kt}{double} \PYG{n}{discount}\PYG{p}{;} \PYG{c+c1}{//hence the function has a price (inherited) and a discount}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

@@ -1,0 +1,34 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{donuts}\PYG{p}{,} \PYG{n}{milk}\PYG{p}{;}
+	\PYG{k+kt}{double} \PYG{n}{donutsPerGlass}\PYG{p}{;}
+	
+	\PYG{k}{try}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Enter number of donuts: \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+		\PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{donuts}\PYG{p}{;}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Enter number of glasses: \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+		\PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{milk}\PYG{p}{;}
+		
+		\PYG{c+c1}{//The below is the condition whether to make a throw}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{milk} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{0}\PYG{p}{)}
+		\PYG{p}{\PYGZob{}}
+			\PYG{k}{throw} \PYG{n}{donuts}\PYG{p}{;}
+			\PYG{c+c1}{//If a throw is encountered, the throw is thrown value}
+			\PYG{c+c1}{//becomes the value of the parameter in the catch block (i.e. the \PYGZsq{}e\PYGZsq{})}
+		\PYG{p}{\PYGZcb{}}
+		\PYG{c+c1}{//... if a throw was made, than the execution of try stops at}
+		\PYG{c+c1}{//the throw and continues at the catch}
+		
+		\PYG{n}{donutsPerGlass} \PYG{o}{=} \PYG{n}{donuts}\PYG{o}{/}\PYG{k}{static\PYGZus{}cast}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{n}{milk}\PYG{p}{);}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Donuts for each glass of milk: \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{donutsPerGlass}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{catch}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{e}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{c+c1}{//\PYGZsq{}e\PYGZsq{} is the thrown value from the try block}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{e} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}donuts, and no milk!\PYGZdq{}}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

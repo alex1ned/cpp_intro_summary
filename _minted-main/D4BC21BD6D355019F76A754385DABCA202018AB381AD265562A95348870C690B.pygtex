@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Pet}\PYG{o}{*} \PYG{n}{pPet}\PYG{p}{;}
+\PYG{n}{Dog}\PYG{o}{*} \PYG{n}{pDog} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Dog}\PYG{p}{;}
+
+\PYG{n}{pDog}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{name} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Tiny\PYGZdq{}}\PYG{p}{;}
+\PYG{n}{pDog}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{breed} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Great Dane\PYGZdq{}}\PYG{p}{;}
+
+\PYG{n}{pPet} \PYG{o}{=} \PYG{n}{pDog}\PYG{p}{;}
+\PYG{c+c1}{//Note: this is legit and we do not lose the breed field in the pDog instance.}
+
+\PYG{c+c1}{//The below is NOT legitimate...}
+\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}name: \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{pPet}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{name} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}breed: \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{pPet}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{breed}\PYG{p}{;}
+\PYG{c+c1}{//... this is because breed is not a member function of pPet.}
+\PYG{c+c1}{//You can only make a call yo \PYGZsq{}breed\PYGZsq{} through pPet using a virtual function.}
+\end{Verbatim}

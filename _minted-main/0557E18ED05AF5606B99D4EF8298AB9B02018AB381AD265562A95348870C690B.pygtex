@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}vector\PYGZgt{}}
+\PYG{k}{using} \PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{p}{;}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{container}\PYG{p}{;} \PYG{c+c1}{//\PYGZhy{}\PYGZhy{}\PYGZgt{} just a vector called \PYGZsq{}container\PYGZsq{}}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{4}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{container}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{c+c1}{//Increment each element of the container by 1}
+	\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}::}\PYG{n}{iterator} \PYG{n}{p}\PYG{p}{;}
+		\PYG{c+c1}{//This means p is a variable and its type is iterator}
+		\PYG{c+c1}{//iterator is the type named iterator that is defined in the class vector\PYGZlt{}int\PYGZgt{}...}
+		\PYG{c+c1}{//...which in turn is defined in the std namespace}
+		\PYG{c+c1}{//If we had not included the using directive \PYGZsq{}using std::vector\PYGZsq{} we would require here}
+		\PYG{c+c1}{//using std::vector\PYGZlt{}int\PYGZgt{}::iterator;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{p} \PYG{o}{=} \PYG{n}{container}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{();} \PYG{n}{p} \PYG{o}{!=} \PYG{n}{container}\PYG{p}{.}\PYG{n}{end}\PYG{p}{();} \PYG{n}{p}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{c+c1}{//Here p is an iterator and you assign it to the beginning of the container}
+		\PYG{c+c1}{//and then iterate through it.}
+		\PYG{o}{*}\PYG{n}{p} \PYG{o}{+=} \PYG{l+m+mi}{1}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

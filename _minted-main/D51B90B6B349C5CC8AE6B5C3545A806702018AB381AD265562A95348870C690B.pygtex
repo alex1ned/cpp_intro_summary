@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Instead of ...}
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}::}\PYG{n}{iterator} \PYG{n}{p} \PYG{o}{=} \PYG{n}{v}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{();}
+
+\PYG{c+c1}{//... you could also write}
+\PYG{k}{auto} \PYG{n}{p} \PYG{o}{=} \PYG{n}{v}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{();}
+\end{Verbatim}

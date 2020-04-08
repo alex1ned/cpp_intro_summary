@@ -1,0 +1,39 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//For all the below use the identical namespace definition}
+
+\PYG{c+c1}{//\PYGZhy{}\PYGZhy{}\PYGZhy{} 1) Define the parent class in a separate file}
+\PYG{c+cp}{\PYGZsh{}ifndef PARENT\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}define PARENT\PYGZus{}H}
+\PYG{k}{namespace} \PYG{n}{parentnederegger}
+\PYG{p}{\PYGZob{}}
+	\PYG{k}{class} \PYG{n+nc}{Parent}
+	\PYG{p}{\PYGZob{}}
+		\PYG{c+c1}{// 1) All member variables should be private}
+		\PYG{c+c1}{//     and write accessor and mutator functions.}
+		
+		\PYG{c+c1}{// 2) All private member functions are essentially}
+		\PYG{c+c1}{//     not inherited, hence only make them private if they}
+		\PYG{c+c1}{//     are only helper functions and only used within the class.}
+		
+		\PYG{c+c1}{// 3) Note that you should declare and define your desired}
+		\PYG{c+c1}{//      constructors. These should initialise ALL member variables.}
+		\PYG{c+c1}{//      When defining the constructors of the child class, the child it}
+		\PYG{c+c1}{//      should call the constructor of the parent class to initialise the}
+		\PYG{c+c1}{//      inherited member variables and then also initialise the new member}
+		\PYG{c+c1}{//      member variables of the child class.}
+		
+		\PYG{k+kt}{int} \PYG{n}{aFunction}\PYG{p}{();}
+	\PYG{p}{\PYGZcb{};}
+\PYG{p}{\PYGZcb{}} \PYG{c+c1}{//parentnederegger}
+\PYG{c+cp}{\PYGZsh{}endif}
+
+
+\PYG{c+c1}{//\PYGZhy{}\PYGZhy{}\PYGZhy{} 2) Implement the parent class in a separate file}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}parent.h\PYGZdq{}}
+
+\PYG{k}{namespace} \PYG{n}{parentnederegger}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{Parent}\PYG{o}{::}\PYG{n}{Parent}\PYG{p}{()} \PYG{c+c1}{//some definitions of constructor}
+	\PYG{c+c1}{//More function definitions}
+\PYG{p}{\PYGZcb{}} \PYG{c+c1}{//parentnederegger}
+\end{Verbatim}

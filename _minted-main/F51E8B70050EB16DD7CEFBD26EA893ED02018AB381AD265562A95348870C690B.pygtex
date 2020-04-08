@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{template}\PYG{o}{\PYGZlt{}}\PYG{k}{class} \PYG{n+nc}{T}\PYG{o}{\PYGZgt{}}
+\PYG{k+kt}{void} \PYG{n}{swapValues}\PYG{p}{(}\PYG{n}{T}\PYG{o}{\PYGZam{}} \PYG{n}{variable1}\PYG{p}{,} \PYG{n}{T}\PYG{o}{\PYGZam{}} \PYG{n}{variable2}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{T} \PYG{n}{temp}\PYG{p}{;}
+	
+	\PYG{n}{temp} \PYG{o}{=} \PYG{n}{variable1}\PYG{p}{;}
+	\PYG{n}{variable1} \PYG{o}{=} \PYG{n}{variable2}\PYG{p}{;}
+	\PYG{n}{variable2} \PYG{o}{=} \PYG{n}{temp}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

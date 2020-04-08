@@ -1,0 +1,29 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}set\PYGZgt{}}
+\PYG{k}{using} \PYG{n}{std}\PYG{o}{::}\PYG{n}{cout}\PYG{p}{;}
+\PYG{k}{using} \PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+\PYG{k}{using} \PYG{n}{std}\PYG{o}{::}\PYG{n}{set}\PYG{p}{;}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+	\PYG{c+c1}{//Declare a set called someSet and fill it}
+	\PYG{n}{set}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{char}\PYG{o}{\PYGZgt{}} \PYG{n}{someSet}\PYG{p}{;}
+	\PYG{n}{someSet}\PYG{p}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{l+s+sc}{\PYGZsq{}A\PYGZsq{}}\PYG{p}{);}
+	\PYG{n}{someSet}\PYG{p}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{l+s+sc}{\PYGZsq{}D\PYGZsq{}}\PYG{p}{);}
+	\PYG{n}{someSet}\PYG{p}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{l+s+sc}{\PYGZsq{}B\PYGZsq{}}\PYG{p}{);}
+	\PYG{n}{someSet}\PYG{p}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{l+s+sc}{\PYGZsq{}D\PYGZsq{}}\PYG{p}{);} \PYG{c+c1}{//\PYGZhy{}\PYGZhy{}\PYGZgt{} this will have no effect given set already includes \PYGZsq{}D\PYGZsq{}}
+	
+	\PYG{c+c1}{//Declare an iterator for set and print out each element}
+	\PYG{n}{set}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{char}\PYG{o}{\PYGZgt{}::}\PYG{n}{iterator} \PYG{n}{setIterator}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{setIterator} \PYG{o}{=} \PYG{n}{someSet}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{();} \PYG{n}{setIterator} \PYG{o}{!=} \PYG{n}{someSet}\PYG{p}{.}\PYG{n}{end}\PYG{p}{();} \PYG{n}{setIterator}\PYG{o}{++}\PYG{p}{)}
+	\PYG{p}{\PYGZob{}}
+		\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{o}{*}\PYG{n}{setIterator} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	
+	\PYG{c+c1}{//Remove \PYGZsq{}B\PYGZsq{}}
+	\PYG{n}{someSet}\PYG{p}{.}\PYG{n}{erase}\PYG{p}{(}\PYG{l+s+sc}{\PYGZsq{}B\PYGZsq{}}\PYG{p}{);}
+	
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

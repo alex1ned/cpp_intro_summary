@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{try}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{NodePtr} \PYG{n}{pointer} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Node}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{catch}\PYG{p}{(}\PYG{n}{badAlloc}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+	\PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Ran out of memory!\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

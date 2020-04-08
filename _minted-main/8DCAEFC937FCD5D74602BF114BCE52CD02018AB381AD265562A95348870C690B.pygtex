@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//Note you should put it into a separate namespace}
+
+\PYG{k}{class} \PYG{n+nc}{Sale}
+\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+	\PYG{c+c1}{//The two constructors just set `price\PYGZsq{}}
+	\PYG{n}{Sale}\PYG{p}{();}
+	\PYG{n}{Sale}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{thePrice}\PYG{p}{);}
+
+	\PYG{k}{virtual} \PYG{k+kt}{double} \PYG{n+nf}{bill}\PYG{p}{()} \PYG{k}{const}\PYG{p}{;}
+		\PYG{c+c1}{//Bill returns price (needs to be virtual)}
+
+	\PYG{k+kt}{double} \PYG{n+nf}{savings}\PYG{p}{(}\PYG{k}{const} \PYG{n}{Sale}\PYG{o}{\PYGZam{}} \PYG{n}{other}\PYG{p}{)} \PYG{k}{const}\PYG{p}{;}
+		\PYG{c+c1}{//Returns the savings if you buy other instead of the calling object}
+		\PYG{c+c1}{//Includes a call to `bill()\PYGZsq{}}
+\PYG{k}{protected}\PYG{o}{:}
+	\PYG{k+kt}{double} \PYG{n}{price}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{//Overloaded `\PYGZlt{}\PYGZsq{} operator:}
+\PYG{k+kt}{bool} \PYG{k}{operator} \PYG{o}{\PYGZlt{}}\PYG{p}{(}\PYG{k}{const} \PYG{n}{Sale}\PYG{o}{\PYGZam{}} \PYG{n}{first}\PYG{p}{,} \PYG{k}{const} \PYG{n}{Sale}\PYG{o}{\PYGZam{}} \PYG{n}{second}\PYG{p}{);}
+	\PYG{c+c1}{//Compares two sales to see which is larger}
+	\PYG{c+c1}{//Includes a call to `bill()\PYGZsq{}}
+\end{Verbatim}
